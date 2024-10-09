@@ -4,12 +4,16 @@ export default function ColorForm({ onAddColor }) {
   // add fn to handle submit and store input data to be passed to App
   function handleSubmit(event) {
     event.preventDefault();
+    // store input data
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
     console.log(data);
+    // onAddColor(data);
 
-    //
+    // event handling logic to improve form UX
+    event.target.reset();
+    event.target.elements.role.focus();
   }
 
   return (
@@ -33,7 +37,7 @@ export default function ColorForm({ onAddColor }) {
           type="text"
           placeholder="#54c73d"
         ></input>
-        <input id="color-hex--input" type="color"></input>
+        {/* <input id="color-hex--input" type="color"></input> */}
       </fieldset>
       <fieldset className="ColorForm--form--fieldset">
         <legend>Contrast Text</legend>
@@ -44,7 +48,7 @@ export default function ColorForm({ onAddColor }) {
           type="text"
           placeholder="#54c73d"
         ></input>
-        <input name="color-contrast-text--input" type="color"></input>
+        {/* <input name="color-contrast-text--input" type="color"></input> */}
       </fieldset>
       <button type="submit">ADD COLOR</button>
     </form>
