@@ -195,5 +195,16 @@ change onHexChange to handleHexChange
 
 ✅ 7.4. iterate with contrast color
 
+8. Final fixes and refinements on form Components
+
+8.1. fix issue: ContrastTextcolor gets passed twice due to name of color input field
+❌ - test if possible if name is identival with text input xx> output now undefinable upon rendering
+❎ - test if possible to have name only on one field but ID on both ==> works as expected again
+
+8.2. fix issue: as per req, form should be prefilled with values
+❎ - set useSate accordingly
+
+
+
 
 */

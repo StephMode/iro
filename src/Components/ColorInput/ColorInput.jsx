@@ -3,8 +3,8 @@ import { useState } from "react";
 
 export default function ColorInput() {
   // implement state to give both input fields of respective group same value
-  const [hexValue, setHexValue] = useState("");
-  const [contrastColorValue, setContrastColorValue] = useState("");
+  const [hexValue, setHexValue] = useState("#54c73d");
+  const [contrastColorValue, setContrastColorValue] = useState("#000000");
   //   const contrastValue = "#000000"; // for testing purposes of 1st iteration
 
   // implement input handler to give both input fields of respective group same value after input
@@ -31,6 +31,7 @@ export default function ColorInput() {
         ></input>
         <input
           id="color-hex--input"
+          //   name="hex"
           type="color"
           onChange={handleHexChange}
         ></input>
@@ -48,7 +49,8 @@ export default function ColorInput() {
           onChange={handleContrastColorChange}
         ></input>
         <input
-          name="color-contrast-text--input"
+          id="color-contrast-text--input"
+          //   name="contrastText"
           type="color"
           value={contrastColorValue}
           onChange={handleContrastColorChange}
