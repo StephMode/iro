@@ -9,7 +9,7 @@ export default function ColorForm({ onAddColor }) {
     const data = Object.fromEntries(formData);
 
     console.log(data);
-    // onAddColor(data);
+    onAddColor(data);
 
     // event handling logic to improve form UX
     event.target.reset();
