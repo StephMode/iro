@@ -122,8 +122,7 @@ className="color-card"
 Gives the text content of h3 and p the color of contrat text automatically
 
 
-
-6. Add package and logic to assign id to newly created objects for colors
+✅ 6. Add package and logic to assign id to newly created objects for colors
 
 6.1. understand the data structure of the updated state
 
@@ -165,7 +164,36 @@ erweitere den state colors([...gliedere den aktuellen state auf, { füge mithilf
 
 6.2.2. expand logic of handleAddColor to also add ID 
 
+7. Develop a ColorInput Component to handle synchronized text/color inputs
 
+requirement: one of two types of input fields for one color should give the valie
+
+breakdown:
+set up a state for color hex, color contrast
+xyColor = value of the input field -> intially "", onChange=input
+
+App > ColorForm > ColorInput
+
+ColorInput > values of input on only one of the fields >> ColorForm
+
+ColorForm > all input values (including synchronized ColorInput values) >> App
+
+App > handle state change to add new color
+
+Approach:
+So, we need a component that takes inputs and stores them in the ColorForm
+This means, ColorForm will be part functional, part representational
+App shall still get the values all the same
+
+✅ 7.1. first iteration: simple ColorInput comp that holds fixed values
+
+✅ 7.2. second iteration: in ColorInput,implement state and handleChange for hexValue
+to verify, if approach is right
+
+✅ 7.3. refine logic fo hex to make logic iterable
+change onHexChange to handleHexChange
+
+✅ 7.4. iterate with contrast color
 
 
 */

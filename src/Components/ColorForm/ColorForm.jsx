@@ -1,3 +1,4 @@
+import ColorInput from "../ColorInput/ColorInput";
 import "./ColorForm.css";
 
 export default function ColorForm({ onAddColor }) {
@@ -28,28 +29,8 @@ export default function ColorForm({ onAddColor }) {
           placeholder="some color"
         ></input>
       </fieldset>
-      <fieldset className="ColorForm--form--fieldset">
-        <legend>Hex</legend>
-        <label htmlFor="color-hex--input"></label>
-        <input
-          id="color-hex--input"
-          name="hex"
-          type="text"
-          placeholder="#54c73d"
-        ></input>
-        {/* <input id="color-hex--input" type="color"></input> */}
-      </fieldset>
-      <fieldset className="ColorForm--form--fieldset">
-        <legend>Contrast Text</legend>
-        <label htmlFor="color-contrast-text--input"></label>
-        <input
-          id="color-contrast-text--input"
-          name="contrastText"
-          type="text"
-          placeholder="#54c73d"
-        ></input>
-        {/* <input name="color-contrast-text--input" type="color"></input> */}
-      </fieldset>
+      <ColorInput></ColorInput>
+
       <button type="submit">ADD COLOR</button>
     </form>
   );
