@@ -29,8 +29,9 @@ export const initialColors = [
     contrastText: "#FFFFFF",
   }, // Lighter charcoal
   // {
+  //   id: "c10",
   //   role: "aa",
   //   hex: "#54c73d",
-  //   contrastText: "#54c73d",
+  //   contrastText: "#FFFFFF",
   // }, // test: c.log'ed formData obj hard coded to see wether array accepts data
 ];
