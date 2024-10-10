@@ -404,18 +404,22 @@ Top Level Breakdown and Ideation
 where does the user start: in the Color comp, but state management is taking place within a EditMode Comp
 
 how does the data flow:
-App > Color > EditButton >> alters an exisiting element of colors
- altered element of colors >> App > state colors
+App > Color > EditButton >> edit an exisiting element of colors
+ edit element of colors > stored in edited state  >> App > state colors
 
 we need:
+create an EDIT btn, which opens editor in Color
+create am comp for Editor
+state to store an edit
+find a way to replace edit state with equivalent element in colors state
 
 
 Plan
 
 
-Introduce a state for the edit
+1. Introduce a state for the edit
 
-Reuse the ColorForm Component and display it within the Color Component when in edit mode
+2. Reuse the ColorForm Component and display it within the Color Component when in edit mode
 
 
 */

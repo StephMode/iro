@@ -2,9 +2,8 @@ import "./Color.css";
 import { useState, useEffect } from "react";
 
 export default function Color({ color, onDeleteColor }) {
-  const [cancelButtonStatus, setCancelButtonStatus] = useState(false);
-  // state for showConfirm
   const [showConfirm, setShowConfirm] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
 
   function handleDeleteConfirm() {
     // onDeleteColor(cancelButtonStatus); // this only displays clicked-status of delete btn
@@ -17,6 +16,14 @@ export default function Color({ color, onDeleteColor }) {
 
   function cancelDelete() {
     setShowConfirm(false);
+  }
+
+  function handleEditClick() {
+    setShowEdit(true);
+  }
+
+  function cancelEdit() {
+    setShowEdit(false);
   }
 
   return (
@@ -34,29 +41,41 @@ export default function Color({ color, onDeleteColor }) {
       <div className="color-card--button-container">
         {!showConfirm ? (
           <button className="color-card--button" onClick={handleDeleteClick}>
-            DELETE
+            🗑️ Delete
           </button>
         ) : (
           <div className="buttons-container--confirm-message">
             <p>Really delete?</p>
             <button className="color-card--button" onClick={cancelDelete}>
-              CANCEL
+              ❌ Cancel
             </button>
             <button
               className="color-card--button"
               onClick={handleDeleteConfirm}
             >
-              DELETE
+              🗑️ Delete
             </button>
           </div>
         )}
-        <button className="color-card--button">EDIT</button>
+        {!showEdit ? (
+          <button className="color-card--button" onClick={handleEditClick}>
+            🖍️ Edit
+          </button>
+        ) : (
+          <div>
+            <button className="color-card--button" onClick={cancelEdit}>
+              ❌ Cancel
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
 }
 
 /* My previous logic for DELETE/CANCEL btn
+
+const [cancelButtonStatus, setCancelButtonStatus] = useState(false);
 
 function showHideCancelButton() {
     setCancelButtonStatus(!cancelButtonStatus);
