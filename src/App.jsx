@@ -50,21 +50,6 @@ function App() {
 
 export default App;
 
-/* map code thats working
-
-{colors.map((color) => {
-        return (
-          <Color
-            key={color.id}
-            color={color}
-            onDeleteColor={handleDeleteColor}
-          />
-        );
-      })}
-
-*()
-
-
 /* Notes on #2 add a color to the theme
 
 ✅ 1. Create ColorForm comp 
@@ -407,6 +392,30 @@ maybe this doesn't work because I can't reference the same state in tern op twic
 
 💡 i need a another JSX fragment to nest my tern op in 
 wait a sec, I don't need to nest the map and Color inside the tern op, it's just the msg that needs to pop up or not based on condition colors.lenght === 0
+
+
+*/
+
+/* Notes on #4 edit color theme
+
+
+Top Level Breakdown and Ideation
+
+where does the user start: in the Color comp, but state management is taking place within a EditMode Comp
+
+how does the data flow:
+App > Color > EditButton >> alters an exisiting element of colors
+ altered element of colors >> App > state colors
+
+we need:
+
+
+Plan
+
+
+Introduce a state for the edit
+
+Reuse the ColorForm Component and display it within the Color Component when in edit mode
 
 
 */

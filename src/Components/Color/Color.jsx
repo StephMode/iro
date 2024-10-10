@@ -19,14 +19,6 @@ export default function Color({ color, onDeleteColor }) {
     setShowConfirm(false);
   }
 
-  function showHideCancelButton() {
-    setCancelButtonStatus(!cancelButtonStatus);
-  }
-
-  // useEffect(() => {
-  //   console.log(cancelButtonStatus);
-  // }, []);
-
   return (
     <div
       className="color-card"
@@ -39,22 +31,40 @@ export default function Color({ color, onDeleteColor }) {
       <h4>{color.role}</h4>
       <p>contrast: {color.contrastText}</p>
 
-      <div className="button-container">
+      <div className="color-card--button-container">
         {!showConfirm ? (
-          <button onClick={handleDeleteClick}>DELETE</button>
+          <button className="color-card--button" onClick={handleDeleteClick}>
+            DELETE
+          </button>
         ) : (
           <div className="buttons-container--confirm-message">
             <p>Really delete?</p>
-            <button onClick={cancelDelete}>CANCEL</button>
-            <button onClick={handleDeleteConfirm}>DELETE</button>
+            <button className="color-card--button" onClick={cancelDelete}>
+              CANCEL
+            </button>
+            <button
+              className="color-card--button"
+              onClick={handleDeleteConfirm}
+            >
+              DELETE
+            </button>
           </div>
         )}
+        <button className="color-card--button">EDIT</button>
       </div>
     </div>
   );
 }
 
 /* My previous logic for DELETE/CANCEL btn
+
+function showHideCancelButton() {
+    setCancelButtonStatus(!cancelButtonStatus);
+  }
+
+  // useEffect(() => {
+  //   console.log(cancelButtonStatus);
+  // }, []);
 
 <div>
         <button
