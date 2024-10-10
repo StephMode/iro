@@ -4,7 +4,6 @@ import "./App.css";
 import ColorForm from "./Components/ColorForm/ColorForm";
 import { useEffect, useState } from "react";
 import { uid } from "uid";
-import { cancelButtonStatus } from "./Components/Color.jsx";
 
 function App() {
   // declare state and lift [initialColors] into it
@@ -17,12 +16,12 @@ function App() {
   }
 
   function handleDeleteColor() {
-    console.log(cancelButtonStatus);
+    console.log("Color deleted");
   }
 
   useEffect(() => {
     console.log(colors); // logs colors state after setFn has been executed
-    console.log(handleDeleteColor);
+    console.log(handleDeleteColor());
   });
 
   return (
@@ -309,6 +308,20 @@ return (
 ==> this should work to set the "line of communication with props" within the JSX to render the comp
 
 clog doesn't work due to clog not being executed in useEffect 👉🏻 remember synchronous and asynchronous execution
+
+🟡 App isn't able to listen to DELETE Button click, or at least not to clog it
+
+What do the fn in Color do at the moment?
+
+cancelButtonStatus = saves state of cancel button -- if it was clicked (boolean)
+
+handleClick = registers if the button was clicked -- no value add
+xx> make it registering click on CANCEL ftm
+
+showHideCancelButton = switches state to show/hide cancel button
+==> thus it should also go into the CANCEL button
+
+
 
 
 2. Introduce a state to handle the confirmation message
