@@ -20,15 +20,21 @@ function App() {
   }
 
   // useEffect(() => {
-  //   // console.log(colors); // logs colors state after setFn has been executed
-  // }, []);
+  //   console.log(colors); // logs colors state after setFn has been executed
+  // });
 
   return (
     <>
       <h1>Theme Creator</h1>
 
       <ColorForm onAddColor={handleAddColor}></ColorForm>
-
+      {colors.length === 0 ? (
+        <h3 className="no-colors-message">
+          🎨 No colors? How about adding one?
+        </h3>
+      ) : (
+        ""
+      )}
       {colors.map((color) => {
         return (
           <Color
@@ -43,6 +49,21 @@ function App() {
 }
 
 export default App;
+
+/* map code thats working
+
+{colors.map((color) => {
+        return (
+          <Color
+            key={color.id}
+            color={color}
+            onDeleteColor={handleDeleteColor}
+          />
+        );
+      })}
+
+*()
+
 
 /* Notes on #2 add a color to the theme
 
@@ -355,14 +376,37 @@ Hence, the param enables the function to only the element of object of arrays as
 Right now, the delete button only executes logic to show/hide cancel button
 
 1.4.1. make CANCEL appear to the left of DELETE instead of right
-1.4.2. 
+1.4.2. change tern op for <btn> so that it either shows DELETE or CONFIRM MESSAGE, CANCEL, DELETE
 
 
-2. Introduce a state to handle the confirmation message
+✅ 2. Introduce a state to handle the confirmation message
 
 AC2: Clicking the "Delete" button should show a confirmation message before actually deleting
 
 3. Reuse the .color-card-headline css rule for the confirm question, but maybe rename it to .color-card-hightlight
+
+
+4. Implement "No colors" msg if colors <= 0
+
+if colors === 0 ? "No colors" : map
+
+maybe this doesn't work because I can't reference the same state in tern op twice?
+
+{colors === [] ? "No colors" : {colors.map((color) => {
+        return (
+          <Color
+            key={color.id}
+            color={color}
+            onDeleteColor={handleDeleteColor}
+          />
+                    );
+                  }
+                )
+              }
+      }
+
+💡 i need a another JSX fragment to nest my tern op in 
+wait a sec, I don't need to nest the map and Color inside the tern op, it's just the msg that needs to pop up or not based on condition colors.lenght === 0
 
 
 */

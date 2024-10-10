@@ -2,3 +2,11 @@ body {
   font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   padding: 10px;
 }
+
+.no-colors-message {
+  border: 1px solid sandybrown;
+  border-radius: 5px;
+  max-width: 400px;
+  padding: 5px;
+  background-color: antiquewhite;
+}
