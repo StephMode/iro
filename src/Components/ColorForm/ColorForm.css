@@ -1,0 +1,8 @@
+.ColorForm--form {
+  max-width: 400px;
+  margin-bottom: 2rem;
+}
+
+/* .ColorForm--form--fieldset {
+  border-style: 10px solid groove;
+} I don't get why this isn't working right now */
