@@ -1,4 +1,5 @@
 import ColorInput from "../ColorInput/ColorInput";
+import "./ColorEditor.css";
 
 export default function ColorForm({ onEditColor }) {
   // add fn to handle submit and store input data to be passed to App

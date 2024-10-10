@@ -1,3 +1,4 @@
+import ColorButton from "../ColorButton/ColorButton.jsx";
 import ColorEditor from "../ColorEditor/ColorEditor.jsx";
 import "./Color.css";
 import { useState } from "react";
@@ -5,7 +6,9 @@ import { useState } from "react";
 export default function Color({ color, onDeleteColor }) {
   const [showConfirm, setShowConfirm] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
+  // const [showDelete, setShowDelete] = useState(false); // only for test ternary
 
+  // functions for data/state flow
   function handleDeleteConfirm() {
     // onDeleteColor(cancelButtonStatus); // this only displays clicked-status of delete btn
     onDeleteColor(color.id); // this is what we will need in order to pass ID of clicked color
@@ -38,15 +41,26 @@ export default function Color({ color, onDeleteColor }) {
       <h3 className="color-card-headline">{color.hex}</h3>
       <h4>{color.role}</h4>
       <p>contrast: {color.contrastText}</p>
-
       <div className="color-card--button-container">
-        {!showConfirm ? (
-          <button className="color-card--button" onClick={handleDeleteClick}>
-            🗑️ Delete
-          </button>
+        {showEdit === true ? (
+          <div>
+            <ColorEditor></ColorEditor>
+            <button className="color-card--button" onClick={cancelEdit}>
+              ❌ Cancel
+            </button>
+          </div>
+        ) : !showConfirm ? (
+          <>
+            <button className="color-card--button" onClick={handleDeleteClick}>
+              🗑️ Delete
+            </button>
+            <button className="color-card--button" onClick={handleEditClick}>
+              🖍️ Edit
+            </button>
+          </>
         ) : (
           <div className="buttons-container--confirm-message">
-            <p>Really delete?</p>
+            <p className="color-card--message">Really delete?</p>
             <button className="color-card--button" onClick={cancelDelete}>
               ❌ Cancel
             </button>
@@ -55,18 +69,6 @@ export default function Color({ color, onDeleteColor }) {
               onClick={handleDeleteConfirm}
             >
               🗑️ Delete
-            </button>
-          </div>
-        )}
-        {!showEdit ? (
-          <button className="color-card--button" onClick={handleEditClick}>
-            🖍️ Edit
-          </button>
-        ) : (
-          <div>
-            <ColorEditor></ColorEditor>
-            <button className="color-card--button" onClick={cancelEdit}>
-              ❌ Cancel
             </button>
           </div>
         )}

@@ -29,3 +29,12 @@
   border-radius: 5px;
   width: 100px;
 }
+
+.color-card--message {
+  font-size: 0.9rem;
+  color: yellow;
+  background-color: lightcoral;
+  border: 2px solid darkred;
+  border-radius: 5px;
+  padding: 1px;
+}
