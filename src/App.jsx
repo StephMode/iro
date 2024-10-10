@@ -204,7 +204,10 @@ change onHexChange to handleHexChange
 8.2. fix issue: as per req, form should be prefilled with values
 ❎ - set useSate accordingly
 
+✅ 9. One more final fix
 
+❎ 9.1. - make both input fields for a respective color influence each others value
+=> solution is to put value in both text and color input fields
 
 
 */

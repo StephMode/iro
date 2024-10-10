@@ -33,6 +33,7 @@ export default function ColorInput() {
           id="color-hex--input"
           //   name="hex"
           type="color"
+          value={hexValue}
           onChange={handleHexChange}
         ></input>
       </fieldset>
