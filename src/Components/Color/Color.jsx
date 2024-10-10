@@ -4,17 +4,18 @@ import { useState, useEffect } from "react";
 export default function Color({ color, onDeleteColor }) {
   const [cancelButtonStatus, setCancelButtonStatus] = useState(false);
 
-  function handleClick() {
-    console.log("cancel button clicked");
+  function handleDeleteClick() {
+    // console.log("del button clicked");
+    onDeleteColor(cancelButtonStatus);
   }
 
   function showHideCancelButton() {
     setCancelButtonStatus(!cancelButtonStatus);
   }
 
-  useEffect(() => {
-    console.log(cancelButtonStatus);
-  });
+  // useEffect(() => {
+  //   console.log(cancelButtonStatus);
+  // }, []);
 
   return (
     <div
@@ -29,8 +30,8 @@ export default function Color({ color, onDeleteColor }) {
       <p>contrast: {color.contrastText}</p>
       <button
         onClick={() => {
-          onDeleteColor;
           showHideCancelButton();
+          handleDeleteClick();
         }}
       >
         DELETE
@@ -40,7 +41,6 @@ export default function Color({ color, onDeleteColor }) {
       ) : (
         <button
           onClick={() => {
-            handleClick();
             showHideCancelButton();
           }}
         >

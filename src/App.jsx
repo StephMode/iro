@@ -15,14 +15,13 @@ function App() {
     // console.log(colors); // doesn't give the updated state, because it's executed before state update
   }
 
-  function handleDeleteColor() {
-    console.log("Color deleted");
+  function handleDeleteColor(id) {
+    setColors(colors.filter((color) => color.id !== id));
   }
 
-  useEffect(() => {
-    console.log(colors); // logs colors state after setFn has been executed
-    console.log(handleDeleteColor());
-  });
+  // useEffect(() => {
+  //   // console.log(colors); // logs colors state after setFn has been executed
+  // }, []);
 
   return (
     <>
@@ -321,7 +320,35 @@ xx> make it registering click on CANCEL ftm
 showHideCancelButton = switches state to show/hide cancel button
 ==> thus it should also go into the CANCEL button
 
+❎ ==> the DELETE BTN needed it's own event handler ftm, 
+which in turn holds the prop onDeleteColor
+because the App needs to know WHENEVER THE DELETE BUTTON IS CLICKED
 
+🟡 This still doesn't get me to let the App listen to the click in the comp
+Maybe try using the cancelButtonStatus state again
+❎ ==> that worked (for now at least)
+
+1.3. Implement HandleDeleteColor
+
+function handleDeleteColor() {
+    console.log("del btn clicked");
+    setColors(
+      colors.filter((color) => {
+        return color !== color;
+      })
+    );
+  }
+🟡 works in general, but deletes all colors
+
+mock code:
+
+set new sate value ( take state value.filter the state/array( (go through every object = color/param) => return color/argum  WITHOUT OBJECT WITH ID WE FILTERED BY ) )
+
+ function handleDeleteColor(id) {
+    setColors(colors.filter((color) => color.id !== id));
+  }
+💡 ==> key is (id) argument here, because function gets triggered upon click taking the selected object in the DOM element as argument.
+Hence, the param enables the function to only the element of object of arrays as argument und lets it use it as filter criterion 
 
 
 2. Introduce a state to handle the confirmation message

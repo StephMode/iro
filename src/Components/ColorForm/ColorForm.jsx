@@ -9,7 +9,6 @@ export default function ColorForm({ onAddColor }) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    console.log(data);
     onAddColor(data);
 
     // event handling logic to improve form UX
