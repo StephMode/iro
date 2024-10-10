@@ -1,5 +1,6 @@
+import ColorEditor from "../ColorEditor/ColorEditor.jsx";
 import "./Color.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function Color({ color, onDeleteColor }) {
   const [showConfirm, setShowConfirm] = useState(false);
@@ -63,6 +64,7 @@ export default function Color({ color, onDeleteColor }) {
           </button>
         ) : (
           <div>
+            <ColorEditor></ColorEditor>
             <button className="color-card--button" onClick={cancelEdit}>
               ❌ Cancel
             </button>

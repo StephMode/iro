@@ -416,10 +416,16 @@ find a way to replace edit state with equivalent element in colors state
 
 Plan
 
-
-1. Introduce a state for the edit
+✅ 1. Create Edit btn and basic edit/cancel logic in Color
 
 2. Reuse the ColorForm Component and display it within the Color Component when in edit mode
+2.1 change elements so that they match the new context of EditForm
+
+
+3. Implement Edit Comp in Color Comp 
+
+4. Introduce a state for the edit
+
 
 
 */
