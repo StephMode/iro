@@ -350,6 +350,13 @@ set new sate value ( take state value.filter the state/array( (go through every 
 💡 ==> key is (id) argument here, because function gets triggered upon click taking the selected object in the DOM element as argument.
 Hence, the param enables the function to only the element of object of arrays as argument und lets it use it as filter criterion 
 
+1.4. Delete Button Functionality incomplete, improve!
+
+Right now, the delete button only executes logic to show/hide cancel button
+
+1.4.1. make CANCEL appear to the left of DELETE instead of right
+1.4.2. 
+
 
 2. Introduce a state to handle the confirmation message
 
