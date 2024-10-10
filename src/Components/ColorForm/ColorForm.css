@@ -1,8 +1,22 @@
 .ColorForm--form {
-  max-width: 400px;
+  max-width: 90%;
   margin-bottom: 2rem;
 }
 
-/* .ColorForm--form--fieldset {
-  border-style: 10px solid groove;
-} I don't get why this isn't working right now */
+.ColorForm--submit-button {
+  border: 1px solid sandybrown;
+  border-radius: 5px;
+  max-width: 400px;
+  padding: 5px;
+  background-color: antiquewhite;
+  margin-top: 5px;
+}
+
+.ColorForm--form--fieldset {
+  background-color: antiquewhite;
+  border-radius: 10px;
+}
+
+/* .ColorForm--form-legend {
+  background-color: black;
+} */

@@ -9,3 +9,8 @@
   background: black;
   color: white;
 }
+
+.buttons-container--confirm-message {
+  display: flex;
+  gap: 5px;
+}

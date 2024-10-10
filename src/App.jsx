@@ -15,24 +15,55 @@ function App() {
     // console.log(colors); // doesn't give the updated state, because it's executed before state update
   }
 
-  useEffect(() => {
-    console.log(colors); // logs colors state after setFn has been executed
-  });
+  function handleDeleteColor(id) {
+    setColors(colors.filter((color) => color.id !== id));
+  }
+
+  // useEffect(() => {
+  //   console.log(colors); // logs colors state after setFn has been executed
+  // });
 
   return (
     <>
       <h1>Theme Creator</h1>
 
       <ColorForm onAddColor={handleAddColor}></ColorForm>
-
+      {colors.length === 0 ? (
+        <h3 className="no-colors-message">
+          🎨 No colors? How about adding one?
+        </h3>
+      ) : (
+        ""
+      )}
       {colors.map((color) => {
-        return <Color key={color.id} color={color} />;
+        return (
+          <Color
+            key={color.id}
+            color={color}
+            onDeleteColor={handleDeleteColor}
+          />
+        );
       })}
     </>
   );
 }
 
 export default App;
+
+/* map code thats working
+
+{colors.map((color) => {
+        return (
+          <Color
+            key={color.id}
+            color={color}
+            onDeleteColor={handleDeleteColor}
+          />
+        );
+      })}
+
+*()
+
 
 /* Notes on #2 add a color to the theme
 
@@ -208,6 +239,174 @@ change onHexChange to handleHexChange
 
 ❎ 9.1. - make both input fields for a respective color influence each others value
 => solution is to put value in both text and color input fields
+
+
+*/
+
+/* Notes on #3 delete a color from a theme
+
+Top Level Breakdown and Ideation
+
+where does the user start: in the Color comp
+
+how does the data flow:
+App > Color > DeleteButton >> DELETES on object in the colors state, hence 
+
+we need props and logic for
+Color: onDeleteColor < > onClick=OnDeleteColor
+App: handleAddColor < > OnDeleteColor=handleDeleteColor
+
+handleDeleteColor needs to somehow mutate the array, deleting the selected color
+
+
+Plan
+
+1. Implement a function to handle the deletion of a color.
+
+AC1: button shall be in EVERY color card
+
+✅ 1.1. Add JSX for Button and test for functionality
+
+- Add one button
+- Add CANCEL Button and use ternary operator to add interactivity: cancel only to be shown upon click
+{if clicked=true - show text content"DELETE" && button CANCEL "CANCEL", else only show text content "DELETE" }
+
+Observe:
+
+<button onClick={handleClick}>DELETE</button>
+<button onClick={handleClick}>CANCEL</button>
+🟡 xx> works, but to separate buttons speaking to the same event handler
+
+
+<button
+        onClick={(click) => {
+          click ? (
+            <>
+              <button>CANCEL</button>
+              <button>DELETE</button>
+            </>
+          ) : (
+            <button>DELETE</button>
+          );
+        }}
+      ></button>
+🟡 xx> seems to be working, but doesnt show anything
+- Assumption: button within button, maybe I should wrap into something non-semantic, like a div
+❌ jetzt sieht man gar nichts mehr
+
+Grundsätzlich dürfen die Buttons in nichts eingenested sein, sonst werden sie nur als mini bubbles angezeigt
+Thus, I can't nest button into another
+
+I could try making the button appear on click of delete
+1.1. 1. add logic to changing state of the cancel button STATE
+
+function showHideCancelButton() {
+    let cancelButtonStatus = false;
+    cancelButtonStatus = !false;
+    console.log(cancelButtonStatus);
+    console.log("delete button clicked and should do something with CANCEL");
+  }
+💡 ==> this is a good start, but I already see that I need state for that
+
+1.1.2. implement state and change showHideCancelButton to contain state management logic
+
+1.1.3. implement ternary op to show cancel butto upon click
+
+
+1.2. Implement props
+
+like this
+Color: onDeleteColor < > onClick=OnDeleteColor
+App: handleAddColor < > OnDeleteColor=handleDeleteColor
+
+return (
+          <Color
+            key={color.id}
+            color={color}
+            onDeleteColor={handleDeleteColor}
+          />
+==> this should work to set the "line of communication with props" within the JSX to render the comp
+
+clog doesn't work due to clog not being executed in useEffect 👉🏻 remember synchronous and asynchronous execution
+
+🟡 App isn't able to listen to DELETE Button click, or at least not to clog it
+
+What do the fn in Color do at the moment?
+
+cancelButtonStatus = saves state of cancel button -- if it was clicked (boolean)
+
+handleClick = registers if the button was clicked -- no value add
+xx> make it registering click on CANCEL ftm
+
+showHideCancelButton = switches state to show/hide cancel button
+==> thus it should also go into the CANCEL button
+
+❎ ==> the DELETE BTN needed it's own event handler ftm, 
+which in turn holds the prop onDeleteColor
+because the App needs to know WHENEVER THE DELETE BUTTON IS CLICKED
+
+🟡 This still doesn't get me to let the App listen to the click in the comp
+Maybe try using the cancelButtonStatus state again
+❎ ==> that worked (for now at least)
+
+1.3. Implement HandleDeleteColor
+
+function handleDeleteColor() {
+    console.log("del btn clicked");
+    setColors(
+      colors.filter((color) => {
+        return color !== color;
+      })
+    );
+  }
+🟡 works in general, but deletes all colors
+
+mock code:
+
+set new sate value ( take state value.filter the state/array( (go through every object = color/param) => return color/argum  WITHOUT OBJECT WITH ID WE FILTERED BY ) )
+
+ function handleDeleteColor(id) {
+    setColors(colors.filter((color) => color.id !== id));
+  }
+💡 ==> key is (id) argument here, because function gets triggered upon click taking the selected object in the DOM element as argument.
+Hence, the param enables the function to only the element of object of arrays as argument und lets it use it as filter criterion 
+
+1.4. Delete Button Functionality incomplete, improve!
+
+Right now, the delete button only executes logic to show/hide cancel button
+
+1.4.1. make CANCEL appear to the left of DELETE instead of right
+1.4.2. change tern op for <btn> so that it either shows DELETE or CONFIRM MESSAGE, CANCEL, DELETE
+
+
+✅ 2. Introduce a state to handle the confirmation message
+
+AC2: Clicking the "Delete" button should show a confirmation message before actually deleting
+
+3. Reuse the .color-card-headline css rule for the confirm question, but maybe rename it to .color-card-hightlight
+
+
+4. Implement "No colors" msg if colors <= 0
+
+if colors === 0 ? "No colors" : map
+
+maybe this doesn't work because I can't reference the same state in tern op twice?
+
+{colors === [] ? "No colors" : {colors.map((color) => {
+        return (
+          <Color
+            key={color.id}
+            color={color}
+            onDeleteColor={handleDeleteColor}
+          />
+                    );
+                  }
+                )
+              }
+      }
+
+💡 i need a another JSX fragment to nest my tern op in 
+wait a sec, I don't need to nest the map and Color inside the tern op, it's just the msg that needs to pop up or not based on condition colors.lenght === 0
 
 
 */

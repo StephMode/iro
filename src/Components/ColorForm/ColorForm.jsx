@@ -9,7 +9,6 @@ export default function ColorForm({ onAddColor }) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    console.log(data);
     onAddColor(data);
 
     // event handling logic to improve form UX
@@ -20,7 +19,7 @@ export default function ColorForm({ onAddColor }) {
   return (
     <form className="ColorForm--form" onSubmit={handleSubmit}>
       <fieldset className="ColorForm--form--fieldset">
-        <legend>Role</legend>
+        <legend className="ColorForm--form-legend">Role</legend>
         <label htmlFor="color-role--input"></label>
         <input
           id="color-role--input"
@@ -31,7 +30,7 @@ export default function ColorForm({ onAddColor }) {
       </fieldset>
       <ColorInput></ColorInput>
 
-      <button type="submit">ADD COLOR</button>
+      <button className="ColorForm--submit-button">🎨 ADD COLOR</button>
     </form>
   );
 }
