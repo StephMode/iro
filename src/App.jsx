@@ -4,6 +4,7 @@ import "./App.css";
 import ColorForm from "./Components/ColorForm/ColorForm";
 import { useEffect, useState } from "react";
 import { uid } from "uid";
+import { cancelButtonStatus } from "./Components/Color.jsx";
 
 function App() {
   // declare state and lift [initialColors] into it
@@ -15,8 +16,13 @@ function App() {
     // console.log(colors); // doesn't give the updated state, because it's executed before state update
   }
 
+  function handleDeleteColor() {
+    console.log(cancelButtonStatus);
+  }
+
   useEffect(() => {
     console.log(colors); // logs colors state after setFn has been executed
+    console.log(handleDeleteColor);
   });
 
   return (
@@ -26,7 +32,13 @@ function App() {
       <ColorForm onAddColor={handleAddColor}></ColorForm>
 
       {colors.map((color) => {
-        return <Color key={color.id} color={color} />;
+        return (
+          <Color
+            key={color.id}
+            color={color}
+            onDeleteColor={handleDeleteColor}
+          />
+        );
       })}
     </>
   );
@@ -208,6 +220,102 @@ change onHexChange to handleHexChange
 
 ❎ 9.1. - make both input fields for a respective color influence each others value
 => solution is to put value in both text and color input fields
+
+
+*/
+
+/* Notes on #3 delete a color from a theme
+
+Top Level Breakdown and Ideation
+
+where does the user start: in the Color comp
+
+how does the data flow:
+App > Color > DeleteButton >> DELETES on object in the colors state, hence 
+
+we need props and logic for
+Color: onDeleteColor < > onClick=OnDeleteColor
+App: handleAddColor < > OnDeleteColor=handleDeleteColor
+
+handleDeleteColor needs to somehow mutate the array, deleting the selected color
+
+
+Plan
+
+1. Implement a function to handle the deletion of a color.
+
+AC1: button shall be in EVERY color card
+
+✅ 1.1. Add JSX for Button and test for functionality
+
+- Add one button
+- Add CANCEL Button and use ternary operator to add interactivity: cancel only to be shown upon click
+{if clicked=true - show text content"DELETE" && button CANCEL "CANCEL", else only show text content "DELETE" }
+
+Observe:
+
+<button onClick={handleClick}>DELETE</button>
+<button onClick={handleClick}>CANCEL</button>
+🟡 xx> works, but to separate buttons speaking to the same event handler
+
+
+<button
+        onClick={(click) => {
+          click ? (
+            <>
+              <button>CANCEL</button>
+              <button>DELETE</button>
+            </>
+          ) : (
+            <button>DELETE</button>
+          );
+        }}
+      ></button>
+🟡 xx> seems to be working, but doesnt show anything
+- Assumption: button within button, maybe I should wrap into something non-semantic, like a div
+❌ jetzt sieht man gar nichts mehr
+
+Grundsätzlich dürfen die Buttons in nichts eingenested sein, sonst werden sie nur als mini bubbles angezeigt
+Thus, I can't nest button into another
+
+I could try making the button appear on click of delete
+1.1. 1. add logic to changing state of the cancel button STATE
+
+function showHideCancelButton() {
+    let cancelButtonStatus = false;
+    cancelButtonStatus = !false;
+    console.log(cancelButtonStatus);
+    console.log("delete button clicked and should do something with CANCEL");
+  }
+💡 ==> this is a good start, but I already see that I need state for that
+
+1.1.2. implement state and change showHideCancelButton to contain state management logic
+
+1.1.3. implement ternary op to show cancel butto upon click
+
+
+1.2. Implement props
+
+like this
+Color: onDeleteColor < > onClick=OnDeleteColor
+App: handleAddColor < > OnDeleteColor=handleDeleteColor
+
+return (
+          <Color
+            key={color.id}
+            color={color}
+            onDeleteColor={handleDeleteColor}
+          />
+==> this should work to set the "line of communication with props" within the JSX to render the comp
+
+clog doesn't work due to clog not being executed in useEffect 👉🏻 remember synchronous and asynchronous execution
+
+
+2. Introduce a state to handle the confirmation message
+
+AC2: Clicking the "Delete" button should show a confirmation message before actually deleting
+
+3. Reuse the .color-card-headline css rule for the confirm question, but maybe rename it to .color-card-hightlight
 
 
 */
