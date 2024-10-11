@@ -45,7 +45,7 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
     >
       <h3 className="color-card-headline">{color.hex}</h3>
       <>
-        <CopyToClipboard></CopyToClipboard>
+        <CopyToClipboard hexValue={color.hex}></CopyToClipboard>
       </>
       <h4>{color.role}</h4>
       <p>contrast: {color.contrastText}</p>
@@ -125,9 +125,57 @@ Problem breakdown
 
 Plan:
 
-1. Implement a comp CopyToClipboard with plain succes msg logic
+✅ 1. Implement a comp CopyToClipboard with plain succes msg logic
+
+- state for success msg
 
 2. Implement writeText to add functionality to the comp
+
+✅ 2.1.plain writeText function
+
+2.2. connection between Color and CopyTo… to identify click
+
+data flow
+
+Parent/Child
+Color > color.hexValue >> CopyTo > clipBoardText state
+
+Component internal
+setFn  state clipBoard > color.hexValue >> state clipBoard >> param of writeClipBoard 
+
+Prop structure:
+Parent/Child
+CopyTo < hexValue > Color
+
+CopyTo internal
+{hexValue} < > argument of write fn
+
+Steps:
+
+✅ - initialize state for clipBoardText
+✅ - give writeClipBoardText fn the param of curent value of clipBoardText state
+✅ - declare setFn for clipBoardText state
+✅ - implement hexValue prop
+
+Okay, my implementation is even simpler than my layed out plan
+
+This is how it works:
+
+export default function CopyToClipboard({ hexValue }) { ==> I set the prop
+
+<CopyToClipboard hexValue={color.hex}></CopyToClipboard> ==> I used the prop to store the hex value of the chosen color
+
+I take the value of the prop hexValue, which I used to "grab" the single hexValue and put it into
+- default value of state clipBoardText
+- setFn of said state
+
+In turn, the clipboardtext value then serves as 
+- argument for the write clipboard fn
+
+🏗️ Refactor!
+
+maybe I can use a single const, because there is only one clipboard text
+✅ made sense, stiill working and more concise and DRY code
 
 3. Implement logic make msg disspear
 

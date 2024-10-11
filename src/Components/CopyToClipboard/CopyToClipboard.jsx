@@ -2,16 +2,33 @@
 
 import { useState } from "react";
 
-export default function CopyToClipboard() {
+export default function CopyToClipboard({ hexValue }) {
   const [successMessage, setSuccessMessage] = useState(false);
+  //   const [clipBoardText, setClipBoardText] = useState(hexValue);
+
+  const clipBoardText = hexValue;
+
+  async function writeClipBoard() {
+    try {
+      await navigator.clipboard.writeText(clipBoardText);
+    } catch (error) {
+      console.log("error");
+    }
+  }
 
   function handleCopyButtonClick() {
     setSuccessMessage(true);
+    writeClipBoard();
   }
 
   if (successMessage === false) {
     return (
-      <button className="color-card--button" onClick={handleCopyButtonClick}>
+      <button
+        className="color-card--button"
+        onClick={() => {
+          handleCopyButtonClick();
+        }}
+      >
         📋 Copy
       </button>
     );
