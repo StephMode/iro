@@ -1,14 +1,21 @@
+import ColorButton from "../ColorButton/ColorButton.jsx";
+import ColorEditor from "../ColorEditor/ColorEditor.jsx";
 import "./Color.css";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
-export default function Color({ color, onDeleteColor }) {
-  const [cancelButtonStatus, setCancelButtonStatus] = useState(false);
-  // state for showConfirm
+export default function Color({ color, onDeleteColor, onEditColor }) {
   const [showConfirm, setShowConfirm] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
+  // const [showDelete, setShowDelete] = useState(false); // only for test ternary
 
+  // functions for data/state flow
   function handleDeleteConfirm() {
     // onDeleteColor(cancelButtonStatus); // this only displays clicked-status of delete btn
     onDeleteColor(color.id); // this is what we will need in order to pass ID of clicked color
+  }
+
+  function handleEditColorConfirm(editedColor) {
+    onEditColor(editedColor);
   }
 
   function handleDeleteClick() {
@@ -19,13 +26,13 @@ export default function Color({ color, onDeleteColor }) {
     setShowConfirm(false);
   }
 
-  function showHideCancelButton() {
-    setCancelButtonStatus(!cancelButtonStatus);
+  function handleEditClick() {
+    setShowEdit(true);
   }
 
-  // useEffect(() => {
-  //   console.log(cancelButtonStatus);
-  // }, []);
+  function cancelEdit() {
+    setShowEdit(false);
+  }
 
   return (
     <div
@@ -38,15 +45,42 @@ export default function Color({ color, onDeleteColor }) {
       <h3 className="color-card-headline">{color.hex}</h3>
       <h4>{color.role}</h4>
       <p>contrast: {color.contrastText}</p>
-
-      <div className="button-container">
-        {!showConfirm ? (
-          <button onClick={handleDeleteClick}>DELETE</button>
+      <div className="color-card--button-container">
+        {showEdit === true ? (
+          <div>
+            <ColorEditor
+              currentColor={color}
+              onEditColorSubmission={(editedColor) => {
+                handleEditColorConfirm(editedColor);
+                cancelEdit();
+              }}
+              onCancelColorEditor={cancelEdit}
+            ></ColorEditor>
+            <button className="color-card--button" onClick={cancelEdit}>
+              ❌ Cancel
+            </button>
+          </div>
+        ) : !showConfirm ? (
+          <>
+            <button className="color-card--button" onClick={handleDeleteClick}>
+              🗑️ Delete
+            </button>
+            <button className="color-card--button" onClick={handleEditClick}>
+              🖍️ Edit
+            </button>
+          </>
         ) : (
           <div className="buttons-container--confirm-message">
-            <p>Really delete?</p>
-            <button onClick={cancelDelete}>CANCEL</button>
-            <button onClick={handleDeleteConfirm}>DELETE</button>
+            <p className="color-card--message">Really delete?</p>
+            <button className="color-card--button" onClick={cancelDelete}>
+              ❌ Cancel
+            </button>
+            <button
+              className="color-card--button"
+              onClick={handleDeleteConfirm}
+            >
+              🗑️ Delete
+            </button>
           </div>
         )}
       </div>
@@ -55,6 +89,16 @@ export default function Color({ color, onDeleteColor }) {
 }
 
 /* My previous logic for DELETE/CANCEL btn
+
+const [cancelButtonStatus, setCancelButtonStatus] = useState(false);
+
+function showHideCancelButton() {
+    setCancelButtonStatus(!cancelButtonStatus);
+  }
+
+  // useEffect(() => {
+  //   console.log(cancelButtonStatus);
+  // }, []);
 
 <div>
         <button
