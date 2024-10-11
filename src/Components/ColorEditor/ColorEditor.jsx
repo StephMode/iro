@@ -1,11 +1,7 @@
 import ColorInput from "../ColorInput/ColorInput";
 import "./ColorEditor.css";
 
-export default function ColorEditor({
-  currentColor,
-  onEditColorSubmission,
-  onCancelColorEditor,
-}) {
+export default function ColorEditor({ currentColor, onEditColorSubmission }) {
   // add fn to handle submit and store input data to be passed to App
   function handleSubmit(event) {
     event.preventDefault();
@@ -45,11 +41,7 @@ export default function ColorEditor({
       </fieldset>
       <ColorInput currentColor={currentColor}></ColorInput>
 
-      <button
-        className="ColorForm--submit-button"
-        // onClick={onCancelColorEditor}
-        type="submit"
-      >
+      <button className="ColorForm--submit-button" type="submit">
         🔄 Update Color
       </button>
     </form>
