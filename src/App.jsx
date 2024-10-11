@@ -4,10 +4,14 @@ import "./App.css";
 import ColorForm from "./Components/ColorForm/ColorForm";
 import { useEffect, useState } from "react";
 import { uid } from "uid";
+import useLocalStorageState from "use-local-storage-state";
 
 function App() {
   // declare state and lift [initialColors] into it
-  const [colors, setColors] = useState(initialColors);
+  // const [colors, setColors] = useState(initialColors);
+  const [colors, setColors] = useLocalStorageState("colors", {
+    defaultValue: initialColors,
+  });
 
   function handleAddColor(newColor) {
     // setColors([newColor, ...colors]); // spread opertor did the deal
