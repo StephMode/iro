@@ -1,5 +1,6 @@
 import ColorButton from "../ColorButton/ColorButton.jsx";
 import ColorEditor from "../ColorEditor/ColorEditor.jsx";
+import CopyToClipboard from "../CopyToClipboard/CopyToClipboard.jsx";
 import "./Color.css";
 import { useState } from "react";
 
@@ -43,6 +44,9 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
       }}
     >
       <h3 className="color-card-headline">{color.hex}</h3>
+      <>
+        <CopyToClipboard></CopyToClipboard>
+      </>
       <h4>{color.role}</h4>
       <p>contrast: {color.contrastText}</p>
       <div className="color-card--button-container">
@@ -87,6 +91,49 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
     </div>
   );
 }
+
+/* Notes in Issue 6
+
+Understanding Requirements & Problem:
+
+1) There shall be a button to copy the hex code of the current color in the temp storage/clipboard
+2) Upon btn click there shall be confirmation message for 3 seconds
+
+
+1)
+
+top lvl
+- Where does the user start? in Color
+- Color needs an additional comp as a Child >> CopyToClipBoardButton
+
+Problem breakdown
+- needs event handling logic >> btn clicked ? success message : btn
+- needs writeText() method
+- needs to be connected the hex value of the current color 💡 maybe work with logic similar to currentColor-prop linking
+- does it need a state? 👉🏻 yes, at least to handle the succ msg
+
+
+2)
+
+top lvl
+- Where does it take place: within the CopyToClipBoardButton comp
+
+Problem breakdown
+- Needs logic within useState
+- Needs to utilize timeout 💡 ISS challenge
+
+
+Plan:
+
+1. Implement a comp CopyToClipboard with plain succes msg logic
+
+2. Implement writeText to add functionality to the comp
+
+3. Implement logic make msg disspear
+
+
+
+*/
 
 /* My previous logic for DELETE/CANCEL btn
 
