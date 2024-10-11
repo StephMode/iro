@@ -19,6 +19,14 @@ function App() {
     setColors(colors.filter((color) => color.id !== id));
   }
 
+  function handleEditColor(id) {
+    setColors(
+      colors.map((color) => {
+        return { ...color, id };
+      })
+    );
+  }
+
   // useEffect(() => {
   //   console.log(colors); // logs colors state after setFn has been executed
   // });
@@ -41,6 +49,7 @@ function App() {
             key={color.id}
             color={color}
             onDeleteColor={handleDeleteColor}
+            onEditColor={handleEditColor}
           />
         );
       })}
@@ -516,7 +525,58 @@ Will have to refactor later.
 
 
 
-4. Introduce a state for the edit
+4. Introduce a state for the edit and state management
+
+✅ 4.1. set up props
+
+data flow:
+
+ColorEditor > passes Edit submission data >> Color > takes submitted edit data >> App > iterates over array and changes accordingly
+
+prop structure
+
+1st data handover
+ColorEditor >> onEditColorSubmission <> onEditColor << Color
+
+2nd data handover
+Color >> onEditColor <> handleEditColor << App
+
+4.2. create logic to edit color in app
+
+4.2.1. handleEditColor within App
+
+Idea is to have a function in App which in the hand handles the state change of colors caused by edition
+
+First Approach: I would use the .map() method for that, because it can give a new array with 1-n elements modified
+
+Mock Logic:
+handleEditColor(take a single color as an arugment -- ID) {
+set/modify the state -- setColors( colors.iterate through the array in order to modify it -- .map((iterate through each obj in array -- color) 
+=> callbackFn {check which color equals the edited color -- color.id === id? {return colors which the edited color changed -- ...colors, id} } ) )
+}
+
+Try simplifying the function, because there doesn't need to be if/else, since there is always a change when submitting an edit
+
+ function handleEditColor(id) {
+    setColors(
+      colors.map((color) => {
+        return { color };
+      })
+    );
+  }
+🟡 ==> this makes all Color elements go empty, but at least there is something happening
+
+ function handleEditColor(id) {
+    setColors(
+      colors.map((color) => {
+        return { ...color, id };
+      })
+    );
+  }
+🟡 ==> this doesn't change the outcome, but throws an error
+Warning: Encountered two children with the same key, `c1`. Keys should be unique so that components maintain their identity across updates. Non-unique keys may cause children to be duplicated and/or omitted — the behavior is unsupported and could change in a future version.
+App@http://localhost:5173/src/App.jsx?t=1728623703482:26:39
+
 
 
 

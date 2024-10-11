@@ -3,7 +3,7 @@ import ColorEditor from "../ColorEditor/ColorEditor.jsx";
 import "./Color.css";
 import { useState } from "react";
 
-export default function Color({ color, onDeleteColor }) {
+export default function Color({ color, onDeleteColor, onEditColor }) {
   const [showConfirm, setShowConfirm] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   // const [showDelete, setShowDelete] = useState(false); // only for test ternary
@@ -12,6 +12,9 @@ export default function Color({ color, onDeleteColor }) {
   function handleDeleteConfirm() {
     // onDeleteColor(cancelButtonStatus); // this only displays clicked-status of delete btn
     onDeleteColor(color.id); // this is what we will need in order to pass ID of clicked color
+  }
+  function handleEditColorConfirm() {
+    onEditColor(color.id);
   }
 
   function handleDeleteClick() {
@@ -44,7 +47,9 @@ export default function Color({ color, onDeleteColor }) {
       <div className="color-card--button-container">
         {showEdit === true ? (
           <div>
-            <ColorEditor></ColorEditor>
+            <ColorEditor
+              onEditColorSubmission={handleEditColorConfirm}
+            ></ColorEditor>
             <button className="color-card--button" onClick={cancelEdit}>
               ❌ Cancel
             </button>

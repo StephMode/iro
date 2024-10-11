@@ -1,7 +1,7 @@
 import ColorInput from "../ColorInput/ColorInput";
 import "./ColorEditor.css";
 
-export default function ColorForm({ onEditColor }) {
+export default function ColorForm({ onEditColorSubmission }) {
   // add fn to handle submit and store input data to be passed to App
   function handleSubmit(event) {
     event.preventDefault();
@@ -9,7 +9,9 @@ export default function ColorForm({ onEditColor }) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    onEditColor(data);
+    onEditColorSubmission(data);
+
+    console.log(data);
 
     // event handling logic to improve form UX
     event.target.reset();
