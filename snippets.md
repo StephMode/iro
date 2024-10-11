@@ -102,7 +102,7 @@
 
 ```
 
-/\* Notes on #2 add a color to the theme
+# Notes on #2 add a color to the theme
 
 ✅ 1. Create ColorForm comp
 
@@ -130,7 +130,7 @@ we need STATE MANAGEMENT in App, because data managment shall be handled there
 
 handleAddColor (newColor)
 
-{ setColors( colors.unshift(newColor ))) }
+setColors( colors.unshift(newColor )))
 
 handhabe die neue Farbe (nehme die neue Farbe -- diese nimmst du aus der Comp ColorForm)
 {
@@ -276,9 +276,7 @@ change onHexChange to handleHexChange
 ❎ 9.1. - make both input fields for a respective color influence each others value
 => solution is to put value in both text and color input fields
 
-\*/
-
-/\* Notes on #3 delete a color from a theme
+# Notes on #3 delete a color from a theme
 
 Top Level Breakdown and Ideation
 
@@ -307,6 +305,7 @@ AC1: button shall be in EVERY color card
 
 Observe:
 
+```JS
 <button onClick={handleClick}>DELETE</button>
 <button onClick={handleClick}>CANCEL</button>
 🟡 xx> works, but to separate buttons speaking to the same event handler
@@ -323,6 +322,7 @@ click ? (
 );
 }} ></button>
 🟡 xx> seems to be working, but doesnt show anything
+```
 
 - Assumption: button within button, maybe I should wrap into something non-semantic, like a div
   ❌ jetzt sieht man gar nichts mehr
@@ -333,6 +333,7 @@ Thus, I can't nest button into another
 I could try making the button appear on click of delete
 1.1. 1. add logic to changing state of the cancel button STATE
 
+```JS
 function showHideCancelButton() {
 let cancelButtonStatus = false;
 cancelButtonStatus = !false;
@@ -340,6 +341,7 @@ console.log(cancelButtonStatus);
 console.log("delete button clicked and should do something with CANCEL");
 }
 💡 ==> this is a good start, but I already see that I need state for that
+```
 
 1.1.2. implement state and change showHideCancelButton to contain state management logic
 
@@ -351,12 +353,15 @@ like this
 Color: onDeleteColor < > onClick=OnDeleteColor
 App: handleAddColor < > OnDeleteColor=handleDeleteColor
 
+```JS
 return (
 <Color
             key={color.id}
             color={color}
             onDeleteColor={handleDeleteColor}
           />
+```
+
 ==> this should work to set the "line of communication with props" within the JSX to render the comp
 
 clog doesn't work due to clog not being executed in useEffect 👉🏻 remember synchronous and asynchronous execution
@@ -422,6 +427,7 @@ if colors === 0 ? "No colors" : map
 
 maybe this doesn't work because I can't reference the same state in tern op twice?
 
+```JS
 {colors === [] ? "No colors" : {colors.map((color) => {
 return (
 <Color
@@ -434,13 +440,12 @@ return (
 )
 }
 }
+```
 
 💡 i need a another JSX fragment to nest my tern op in
 wait a sec, I don't need to nest the map and Color inside the tern op, it's just the msg that needs to pop up or not based on condition colors.lenght === 0
 
-\*/
-
-/\* Notes on #4 edit color theme
+# Notes on #4 edit color theme
 
 Top Level Breakdown and Ideation
 
@@ -522,6 +527,7 @@ states:
 🔄 Pivot: I decided to stick to my existing solution, which is ternary operator
 Improved it and made it ternary op with nested ternary op
 
+```JS
 <div className="color-card--button-container">
         {showEdit === true ? (
           <div>
@@ -554,6 +560,7 @@ Improved it and made it ternary op with nested ternary op
           </div>
         )}
       </div>
+```
 
 ❎ ==> works as it should. Nonetheless rather stop gap.
 Will have to refactor later.
@@ -698,7 +705,9 @@ now, the updating doesn't work anymore
 
 ✅ props are still in ColorEdtiro
 
+```JS
 {showEdit === true ? (
+
 <div>
 <ColorEditor
 currentColor={color}
@@ -706,6 +715,7 @@ onEditColorSubmission={() => {
 handleEditColorConfirm;
 cancelEdit;
 }}
+```
 
 🟡 This is just referencing the functions without invoking them
 
@@ -716,5 +726,3 @@ onEditColorSubmission= function with param (editedColors --- link to the edit co
 invoke handleEditColorConfirm with arg --- link to edit confirm …
 proper invikation of cancelEdit() to trigger the set function for my show/hide edit state
 }
-
-\*/
