@@ -1,6 +1,6 @@
 // import "./CopyToClipBoardButton.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function CopyToClipboard({ hexValue }) {
   const [successMessage, setSuccessMessage] = useState(false);
@@ -20,6 +20,17 @@ export default function CopyToClipboard({ hexValue }) {
     setSuccessMessage(true);
     writeClipBoard();
   }
+
+  function hideSuccessMessage() {
+    setSuccessMessage(false);
+  }
+
+  useEffect(() => {
+    let interval = setInterval(hideSuccessMessage, 2000);
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
 
   if (successMessage === false) {
     return (

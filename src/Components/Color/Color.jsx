@@ -177,8 +177,15 @@ In turn, the clipboardtext value then serves as
 maybe I can use a single const, because there is only one clipboard text
 ✅ made sense, stiill working and more concise and DRY code
 
-3. Implement logic make msg disspear
+✅ 3. Implement logic make msg disspear
 
+needs to trigger setFn of succM state if success message is visible
+
+useEffect 
+  if success message === true
+    setInterval method( fn hideSuccessMsg, 3000 )
+
+  
 
 
 */
