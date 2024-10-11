@@ -45,7 +45,7 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
     >
       <h3 className="color-card-headline">{color.hex}</h3>
       <>
-        <CopyToClipboard hexValue={color.hex}></CopyToClipboard>
+        <CopyToClipboard hexValue={color.hex} />
       </>
       <h4>{color.role}</h4>
       <p>contrast: {color.contrastText}</p>
@@ -59,7 +59,7 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
                 cancelEdit();
               }}
               onCancelColorEditor={cancelEdit}
-            ></ColorEditor>
+            />
             <button className="color-card--button" onClick={cancelEdit}>
               ❌ Cancel
             </button>

@@ -39,7 +39,7 @@ export default function ColorEditor({ currentColor, onEditColorSubmission }) {
           defaultValue={currentColor.role}
         ></input>
       </fieldset>
-      <ColorInput currentColor={currentColor}></ColorInput>
+      <ColorInput currentColor={currentColor} />
 
       <button className="ColorForm--submit-button" type="submit">
         🔄 Update Color

@@ -26,9 +26,7 @@ function App() {
   function handleEditColor(editedColor) {
     setColors(
       colors.map((color) => {
-        return color.id === editedColor.id
-          ? { ...color, ...editedColor }
-          : color;
+        return color.id === editedColor.id ? editedColor : color;
       })
     );
     console.log("edited");
@@ -42,7 +40,7 @@ function App() {
     <>
       <h1>Theme Creator</h1>
 
-      <ColorForm onAddColor={handleAddColor}></ColorForm>
+      <ColorForm onAddColor={handleAddColor} />
       {colors.length === 0 ? (
         <h3 className="no-colors-message">
           🎨 No colors? How about adding one?
