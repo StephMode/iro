@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 
 export default function CopyToClipboard({ hexValue }) {
   const [successMessage, setSuccessMessage] = useState(false);
-  //   const [clipBoardText, setClipBoardText] = useState(hexValue);
 
   const clipBoardText = hexValue;
 
@@ -26,7 +25,7 @@ export default function CopyToClipboard({ hexValue }) {
   }
 
   useEffect(() => {
-    let interval = setInterval(hideSuccessMessage, 2000);
+    let interval = setInterval(hideSuccessMessage, 3000);
     return () => {
       clearInterval(interval);
     };
