@@ -21,8 +21,13 @@ function App() {
 
   function handleEditColor(editedColor) {
     setColors(
-      colors.map((color) => (color.id === editedColor.id ? editedColor : color))
+      colors.map((color) => {
+        return color.id === editedColor.id
+          ? { ...color, ...editedColor }
+          : color;
+      })
     );
+    console.log("edited");
   }
 
   // useEffect(() => {
@@ -239,6 +244,72 @@ Improvements to make:
       solution is to establish line of communication between ColorEditor and ColorInput through {currentColor} referencing itself
 
 - improve functionality of handeEditColor
+
+handleSumbit on ColorEditor needs logic to attach ID of edited color to the formData,
+otherwise it won't be able to recognize which color is actually being edited
+
+=> data.id = currentColor.id;
+
+App needs a refined version of the handleEditColor(map) logic I already had
+
+This is what I had so far:
+
+  function handleEditColor(editedColor) {
+    setColors(
+      colors.map((color) =>
+        color.id === editedColor.id ? { ...color, ...editedColor } : color
+      )
+    );
+  }
+
+  maybe change the return statement even more
+
+  function handleEditColor(editedColor) {
+    setColors(
+      colors.map((color) => {
+        return color.id === editedColor.id
+          ? { ...color, ...editedColor }
+          : color;
+      })
+    );
+    console.log("edited");
+  }
+
+  still not working
+
+  I need to revise the overall logic:
+
+  ✅ 1) Issue with handleEditColorConform
+  / functions for data/state flow
+  function handleEditColorConfirm() {
+    onEditColor(color.id);
+  }
+  xx> this fn only passes on the id
+  
+  instead try param (editedColor)
+  onDeleteColor(param as arg)
+  to pass the edited object
+
+  ✅ 2) ColorEditor > "Update Color" btn doesn't submit
+    change "Update Color" to type submit
+
+  ✅ 3) Pass the edited color object propery -- in ColorEditor > handleSubmit
+
+  Instead of
+
+  // attach the ID of the current color to the submitted data
+    data.id = currentColor.id;
+
+    onEditColorSubmission(data);
+
+  try storing updated color in a const, like 
+
+  const updatedColor = {...keep updated color + ...override with updated color}
+
+✅==> colors are now being changed upon submit of editing
+
+
+
 
 
 */

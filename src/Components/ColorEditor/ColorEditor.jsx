@@ -1,7 +1,7 @@
 import ColorInput from "../ColorInput/ColorInput";
 import "./ColorEditor.css";
 
-export default function ColorForm({
+export default function ColorEditor({
   currentColor,
   onEditColorSubmission,
   onCancelColorEditor,
@@ -13,13 +13,19 @@ export default function ColorForm({
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    onEditColorSubmission(data);
-
+    // ensure that ID is kept with the updated color
+    // ...curentColor keeps the only value that's not overriden == id
+    // ...data overrides the data with the FormData
+    const updatedColor = { ...currentColor, ...data };
     console.log(data);
 
+    // to pass on the id + edited data as an object to the parents
+    onEditColorSubmission(updatedColor);
+
     // event handling logic to improve form UX
-    event.target.reset();
-    event.target.elements.role.focus();
+    // 🟡 not sure if i need this at all
+    // event.target.reset();
+    // event.target.elements.role.focus();
   }
 
   // need logic to make value of "role" equal to current role value of color in editing
@@ -41,7 +47,8 @@ export default function ColorForm({
 
       <button
         className="ColorForm--submit-button"
-        onClick={onCancelColorEditor}
+        // onClick={onCancelColorEditor}
+        type="submit"
       >
         🔄 Update Color
       </button>
