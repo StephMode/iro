@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 export default function CopyToClipboard({ hexValue }) {
   const [successMessage, setSuccessMessage] = useState(false);
 
-  const clipBoardText = hexValue;
+  const clipBoardText = hexValue; // I could add the hexValue as argument in the writeClipboard fn instead of storing it in a separate var
 
   async function writeClipBoard() {
     try {
@@ -24,6 +24,7 @@ export default function CopyToClipboard({ hexValue }) {
     setSuccessMessage(false);
   }
 
+  // instead of hideSuccessMessage as encapsulation of set fn, I could use => arrow fn to call set fn on the useEffect directly
   useEffect(() => {
     let interval = setInterval(hideSuccessMessage, 3000);
     return () => {
@@ -31,6 +32,7 @@ export default function CopyToClipboard({ hexValue }) {
     };
   }, []);
 
+  // alternative syntax here: if (!successMessage) {…}, alternatively a lovely ternary op
   if (successMessage === false) {
     return (
       <button
@@ -43,7 +45,7 @@ export default function CopyToClipboard({ hexValue }) {
       </button>
     );
   }
-
+  // second if statement not necessary, because it's bascially the else statement
   if (successMessage === true) {
     return <button className="color-card--button">✅ Copied!</button>;
   }
