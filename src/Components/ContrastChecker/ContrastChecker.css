@@ -1,0 +1,9 @@
+h5 {
+  font-weight: bold;
+  border: 0.5px solid white;
+  background-color: darkgray;
+  border-radius: 5px;
+  width: 150px;
+  margin: 5px 0px;
+  padding: 3px;
+}
