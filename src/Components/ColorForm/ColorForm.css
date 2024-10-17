@@ -8,16 +8,16 @@
 }
 
 .ColorForm--submit-button {
-  border: 1px solid sandybrown;
+  border: 3.5px solid rgb(249, 147, 58);
   border-radius: 5px;
   max-width: 400px;
   padding: 5px;
-  background-color: antiquewhite;
+  background-color: #f0f1f9df;
   margin-top: 5px;
 }
 
 .ColorForm--form--fieldset {
-  background-color: antiquewhite;
+  background-color: #f6ff0088;
   border-radius: 10px;
 }
 

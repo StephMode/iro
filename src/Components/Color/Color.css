@@ -24,8 +24,8 @@
 }
 
 .color-card--button {
-  background-color: antiquewhite;
-  border: 2px solid antiquewhite;
+  background-color: #f1f2bd;
+  border: 2px solid black;
   border-radius: 5px;
   width: 100px;
 }
