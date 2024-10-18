@@ -48,7 +48,7 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
       <>
         <CopyToClipboard hexValue={color.hex} />
       </>
-      <ContrastChecker />
+      <ContrastChecker color={color} />
       <h4>{color.role}</h4>
       <p>contrast: {color.contrastText}</p>
       <div className="color-card--button-container">
