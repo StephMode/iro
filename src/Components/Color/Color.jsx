@@ -1,5 +1,6 @@
 import ColorButton from "../ColorButton/ColorButton.jsx";
 import ColorEditor from "../ColorEditor/ColorEditor.jsx";
+import ContrastChecker from "../ContrastChecker/index.jsx";
 import CopyToClipboard from "../CopyToClipboard/CopyToClipboard.jsx";
 import "./Color.css";
 import { useState } from "react";
@@ -47,6 +48,7 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
       <>
         <CopyToClipboard hexValue={color.hex} />
       </>
+      <ContrastChecker color={color} />
       <h4>{color.role}</h4>
       <p>contrast: {color.contrastText}</p>
       <div className="color-card--button-container">
