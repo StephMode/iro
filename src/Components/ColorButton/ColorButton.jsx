@@ -1,5 +1,3 @@
-import "./ColorButton.css";
-
 export default function ColorButton() {
   return <button>Lalala</button>;
 }
