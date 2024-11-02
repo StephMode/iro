@@ -1,6 +1,6 @@
 import ColorButton from "../ColorButton/ColorButton.jsx";
 import ColorEditor from "../ColorEditor/ColorEditor.jsx";
-import ContrastChecker from "../ContrastChecker/index.jsx";
+import ContrastChecker from "../ContrastChecker/ContrastChecker.jsx";
 import CopyToClipboard from "../CopyToClipboard/CopyToClipboard.jsx";
 import "./Color.css";
 import { useState } from "react";
