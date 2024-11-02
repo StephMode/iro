@@ -74,9 +74,11 @@ export default function ContrastChecker({ color }) {
   return (
     <>
       {contrastValue ? (
-        <h5>Contrast Score: {contrastValue.small}</h5>
+        <h5 className="contrast-checker--info-tag">
+          Contrast Score: {contrastValue.small}
+        </h5>
       ) : (
-        <h5>⏳ Checking Contrast</h5>
+        <h5 className="contrast-checker--info-tag">⏳ Checking Contrast</h5>
       )}
     </>
   ); // Ternary operator to show contrast data once fetched. `.small` accesses small-text readibility a11y score from the fetched result object, which is linked to the specific color through the `color` prop
