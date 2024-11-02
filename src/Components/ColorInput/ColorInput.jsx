@@ -30,7 +30,6 @@ export default function ColorInput({ currentColor }) {
           placeholder="#54c73d"
           value={hexValue}
           onChange={handleHexChange}
-          defaultValue={hexValue}
         ></input>
         <input
           id="color-hex--input"
@@ -51,7 +50,6 @@ export default function ColorInput({ currentColor }) {
           placeholder="#54c73d"
           value={contrastColorValue}
           onChange={handleContrastColorChange}
-          defaultValue={contrastColorValue}
         ></input>
         <input
           id="color-contrast-text--input"
