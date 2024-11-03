@@ -20,45 +20,39 @@ export default function ColorInput({ currentColor }) {
 
   return (
     <>
-      <fieldset className="ColorForm--form--fieldset">
-        <legend>Hex</legend>
-        <label htmlFor="color-hex--input"></label>
-        <input
-          id="color-hex--input"
-          name="hex"
-          type="text"
-          placeholder="#54c73d"
-          value={hexValue}
-          onChange={handleHexChange}
-        ></input>
-        <input
-          id="color-hex--input"
-          //   name="hex"
-          type="color"
-          value={hexValue}
-          onChange={handleHexChange}
-        ></input>
-      </fieldset>
+      <label htmlFor="color-hex--input">Hex</label>
+      <input
+        id="color-hex--input"
+        name="hex"
+        type="text"
+        placeholder="#54c73d"
+        value={hexValue}
+        onChange={handleHexChange}
+      ></input>
+      <input
+        id="color-hex--input"
+        //   name="hex"
+        type="color"
+        value={hexValue}
+        onChange={handleHexChange}
+      ></input>
 
-      <fieldset className="ColorForm--form--fieldset">
-        <legend>Contrast Text</legend>
-        <label htmlFor="color-contrast-text--input"></label>
-        <input
-          id="color-contrast-text--input"
-          name="contrastText"
-          type="text"
-          placeholder="#54c73d"
-          value={contrastColorValue}
-          onChange={handleContrastColorChange}
-        ></input>
-        <input
-          id="color-contrast-text--input"
-          //   name="contrastText"
-          type="color"
-          value={contrastColorValue}
-          onChange={handleContrastColorChange}
-        ></input>
-      </fieldset>
+      <label htmlFor="color-contrast-text--input">Contrast Text</label>
+      <input
+        id="color-contrast-text--input"
+        name="contrastText"
+        type="text"
+        placeholder="#54c73d"
+        value={contrastColorValue}
+        onChange={handleContrastColorChange}
+      ></input>
+      <input
+        id="color-contrast-text--input"
+        //   name="contrastText"
+        type="color"
+        value={contrastColorValue}
+        onChange={handleContrastColorChange}
+      ></input>
     </>
   );
 }

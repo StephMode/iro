@@ -14,17 +14,15 @@ export default function ColorEditor({ currentColor, onEditColorSubmission }) {
 
   return (
     <form className="ColorForm--form" onSubmit={handleSubmit}>
-      <fieldset className="ColorForm--form--fieldset">
-        <legend className="ColorForm--form-legend">Role</legend>
-        <label htmlFor="color-role--input"></label>
-        <input
-          id="color-role--input"
-          name="role"
-          type="text"
-          placeholder="some color"
-          defaultValue={currentColor.role}
-        ></input>
-      </fieldset>
+      <label htmlFor="color-role--input">Role</label>
+      <input
+        id="color-role--input"
+        name="role"
+        type="text"
+        placeholder="some color"
+        defaultValue={currentColor.role}
+      ></input>
+
       <ColorInput currentColor={currentColor} />
 
       <button className="ColorForm--submit-button" type="submit">
