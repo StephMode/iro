@@ -12,13 +12,13 @@ export default function ColorForm({ onAddColor }) {
   }
 
   return (
-    <form className="ColorForm--form" onSubmit={handleSubmit}>
+    <form className="color-form--form" onSubmit={handleSubmit}>
       <label htmlFor="color-role-input">Role</label>
       <input id="color-role-input" name="role" type="text"></input>
 
       <ColorInput></ColorInput>
 
-      <button className="ColorForm--submit-button">🎨 ADD COLOR</button>
+      <button className="color-form--submit-button">🎨 ADD COLOR</button>
     </form>
   );
 }

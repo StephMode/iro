@@ -1,4 +1,4 @@
-.ColorForm--form {
+.color-form--form {
   max-width: 95%;
   margin-bottom: 2rem;
   background-color: aliceblue;
@@ -7,7 +7,7 @@
   color: black;
 }
 
-.ColorForm--submit-button {
+.color-form--submit-button {
   border: 3.5px solid rgb(249, 147, 58);
   border-radius: 5px;
   max-width: 400px;
