@@ -12,9 +12,9 @@ export default function ColorEditor({ currentColor, onEditColorSubmission }) {
 
   return (
     <form className="ColorForm--form" onSubmit={handleSubmit}>
-      <label htmlFor="color-role--input">Role</label>
+      <label htmlFor="color-role-input">Role</label>
       <input
-        id="color-role--input"
+        id="color-role-input"
         name="role"
         type="text"
         defaultValue={currentColor.role}

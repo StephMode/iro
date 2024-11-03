@@ -20,9 +20,9 @@ export default function ColorInput({ currentColor }) {
 
   return (
     <>
-      <label htmlFor="color-hex--input">Hex</label>
+      <label htmlFor="color-hex-input">Hex</label>
       <input
-        id="color-hex--input"
+        id="color-hex-input"
         name="hex"
         type="text"
         value={hexValue}
@@ -35,16 +35,16 @@ export default function ColorInput({ currentColor }) {
         onChange={handleHexChange}
       ></input>
 
-      <label htmlFor="color-contrast-text--input">Contrast Text</label>
+      <label htmlFor="color-contrast-text-input">Contrast Text</label>
       <input
-        id="color-contrast-text--input"
+        id="color-contrast-text-input"
         name="contrastText"
         type="text"
         value={contrastColorValue}
         onChange={handleContrastColorChange}
       ></input>
       <input
-        id="color-contrast-text--input"
+        id="color-contrast-text-input"
         type="color"
         value={contrastColorValue}
         onChange={handleContrastColorChange}
