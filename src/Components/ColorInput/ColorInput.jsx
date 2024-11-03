@@ -20,35 +20,39 @@ export default function ColorInput({ currentColor }) {
 
   return (
     <>
-      <label htmlFor="color-hex-input">Hex</label>
-      <input
-        id="color-hex-input"
-        name="hex"
-        type="text"
-        value={hexValue}
-        onChange={handleHexChange}
-      ></input>
-      <input
-        id="color-hex--input"
-        type="color"
-        value={hexValue}
-        onChange={handleHexChange}
-      ></input>
+      <label htmlFor="color-hex-input">
+        Hex
+        <input
+          id="color-hex-input"
+          name="hex"
+          type="text"
+          value={hexValue}
+          onChange={handleHexChange}
+        />
+        <input
+          id="color-hex--input"
+          type="color"
+          value={hexValue}
+          onChange={handleHexChange}
+        />
+      </label>
 
-      <label htmlFor="color-contrast-text-input">Contrast Text</label>
-      <input
-        id="color-contrast-text-input"
-        name="contrastText"
-        type="text"
-        value={contrastColorValue}
-        onChange={handleContrastColorChange}
-      ></input>
-      <input
-        id="color-contrast-text-input"
-        type="color"
-        value={contrastColorValue}
-        onChange={handleContrastColorChange}
-      ></input>
+      <label htmlFor="color-contrast-text-input">
+        Contrast Text
+        <input
+          id="color-contrast-text-input"
+          name="contrastText"
+          type="text"
+          value={contrastColorValue}
+          onChange={handleContrastColorChange}
+        />
+        <input
+          id="color-contrast-text-input"
+          type="color"
+          value={contrastColorValue}
+          onChange={handleContrastColorChange}
+        />
+      </label>
     </>
   );
 }
