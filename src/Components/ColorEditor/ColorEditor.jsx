@@ -11,7 +11,7 @@ export default function ColorEditor({ currentColor, onEditColorSubmission }) {
   }
 
   return (
-    <form className="ColorForm--form" onSubmit={handleSubmit}>
+    <form className="color-form--form" onSubmit={handleSubmit}>
       <label htmlFor="color-role-input">Role</label>
       <input
         id="color-role-input"
@@ -22,7 +22,7 @@ export default function ColorEditor({ currentColor, onEditColorSubmission }) {
 
       <ColorInput currentColor={currentColor} />
 
-      <button className="ColorForm--submit-button" type="submit">
+      <button className="color-form--submit-button" type="submit">
         🔄 Update Color
       </button>
     </form>
