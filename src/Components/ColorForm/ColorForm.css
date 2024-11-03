@@ -1,22 +1,38 @@
-.ColorForm--form {
-  max-width: 95%;
-  margin-bottom: 2rem;
+.color-form--form {
+  max-width: 630px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+  padding: 5px;
   background-color: aliceblue;
-  padding: 5px;
-  border-radius: 10px;
-  color: black;
 }
 
-.ColorForm--submit-button {
-  border: 3.5px solid rgb(249, 147, 58);
+/* this aligns the input fields as a group */
+.color-form--input-fields--wrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  flex-wrap: wrap;
+  gap: 0.2em;
+  padding: 5px;
+}
+
+/* this aligns a single input field */
+.color-form--input-field-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.color-form--input-field--color-picker {
+  width: 100%;
+}
+
+.color-form--submit-button {
+  border: 1.5px solid rgb(249, 147, 58);
   border-radius: 5px;
-  max-width: 400px;
-  padding: 5px;
-  background-color: #f0f1f9df;
-  margin-top: 5px;
-}
-
-.ColorForm--form--fieldset {
-  background-color: #f6ff0088;
-  border-radius: 10px;
+  color: white;
+  font-weight: 800;
+  background-color: #346dda;
+  width: 100%;
 }

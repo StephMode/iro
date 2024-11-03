@@ -24,7 +24,6 @@ function App() {
         return color.id === editedColor.id ? editedColor : color;
       })
     );
-    console.log("edited");
   }
 
   return (

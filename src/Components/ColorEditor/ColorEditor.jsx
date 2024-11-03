@@ -6,28 +6,29 @@ export default function ColorEditor({ currentColor, onEditColorSubmission }) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     const updatedColor = { ...currentColor, ...data };
-    console.log(data);
-
     // to pass on the id + edited data as an object to the parents
     onEditColorSubmission(updatedColor);
   }
 
   return (
-    <form className="ColorForm--form" onSubmit={handleSubmit}>
-      <fieldset className="ColorForm--form--fieldset">
-        <legend className="ColorForm--form-legend">Role</legend>
-        <label htmlFor="color-role--input"></label>
-        <input
-          id="color-role--input"
-          name="role"
-          type="text"
-          placeholder="some color"
-          defaultValue={currentColor.role}
-        ></input>
-      </fieldset>
-      <ColorInput currentColor={currentColor} />
+    <form className="color-form--form" onSubmit={handleSubmit}>
+      <div className="color-form--input-fields--wrapper">
+        <label
+          htmlFor="color-role-input"
+          className="color-form--input-field-container"
+        >
+          Role
+          <input
+            id="color-role-input"
+            name="role"
+            type="text"
+            defaultValue={currentColor.role}
+          />
+        </label>
 
-      <button className="ColorForm--submit-button" type="submit">
+        <ColorInput currentColor={currentColor} />
+      </div>
+      <button className="color-form--submit-button" type="submit">
         🔄 Update Color
       </button>
     </form>

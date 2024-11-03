@@ -12,20 +12,19 @@ export default function ColorForm({ onAddColor }) {
   }
 
   return (
-    <form className="ColorForm--form" onSubmit={handleSubmit}>
-      <fieldset className="ColorForm--form--fieldset">
-        <legend className="ColorForm--form-legend">Role</legend>
-        <label htmlFor="color-role--input"></label>
-        <input
-          id="color-role--input"
-          name="role"
-          type="text"
-          placeholder="some color"
-        ></input>
-      </fieldset>
-      <ColorInput></ColorInput>
+    <form className="color-form--form" onSubmit={handleSubmit}>
+      <div className="color-form--input-fields--wrapper">
+        <label
+          htmlFor="color-role-input"
+          className="color-form--input-field-container"
+        >
+          Role
+          <input id="color-role-input" name="role" type="text" />
+        </label>
 
-      <button className="ColorForm--submit-button">🎨 ADD COLOR</button>
+        <ColorInput></ColorInput>
+      </div>
+      <button className="color-form--submit-button">🎨 ADD COLOR</button>
     </form>
   );
 }
