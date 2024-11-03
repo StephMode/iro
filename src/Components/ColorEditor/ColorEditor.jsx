@@ -6,8 +6,6 @@ export default function ColorEditor({ currentColor, onEditColorSubmission }) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     const updatedColor = { ...currentColor, ...data };
-    console.log(data);
-
     // to pass on the id + edited data as an object to the parents
     onEditColorSubmission(updatedColor);
   }
