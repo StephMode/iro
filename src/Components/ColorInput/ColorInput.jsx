@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function ColorInput({ currentColor }) {
   // implement state to give both input fields of respective group same value
-  const [hexValue, setHexValue] = useState(currentColor?.hex || "#54c73d");
+  const [hexValue, setHexValue] = useState(currentColor?.hex || "#4dffea");
   const [contrastColorValue, setContrastColorValue] = useState(
     currentColor?.contrast || "#000000"
   ); // for the solution of having separate comps for having this comp as child of ColorForm and ColorEditor, this state initialization gives me EITHER value of current color selected OR the assigned default value ""
@@ -25,13 +25,11 @@ export default function ColorInput({ currentColor }) {
         id="color-hex--input"
         name="hex"
         type="text"
-        placeholder="#54c73d"
         value={hexValue}
         onChange={handleHexChange}
       ></input>
       <input
         id="color-hex--input"
-        //   name="hex"
         type="color"
         value={hexValue}
         onChange={handleHexChange}
@@ -42,13 +40,11 @@ export default function ColorInput({ currentColor }) {
         id="color-contrast-text--input"
         name="contrastText"
         type="text"
-        placeholder="#54c73d"
         value={contrastColorValue}
         onChange={handleContrastColorChange}
       ></input>
       <input
         id="color-contrast-text--input"
-        //   name="contrastText"
         type="color"
         value={contrastColorValue}
         onChange={handleContrastColorChange}

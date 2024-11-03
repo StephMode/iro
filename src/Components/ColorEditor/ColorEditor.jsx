@@ -17,7 +17,6 @@ export default function ColorEditor({ currentColor, onEditColorSubmission }) {
         id="color-role--input"
         name="role"
         type="text"
-        placeholder="some color"
         defaultValue={currentColor.role}
       ></input>
 
