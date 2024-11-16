@@ -14,6 +14,7 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
 
   function handleEditColorConfirm(editedColor) {
     onEditColor(editedColor);
+    cancelEdit();
   }
 
   function handleDeleteClick() {
@@ -49,19 +50,15 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
       <p>contrast: {color.contrastText}</p>
       <div className="color-card--button-container">
         {showEdit === true ? (
-          <div>
+          <>
             <ColorEditor
               currentColor={color}
-              onEditColorSubmission={(editedColor) => {
-                handleEditColorConfirm(editedColor);
-                cancelEdit();
-              }}
-              onCancelColorEditor={cancelEdit}
+              onEditColorSubmission={(editedColor) => {handleEditColorConfirm(editedColor)}}
             />
             <button className="color-card--button" onClick={cancelEdit}>
               ❌ Cancel
             </button>
-          </div>
+          </>
         ) : !showConfirm ? (
           <>
             <button className="color-card--button" onClick={handleDeleteClick}>
