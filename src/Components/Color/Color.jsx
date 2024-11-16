@@ -12,6 +12,11 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
     onDeleteColor(color.id);
   }
 
+  function handleEditColorConfirm(editedColor) {
+    onEditColor(editedColor);
+    cancelEdit();
+  }
+
   function handleDeleteClick() {
     setShowConfirm(true);
   }
@@ -48,7 +53,7 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
           <div>
             <ColorEditor
               currentColor={color}
-              onEditColor={() => {onEditColor; setShowEdit(false)}}
+              onEditColorSubmission={handleEditColorConfirm}
             />
             <button className="color-card--button" onClick={cancelEdit}>
               ❌ Cancel
