@@ -1,13 +1,13 @@
 import ColorInput from "../ColorInput/ColorInput";
 
-export default function ColorEditor({ currentColor, onEditColorSubmission }) {
+export default function ColorEditor({ currentColor, onEditColor }) {
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     const updatedColor = { ...currentColor, ...data };
     // to pass on the id + edited data as an object to the parents
-    onEditColorSubmission(updatedColor);
+    onEditColor(updatedColor);
   }
 
   return (
