@@ -4,7 +4,6 @@ import Color from "./Components/Color/Color";
 import ColorForm from "./Components/ColorForm/ColorForm";
 import { uid } from "uid";
 import useLocalStorageState from "use-local-storage-state";
-import ColorEditor from "./Components/ColorEditor/ColorEditor";
 
 function App() {
   const [colors, setColors] = useLocalStorageState("colors", {
