@@ -40,7 +40,7 @@ export default function ColorForm({
       
 
       
-      <button type="submit" className="color-form--submit-button">🎨 COLOR MAGIC</button>
+      <button type="submit" className="color-form--submit-button">{isEdit ? "Edit " : "Add"} Color</button>
     </form>
   );
 }
