@@ -14,7 +14,6 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
   }
 
   function handleEditColorConfirm(editedColorData) {
-    // const editedColor = {id: color.id, ...editedColorData};
     onEditColor({id: color.id, ...editedColorData});
     cancelEdit();
   }
@@ -44,13 +43,12 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
       }}
     >
       <h3 className="color-card-headline">{color.hex}</h3>
-      <>
-        <CopyToClipboard hexValue={color.hex} />
-      </>
+      <CopyToClipboard hexValue={color.hex} />
       <ContrastChecker color={color} />
       <h4>{color.role}</h4>
       <p>contrast: {color.contrastText}</p>
       <div className="color-card--button-container">
+
         {showEdit === true ? (
           <div>
             <ColorForm
@@ -84,8 +82,11 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
               🗑️ Delete
             </button>
           </div>
+
         )}
+
       </div>
+
     </div>
   );
 }
