@@ -14,10 +14,9 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
   }
 
   function handleEditColorConfirm(editedColorData) {
-    const editedColor = {id: color.id, ...editedColorData};
-    onEditColor(editedColor);
+    // const editedColor = {id: color.id, ...editedColorData};
+    onEditColor({id: color.id, ...editedColorData});
     cancelEdit();
-    console.log("Single edited color in Color", editedColor);
   }
 
   function handleDeleteClick() {
@@ -55,8 +54,9 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
         {showEdit === true ? (
           <div>
             <ColorForm
+              isEdit={true}
               initialData={color}
-              onColorSubmit={(editedColorData) => handleEditColorConfirm(editedColorData)}
+              onEditColor={handleEditColorConfirm}
             />
             <button className="color-card--button" onClick={cancelEdit}>
               ❌ Cancel

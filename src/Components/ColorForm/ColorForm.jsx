@@ -2,7 +2,9 @@ import ColorInput from "../ColorInput/ColorInput";
 import "./ColorForm.css";
 
 export default function ColorForm({ 
-  onColorSubmit,
+  isEdit,
+  onAddColor,
+  onEditColor,
   initialData = {role: "some color", hex: "#123456", contrastText: "#ffffff"}
   }) 
   
@@ -11,7 +13,7 @@ export default function ColorForm({
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    onColorSubmit(data);
+    {isEdit ? onEditColor(data) : onAddColor(data)}
     event.target.reset();
     event.target.elements.role.focus();
   }
