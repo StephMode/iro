@@ -20,30 +20,26 @@ export default function ColorForm({
 
   return (
     <form className="color-form--form" onSubmit={handleSubmit}>
-      <div className="color-form--input-fields--wrapper">
-        <label
-          htmlFor="role"
-          className="color-form--input-field-container"
-        >
-          Role
-          <input 
-          id="role" 
-          name="role" 
-          type="text"
-          defaultValue={initialData.role} />
+      
+      
+        <label htmlFor="role" className="color-form--role-label">Role
+          <input id="role" name="role" type="text" defaultValue={initialData.role} />
         </label>
+      
 
-        <label htmlFor="hex">
-          Hex
-        <ColorInput id="hex" defaultValue={initialData.hex}/>
-        </label>
+      
+          <label htmlFor="hex">Hex
+            <ColorInput id="hex" defaultValue={initialData.hex}/>
+          </label>
+      
 
-        <label htmlFor="contrastText">
-          Contrast Text
-        <ColorInput id="contrastText" defaultValue={initialData.contrastText}/>
-        </label>
+      
+          <label htmlFor="contrastText">Contrast Text
+            <ColorInput id="contrastText" defaultValue={initialData.contrastText}/>
+          </label>
+      
 
-      </div>
+      
       <button type="submit" className="color-form--submit-button">🎨 COLOR MAGIC</button>
     </form>
   );
