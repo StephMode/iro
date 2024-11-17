@@ -1,38 +1,42 @@
 .color-form--form {
-  max-width: 630px;
   display: flex;
   flex-direction: column;
-  gap: 0.75em;
+  gap: 5px;
   padding: 5px;
-  background-color: aliceblue;
+  max-width: 350px;
+  
 }
 
-/* this aligns the input fields as a group */
-.color-form--input-fields--wrapper {
+/* this aligns the label and input of role due to diffrences in JSX structure compared to ColorInput */
+.color-form--role-label {
   display: flex;
   flex-direction: column;
-  max-width: 100%;
-  flex-wrap: wrap;
-  gap: 0.2em;
-  padding: 5px;
 }
 
-/* this aligns a single input field */
-.color-form--input-field-container {
+.color-form--color-input-wrapper {
   display: flex;
-  flex-direction: column;
-  gap: 0.5em;
+  gap: 5px;
 }
+
+.color-form--input-field--color-text {
+    flex-grow: 1;
+}
+
 
 .color-form--input-field--color-picker {
-  width: 100%;
+  max-width: 34px;
 }
 
+
 .color-form--submit-button {
-  border: 1.5px solid rgb(249, 147, 58);
+  /* border: 1.5px solid rgb(249, 147, 58); */
   border-radius: 5px;
   color: white;
   font-weight: 800;
   background-color: #346dda;
   width: 100%;
+}
+
+.color-form--submit-button:hover {
+  background-color: #6d98e7;
 }

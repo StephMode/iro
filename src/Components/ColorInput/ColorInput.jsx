@@ -1,62 +1,29 @@
 import { useState } from "react";
 
-export default function ColorInput({ currentColor }) {
-  const [hexValue, setHexValue] = useState(currentColor?.hex || "#4dffea");
-  const [contrastColorValue, setContrastColorValue] = useState(
-    currentColor?.contrast || "#000000"
-  );
+export default function ColorInput({ id, defaultValue }) {
+  const [inputValue, setInputValue] = useState(defaultValue);
+ 
 
-  const handleHexChange = (event) => {
-    setHexValue(event.target.value);
-  };
-
-  const handleContrastColorChange = (event) => {
-    setContrastColorValue(event.target.value);
+  const handleInputValue = (event) => {
+    setInputValue(event.target.value);
   };
 
   return (
-    <>
-      <label
-        htmlFor="color-hex-input"
-        className="color-form--input-field-container"
-      >
-        Hex
+    <div className="color-form--color-input-wrapper">    
         <input
-          id="color-hex-input"
-          name="hex"
+          id={id}
+          name={id}
           type="text"
-          value={hexValue}
-          onChange={handleHexChange}
+          value={inputValue}
+          onChange={handleInputValue}
+          className="color-form--input-field--color-text"
         />
         <input
-          id="color-hex--input"
           type="color"
-          value={hexValue}
-          onChange={handleHexChange}
+          value={inputValue}
+          onChange={handleInputValue}
           className="color-form--input-field--color-picker"
         />
-      </label>
-
-      <label
-        htmlFor="color-contrast-text-input"
-        className="color-form--input-field-container"
-      >
-        Contrast Text
-        <input
-          id="color-contrast-text-input"
-          name="contrastText"
-          type="text"
-          value={contrastColorValue}
-          onChange={handleContrastColorChange}
-        />
-        <input
-          id="color-contrast-text-input"
-          type="color"
-          value={contrastColorValue}
-          onChange={handleContrastColorChange}
-          className="color-form--input-field--color-picker"
-        />
-      </label>
-    </>
+      </div>
   );
 }
