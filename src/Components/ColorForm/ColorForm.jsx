@@ -5,7 +5,7 @@ export default function ColorForm({
   isEdit,
   onAddColor,
   onEditColor,
-  initialData = {role: "some color", hex: "#123456", contrastText: "#ffffff"}
+  initialData = {role: "some color", hex: "#ffef22", contrastText: "#ffffff"}
   }) 
   
   {
