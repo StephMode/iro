@@ -3,6 +3,7 @@ import ContrastChecker from "../ContrastChecker/ContrastChecker.jsx";
 import CopyToClipboard from "../CopyToClipboard/CopyToClipboard.jsx";
 import "./Color.css";
 import { useState } from "react";
+import ColorForm from "../ColorForm/ColorForm.jsx";
 
 export default function Color({ color, onDeleteColor, onEditColor }) {
   const [showConfirm, setShowConfirm] = useState(false);
@@ -12,9 +13,11 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
     onDeleteColor(color.id);
   }
 
-  function handleEditColorConfirm(editedColor) {
+  function handleEditColorConfirm(editedColorData) {
+    const editedColor = {id: color.id, ...editedColorData};
     onEditColor(editedColor);
     cancelEdit();
+    console.log("Single edited color in Color", editedColor);
   }
 
   function handleDeleteClick() {
@@ -51,9 +54,9 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
       <div className="color-card--button-container">
         {showEdit === true ? (
           <div>
-            <ColorEditor
-              currentColor={color}
-              onEditColorSubmission={handleEditColorConfirm}
+            <ColorForm
+              initialData={color}
+              onColorSubmit={(editedColorData) => handleEditColorConfirm(editedColorData)}
             />
             <button className="color-card--button" onClick={cancelEdit}>
               ❌ Cancel

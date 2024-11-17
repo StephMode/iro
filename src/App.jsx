@@ -13,6 +13,7 @@ function App() {
 
   function handleAddColor(newColor) {
     setColors([{ id: uid(), ...newColor }, ...colors]);
+    console.log("Colors in App", colors);
   }
 
   function handleDeleteColor(id) {
