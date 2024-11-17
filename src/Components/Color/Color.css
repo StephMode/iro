@@ -1,8 +1,10 @@
 .color-card {
   display: inline-block;
-  border-radius: 10px;
+  border-radius: 15px;
+  border: 1px solid black;
   margin: 5px;
-  padding: 10px;
+  padding: 5px;
+  max-width: 350px;
 }
 
 .color-card-headline {
