@@ -9,6 +9,8 @@ export const initialThemes = [
     {
         id: "t2",
         name: "2nd Theme",
-        colors: [],
+        colors: [
+            { id: "c10", role: "primary main", hex: "#ff4a11", contrastText: "#FFFFFF" }, // Vibrant orange
+        ],
     },
 ];

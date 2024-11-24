@@ -1,5 +1,6 @@
 import "./App.css";
 import { initialColors } from "./lib/colors";
+import { initialThemes } from "./lib/themes";
 import Color from "./Components/Color/Color";
 import ColorForm from "./Components/ColorForm/ColorForm";
 import { uid } from "uid";
@@ -41,7 +42,31 @@ function App() {
         </h3>
       )}
       
-      <ul className="color-card--list">
+      <div>
+        <h4>Some themes</h4>
+        {initialThemes.map((theme) => {
+          return(
+            <section id={theme.id}>
+              <h4>{theme.name}</h4>
+              <p>colors go here</p>
+              <ul>
+              {theme.colors.map((themeColor) => {
+                return(
+                  <li>
+                  <h5>{themeColor.role}</h5>
+                  <p>{themeColor.hex}</p>
+                  </li>
+                )
+              })}
+              </ul>
+            </section>
+          )
+        })}
+      </div>
+
+      <p className="no-colors-message">divider</p>
+
+      {/* <ul className="color-card--list">
       {colors.map((color) => {
         return (
           <li key={color.id}>
@@ -54,7 +79,9 @@ function App() {
           </li>
         );
       })}
-      </ul>
+      </ul> */}
+
+
     </main>
   );
 }
