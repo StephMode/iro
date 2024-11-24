@@ -39,13 +39,13 @@ export default function CopyToClipboard({ hexValue }) {
           handleCopyButtonClick();
         }}
       >
-        📋 Copy
+        📋
       </button>
     );
   }
   // second if statement not necessary, because it's bascially the else statement
   if (successMessage === true) {
-    return <button className="color-card--button">✅ Copied!</button>;
+    return <button className="color-card--button">✅</button>;
   }
 }
 

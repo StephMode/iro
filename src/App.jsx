@@ -46,6 +46,7 @@ function App() {
         return (
           <li key={color.id}>
           <Color
+            className="color-card--item"
             color={color}
             onDeleteColor={handleDeleteColor}
             onEditColor={handleEditColor}

@@ -11,29 +11,10 @@ body {
   background-color: antiquewhite;
 }
 
-ul li {
+.color-card--list {
+  padding: 0;
   list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
+  max-width: 800px;
   display: flex;
   flex-direction: column;
-  max-width: 400px;
-
 }
-
-/* li {
-  max-width: 50%;
-  height: 100%;
-} */
-
-/* .color-card--list {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  padding: 0;
-} */

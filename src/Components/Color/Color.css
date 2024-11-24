@@ -1,10 +1,10 @@
 .color-card {
-  display: inline-block;
+  /* display: inline-block; */
   border-radius: 15px;
   border: 1px solid black;
   margin: 5px;
   padding: 5px;
-  max-width: 350px;
+  max-width: 500px;
 }
 
 .color-card-headline {
@@ -12,6 +12,8 @@
   padding: 2px 6px;
   background: black;
   color: white;
+  border-radius: 10px;
+  margin-right: 5px;
 }
 
 .buttons-container--confirm-message {
@@ -29,7 +31,7 @@
   background-color: #f1f2bd;
   border: 2px solid black;
   border-radius: 5px;
-  width: 100px;
+  width: 50px;
 }
 
 .color-card--message {
