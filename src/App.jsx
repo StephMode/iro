@@ -12,6 +12,10 @@ function App() {
     defaultValue: initialColors,
   });
 
+  const themeSelector = 0;
+  const selectedTheme = initialThemes[themeSelector];
+  const selectedThemeColors = selectedTheme.colors;
+
   function handleAddColor(newColor) {
     setColors([{ id: uid(), ...newColor }, ...colors]);
     console.log("Colors in App", colors);
@@ -29,10 +33,6 @@ function App() {
     );
   }
 
-  const selectedTheme = initialThemes[0].colors;
-
-  console.log(selectedTheme);
-
   return (
     <main>
       <h1>Theme Creator</h1>
@@ -40,65 +40,28 @@ function App() {
 
       <ColorForm onAddColor={handleAddColor} />
 
-      {colors.length === 0 && (
+      {selectedThemeColors.length === 0 && (
         <h3 className="no-colors-message">
           🎨 No colors? How about adding one?
         </h3>
       )}
 
-      <div>
-        <h4>Some themes</h4>
-        {initialThemes.map((theme) => {
+      <h3>{selectedTheme.name}</h3>
+
+      <ul className="color-card--list">
+        {selectedThemeColors.map((color) => {
           return (
-            <section id={theme.id}>
-              <h4>{theme.name}</h4>
-              <p>colors go here</p>
-              <ul>
-                {theme.colors.map((themeColor) => {
-                  return (
-                    <li>
-                      <h5>{themeColor.role}</h5>
-                      <p>{themeColor.hex}</p>
-                    </li>
-                  );
-                })}
-              </ul>
-            </section>
+            <li key={color.id}>
+              <Color
+                className="color-card--item"
+                color={color}
+                onDeleteColor={handleDeleteColor}
+                onEditColor={handleEditColor}
+              />
+            </li>
           );
         })}
-      </div>
-
-      <p className="no-colors-message">divider</p>
-
-      <p className="no-colors-message">divider</p>
-
-      {/* <ul>
-              {selectedTheme.map((color) => {
-                return(
-                  <li>
-                  <h5>{color.role}</h5>
-                  <p>{color.hex}</p>
-                  </li>
-                )
-              })}
-              </ul>
-
-              <p className="no-colors-message">divider</p> */}
-
-      {/* <ul className="color-card--list">
-      {colors.map((color) => {
-        return (
-          <li key={color.id}>
-          <Color
-            className="color-card--item"
-            color={color}
-            onDeleteColor={handleDeleteColor}
-            onEditColor={handleEditColor}
-          />
-          </li>
-        );
-      })}
-      </ul> */}
+      </ul>
     </main>
   );
 }
