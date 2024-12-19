@@ -8,11 +8,9 @@ import ThemeSelector from "./Components/ThemeSelector/ThemeSelector";
 import { useState } from "react";
 
 function App() {
-  const [themes, setThemes] = useState(initialThemes);
-
-  // const [colors, setColors] = useLocalStorageState("colors", {
-  //   defaultValue: initialColors,
-  // });
+  const [themes, setThemes] = useLocalStorageState("themes", {
+    defaultValue: initialThemes,
+  });
 
   // TODO: this needs to be made dynamic
   const themeSelector = 0;
