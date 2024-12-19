@@ -1,5 +1,4 @@
 import "./App.css";
-import { initialColors } from "./lib/colors";
 import { initialThemes } from "./lib/themes";
 import Color from "./Components/Color/Color";
 import ColorForm from "./Components/ColorForm/ColorForm";
@@ -19,8 +18,6 @@ function App() {
   const themeSelector = 0;
   const selectedTheme = themes[themeSelector];
   const selectedThemeColors = selectedTheme.colors;
-
-  console.log(selectedThemeColors);
 
   function handleAddColor(newColor) {
     setThemes((prevThemes) =>
@@ -66,7 +63,7 @@ function App() {
   return (
     <main>
       <h1>Theme Creator</h1>
-      <ThemeSelector></ThemeSelector>
+      <ThemeSelector />
 
       <ColorForm onAddColor={handleAddColor} />
 
@@ -76,7 +73,7 @@ function App() {
         </h3>
       )}
 
-      <h3>{selectedTheme.name}</h3>
+      <h2>{selectedTheme.name}</h2>
 
       <ul className="color-card--list">
         {selectedThemeColors.map((color) => {
