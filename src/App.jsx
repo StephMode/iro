@@ -23,8 +23,16 @@ function App() {
   console.log(selectedThemeColors);
 
   function handleAddColor(newColor) {
-    setColors([{ id: uid(), ...newColor }, ...colors]);
-    console.log("Colors in App", colors);
+    setThemes((prevThemes) =>
+      prevThemes.map((theme) =>
+        theme.id === selectedTheme.id
+          ? {
+              ...theme,
+              colors: [{ id: uid(), ...newColor }, ...theme.colors],
+            }
+          : theme
+      )
+    );
   }
 
   function handleDeleteColor(id) {
@@ -53,11 +61,6 @@ function App() {
           : theme
       )
     );
-    // setColors(
-    //   colors.map((color) => {
-    //     return color.id === editedColor.id ? editedColor : color;
-    //   })
-    // );
   }
 
   return (
