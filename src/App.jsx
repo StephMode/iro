@@ -15,6 +15,7 @@ function App() {
   //   defaultValue: initialColors,
   // });
 
+  // TODO: this needs to be made dynamic
   const themeSelector = 0;
   const selectedTheme = themes[themeSelector];
   const selectedThemeColors = selectedTheme.colors;
@@ -27,7 +28,6 @@ function App() {
   }
 
   function handleDeleteColor(id) {
-    // setThemes(selectedThemeColors.filter((color) => color.id !== id));
     setThemes((prevThemes) =>
       prevThemes.map((theme) =>
         theme.id === selectedTheme.id
@@ -41,11 +41,23 @@ function App() {
   }
 
   function handleEditColor(editedColor) {
-    setColors(
-      colors.map((color) => {
-        return color.id === editedColor.id ? editedColor : color;
-      })
+    setThemes((prevThemes) =>
+      prevThemes.map((theme) =>
+        theme.id === selectedTheme.id
+          ? {
+              ...theme,
+              colors: theme.colors.map((color) => {
+                return color.id === editedColor.id ? editedColor : color;
+              }),
+            }
+          : theme
+      )
     );
+    // setColors(
+    //   colors.map((color) => {
+    //     return color.id === editedColor.id ? editedColor : color;
+    //   })
+    // );
   }
 
   return (
