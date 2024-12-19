@@ -6,15 +6,20 @@ import ColorForm from "./Components/ColorForm/ColorForm";
 import { uid } from "uid";
 import useLocalStorageState from "use-local-storage-state";
 import ThemeSelector from "./Components/ThemeSelector/ThemeSelector";
+import { useState } from "react";
 
 function App() {
-  const [colors, setColors] = useLocalStorageState("colors", {
-    defaultValue: initialColors,
-  });
+  const [themes, setThemes] = useState(initialThemes);
+
+  // const [colors, setColors] = useLocalStorageState("colors", {
+  //   defaultValue: initialColors,
+  // });
 
   const themeSelector = 0;
-  const selectedTheme = initialThemes[themeSelector];
+  const selectedTheme = themes[themeSelector];
   const selectedThemeColors = selectedTheme.colors;
+
+  console.log(selectedThemeColors);
 
   function handleAddColor(newColor) {
     setColors([{ id: uid(), ...newColor }, ...colors]);
@@ -22,7 +27,17 @@ function App() {
   }
 
   function handleDeleteColor(id) {
-    setColors(colors.filter((color) => color.id !== id));
+    // setThemes(selectedThemeColors.filter((color) => color.id !== id));
+    setThemes((prevThemes) =>
+      prevThemes.map((theme) =>
+        theme.id === selectedTheme.id
+          ? {
+              ...theme,
+              colors: theme.colors.filter((color) => color.id !== id),
+            }
+          : theme
+      )
+    );
   }
 
   function handleEditColor(editedColor) {
