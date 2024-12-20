@@ -11,11 +11,22 @@ function App() {
   const [themes, setThemes] = useLocalStorageState("themes", {
     defaultValue: initialThemes,
   });
+  const [themeSelector, setThemeSelector] = useState(0);
 
   // TODO: this needs to be made dynamic
-  const themeSelector = 0;
+  // let themeSelector = 0;
   const selectedTheme = themes[themeSelector];
   const selectedThemeColors = selectedTheme.colors;
+
+  
+
+  function selectTheme(id) {
+    setThemeSelector(id);
+    console.log(id)
+  }
+
+  
+  
 
   function handleAddColor(newColor) {
     setThemes((prevThemes) =>
@@ -61,7 +72,7 @@ function App() {
   return (
     <main>
       <h1>Theme Creator</h1>
-      <ThemeSelector />
+      <ThemeSelector themes={themes} onThemeSelect={selectTheme}/>
 
       <ColorForm onAddColor={handleAddColor} />
 
