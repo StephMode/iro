@@ -70,7 +70,7 @@ function App() {
 
       <ColorForm onAddColor={handleAddColor} />
 
-      {selectedTheme.length === 0 && (
+      {selectedTheme.colors.length === 0 && (
         <h3 className="no-colors-message">
           🎨 No colors? How about adding one?
         </h3>
