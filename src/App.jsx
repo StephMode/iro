@@ -14,6 +14,8 @@ function App() {
   const [selectedThemeId, setSelectedThemeId] = useState(initialThemes[0].id);
   const selectedTheme = themes.find((t) => t.id === selectedThemeId);
 
+  console.log("the selectedThemeId", selectedThemeId);
+
   function handleAddTheme() {
     setThemes([...themes, { id: uid(), name: "new Theme", colors: [] }]);
   }
@@ -21,6 +23,14 @@ function App() {
   function handleDeleteTheme(themeId) {
     setThemes((prevThemes) => prevThemes.filter((t) => t.id !== themeId));
     setSelectedThemeId(initialThemes[0].id);
+  }
+
+  function handleEditTheme(newName) {
+    setThemes((prevThemes) =>
+      prevThemes.map((theme) =>
+        theme.id === selectedThemeId ? { ...theme, name: newName } : theme
+      )
+    );
   }
 
   function handleAddColor(newColor) {
@@ -69,10 +79,11 @@ function App() {
       <h1>Theme Creator</h1>
       <ThemeSelector
         themes={themes}
-        seletedThemeId={selectedThemeId}
+        seletedThemeId={selectedTheme.id}
         onThemeSelect={setSelectedThemeId}
         onAddTheme={handleAddTheme}
         onDeleteTheme={handleDeleteTheme}
+        onEditTheme={handleEditTheme}
       />
 
       <ColorForm onAddColor={handleAddColor} />
