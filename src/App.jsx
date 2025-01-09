@@ -18,6 +18,11 @@ function App() {
     setThemes([...themes, { id: uid(), name: "new Theme", colors: [] }]);
   }
 
+  function handleDeleteTheme(themeId) {
+    setThemes((prevThemes) => prevThemes.filter((t) => t.id !== themeId));
+    setSelectedThemeId(initialThemes[0].id);
+  }
+
   function handleAddColor(newColor) {
     setThemes((prevThemes) =>
       prevThemes.map((theme) =>
@@ -64,8 +69,10 @@ function App() {
       <h1>Theme Creator</h1>
       <ThemeSelector
         themes={themes}
+        seletedThemeId={selectedThemeId}
         onThemeSelect={setSelectedThemeId}
         onAddTheme={handleAddTheme}
+        onDeleteTheme={handleDeleteTheme}
       />
 
       <ColorForm onAddColor={handleAddColor} />
