@@ -6,15 +6,8 @@ export default function ThemeSelector({ themes, onThemeSelect }) {
   // 4) develop delete theme logic -- take Color.jsx and App.jsx for color as an example
   // 5) develop add theme logic -- take Color.jsx and App.jsx for color as an example
 
-  // function handleThemeSelect(event) {
-  //   const theme = event => event.target.value;
-  //   console.log(theme)
-  //   // onThemeSelect;
-  // }
-
   const handleThemeSelect = (event) => {
     onThemeSelect(event.target.value);
-    console.log("The slected theme value", event.target.value);
   };
 
   return (
