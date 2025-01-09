@@ -15,7 +15,7 @@ export default function ThemeSelector({
   return (
     <>
       <h2>ThemeSelector</h2>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex", gap: "15px" }}>
         <select onChange={(e) => onThemeSelect(e.target.value)}>
           {themes.map((theme) => {
             return (
