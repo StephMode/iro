@@ -1,4 +1,4 @@
-export default function ThemeSelector({ themes, onThemeSelect }) {
+export default function ThemeSelector({ themes, onThemeSelect, onAddTheme }) {
   // TODO:
   // 1) get rid of <form> ✅
   // 2) develop logic for theme selection ✅
@@ -20,7 +20,7 @@ export default function ThemeSelector({ themes, onThemeSelect }) {
           })}
         </select>
 
-        <button>Add</button>
+        <button onClick={onAddTheme}>Add</button>
         <button>Edit</button>
         <button>Delete</button>
       </div>

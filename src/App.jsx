@@ -14,6 +14,10 @@ function App() {
   const [selectedThemeId, setSelectedThemeId] = useState(initialThemes[0].id);
   const selectedTheme = themes.find((t) => t.id === selectedThemeId);
 
+  function handleAddTheme() {
+    setThemes([...themes, { id: uid(), name: "new Theme", colors: [] }]);
+  }
+
   function handleAddColor(newColor) {
     setThemes((prevThemes) =>
       prevThemes.map((theme) =>
@@ -58,7 +62,11 @@ function App() {
   return (
     <main>
       <h1>Theme Creator</h1>
-      <ThemeSelector themes={themes} onThemeSelect={setSelectedThemeId} />
+      <ThemeSelector
+        themes={themes}
+        onThemeSelect={setSelectedThemeId}
+        onAddTheme={handleAddTheme}
+      />
 
       <ColorForm onAddColor={handleAddColor} />
 
