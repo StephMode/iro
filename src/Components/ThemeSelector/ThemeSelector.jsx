@@ -8,12 +8,6 @@ export default function ThemeSelector({
   onDeleteTheme,
   onEditTheme,
 }) {
-  // TODO:
-  // 1) get rid of <form> ✅
-  // 2) develop logic for theme selection ✅
-  // 3) develop edit theme logic -- take Color.jsx and App.jsx for color as an example
-  // 4) develop delete theme logic -- take Color.jsx and App.jsx for color as an example
-  // 5) develop add theme logic -- take Color.jsx and App.jsx for color as an example
   const selectedTheme = themes.find((t) => t.id === seletedThemeId);
 
   const [isEditing, setIsEditing] = useState(false);
