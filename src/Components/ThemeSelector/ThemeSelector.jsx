@@ -21,7 +21,6 @@ export default function ThemeSelector({
 
   return (
     <>
-      <h2>ThemeSelector</h2>
       <div style={{ display: "flex", gap: "15px" }}>
         <select
           value={seletedThemeId}

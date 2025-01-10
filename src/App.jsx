@@ -75,6 +75,7 @@ function App() {
   return (
     <main>
       <h1>Theme Creator</h1>
+
       <ThemeSelector
         themes={themes}
         seletedThemeId={selectedTheme.id}
@@ -84,6 +85,8 @@ function App() {
         onEditTheme={handleEditTheme}
       />
 
+      <h2>{selectedTheme.name}</h2>
+
       <ColorForm onAddColor={handleAddColor} />
 
       {selectedTheme.colors.length === 0 && (
@@ -91,8 +94,6 @@ function App() {
           🎨 No colors? How about adding one?
         </h3>
       )}
-
-      <h2>{selectedTheme.name}</h2>
 
       <ul className="color-card--list">
         {selectedTheme.colors.map((color) => {
