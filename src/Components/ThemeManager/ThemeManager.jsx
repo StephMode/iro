@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function ThemeSelector({
+export default function ThemeManager({
   themes,
   seletedThemeId,
   onThemeSelect,

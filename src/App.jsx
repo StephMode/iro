@@ -4,8 +4,8 @@ import Color from "./Components/Color/Color";
 import ColorForm from "./Components/ColorForm/ColorForm";
 import { uid } from "uid";
 import useLocalStorageState from "use-local-storage-state";
-import ThemeSelector from "./Components/ThemeSelector/ThemeSelector";
 import { useState } from "react";
+import ThemeManager from "./Components/ThemeManager/ThemeManager";
 
 function App() {
   const [themes, setThemes] = useLocalStorageState("themes", {
@@ -76,7 +76,7 @@ function App() {
     <main>
       <h1>Theme Creator</h1>
 
-      <ThemeSelector
+      <ThemeManager
         themes={themes}
         seletedThemeId={selectedTheme.id}
         onThemeSelect={setSelectedThemeId}
