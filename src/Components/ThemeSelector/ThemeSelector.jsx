@@ -64,8 +64,6 @@ export default function ThemeSelector({
           </form>
         )}
 
-        <button onClick={onAddTheme}>Add</button>
-
         {selectedTheme.id !== "t1" && (
           <button onClick={() => onDeleteTheme(seletedThemeId)}>Delete</button>
         )}
@@ -81,6 +79,7 @@ export default function ThemeSelector({
           </button>
         )}
       </div>
+      <button onClick={onAddTheme}>Add</button>
     </>
   );
 }
