@@ -43,7 +43,8 @@ export default function ThemeManager({
               <button
                 style={{
                   backgroundColor: "#FAFAFA",
-                  border: "none",
+                  border: "1px solid lightgrey",
+                  borderRadius: "5px",
                   color: "#46453D",
                 }}
               >
@@ -80,7 +81,8 @@ export default function ThemeManager({
               <button
                 style={{
                   backgroundColor: "#FAFAFA",
-                  border: "none",
+                  border: "1px solid lightgrey",
+                  borderRadius: "5px",
                   color: "#46453D",
                 }}
               >

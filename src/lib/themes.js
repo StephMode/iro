@@ -1,7 +1,7 @@
 export const initialThemes = [
   {
     id: "t1",
-    name: "Ember",
+    name: "Ember (default)",
     colors: [
       { id: "c1", role: "primary", hex: "#ff4a11", contrastText: "#FFFFFF" }, // Vibrant orange
       { id: "c2", role: "accent", hex: "#c73e0b", contrastText: "#FFFFFF" }, // Deep orange
