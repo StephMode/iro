@@ -14,8 +14,6 @@ function App() {
   const [selectedThemeId, setSelectedThemeId] = useState(initialThemes[0].id);
   const selectedTheme = themes.find((t) => t.id === selectedThemeId);
 
-  console.log("the selectedThemeId", selectedThemeId);
-
   function handleAddTheme() {
     setThemes([...themes, { id: uid(), name: "new Theme", colors: [] }]);
   }

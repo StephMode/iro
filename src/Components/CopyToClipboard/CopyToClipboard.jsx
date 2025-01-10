@@ -9,7 +9,7 @@ export default function CopyToClipboard({ hexValue }) {
     try {
       await navigator.clipboard.writeText(clipBoardText);
     } catch (error) {
-      console.log("error");
+      console.error("error");
     }
   }
 
