@@ -35,9 +35,6 @@ export default function ThemeSelector({
           })}
         </select>
 
-        <button onClick={onAddTheme}>Add</button>
-        <button onClick={() => onDeleteTheme(seletedThemeId)}>Delete</button>
-
         {selectedTheme.id === "t1" && (
           <button
             style={{
@@ -66,6 +63,9 @@ export default function ThemeSelector({
             <button onClick={() => setIsEditing(false)}>cancel</button>
           </form>
         )}
+
+        <button onClick={onAddTheme}>Add</button>
+        <button onClick={() => onDeleteTheme(seletedThemeId)}>Delete</button>
       </div>
     </>
   );
