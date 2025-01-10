@@ -65,7 +65,21 @@ export default function ThemeSelector({
         )}
 
         <button onClick={onAddTheme}>Add</button>
-        <button onClick={() => onDeleteTheme(seletedThemeId)}>Delete</button>
+
+        {selectedTheme.id !== "t1" && (
+          <button onClick={() => onDeleteTheme(seletedThemeId)}>Delete</button>
+        )}
+        {selectedTheme.id === "t1" && (
+          <button
+            style={{
+              backgroundColor: "#FAFAFA",
+              border: "none",
+              color: "#46453D",
+            }}
+          >
+            Delete
+          </button>
+        )}
       </div>
     </>
   );
