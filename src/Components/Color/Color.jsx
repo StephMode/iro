@@ -49,7 +49,7 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
               onEditColor={handleEditColorConfirm}
             />
             <button className="color-card--button" onClick={cancelEdit}>
-              ❌ Cancel
+              ❌
             </button>
           </div>
         ) : (
@@ -57,17 +57,15 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
 
             <h3 className="color-card-headline">{color.hex}</h3>
             <CopyToClipboard hexValue={color.hex} />
-            <ContrastChecker color={color} />
-            <h4>{color.role}</h4>
-            <p>contrast: {color.contrastText}</p>
-          
+            
+            
               {!showConfirm && (
               <>
               <button className="color-card--button" onClick={handleDeleteClick}>
-                  🗑️ Delete
+                  🗑️ 
               </button>
               <button className="color-card--button" onClick={handleEditClick}>
-                  🖍️ Edit
+                  🖍️ 
               </button>
               </>
             )}
@@ -76,18 +74,22 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
               <div className="buttons-container--confirm-message">
               <p className="color-card--message">Really delete?</p>
               <button className="color-card--button" onClick={cancelDelete}>
-                ❌ Cancel
+                ❌
               </button>
               <button
                 className="color-card--button"
                 onClick={handleDeleteConfirm}
               >
-                🗑️ Delete
+                🗑️
               </button>
             </div>
             )}
-        
+            
+            <ContrastChecker color={color} />
+            <h4>{color.role}</h4>
+            <p>contrast: {color.contrastText}</p>
           </>
+          
         )}
       </div>
   );
