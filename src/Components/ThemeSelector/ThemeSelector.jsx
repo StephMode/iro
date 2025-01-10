@@ -22,33 +22,38 @@ export default function ThemeSelector({
   return (
     <>
       <div style={{ display: "flex", gap: "15px" }}>
-        <select
-          value={seletedThemeId}
-          onChange={(e) => onThemeSelect(e.target.value)}
-        >
-          {themes.map((theme) => {
-            return (
-              <option key={theme.id} value={theme.id}>
-                {theme.name}
-              </option>
-            );
-          })}
-        </select>
-
-        {selectedTheme.id === "t1" && (
-          <button
-            style={{
-              backgroundColor: "#FAFAFA",
-              border: "none",
-              color: "#46453D",
-            }}
+        {!isEditing && (
+          <select
+            value={seletedThemeId}
+            onChange={(e) => onThemeSelect(e.target.value)}
           >
-            Edit
-          </button>
+            {themes.map((theme) => {
+              return (
+                <option key={theme.id} value={theme.id}>
+                  {theme.name}
+                </option>
+              );
+            })}
+          </select>
         )}
 
-        {selectedTheme.id !== "t1" && (
-          <button onClick={() => setIsEditing(true)}>Edit</button>
+        {!isEditing && (
+          <>
+            {selectedTheme.id === "t1" && (
+              <button
+                style={{
+                  backgroundColor: "#FAFAFA",
+                  border: "none",
+                  color: "#46453D",
+                }}
+              >
+                Edit
+              </button>
+            )}
+            {selectedTheme.id !== "t1" && (
+              <button onClick={() => setIsEditing(true)}>Edit</button>
+            )}
+          </>
         )}
 
         {isEditing && (
@@ -64,19 +69,25 @@ export default function ThemeSelector({
           </form>
         )}
 
-        {selectedTheme.id !== "t1" && (
-          <button onClick={() => onDeleteTheme(seletedThemeId)}>Delete</button>
-        )}
-        {selectedTheme.id === "t1" && (
-          <button
-            style={{
-              backgroundColor: "#FAFAFA",
-              border: "none",
-              color: "#46453D",
-            }}
-          >
-            Delete
-          </button>
+        {!isEditing && (
+          <>
+            {selectedTheme.id !== "t1" && (
+              <button onClick={() => onDeleteTheme(seletedThemeId)}>
+                Delete
+              </button>
+            )}
+            {selectedTheme.id === "t1" && (
+              <button
+                style={{
+                  backgroundColor: "#FAFAFA",
+                  border: "none",
+                  color: "#46453D",
+                }}
+              >
+                Delete
+              </button>
+            )}
+          </>
         )}
       </div>
       <button onClick={onAddTheme}>Add</button>
