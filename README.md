@@ -1,14 +1,14 @@
 # About iro / 色
 
-色 (iro) is japanese for color.
+色 (iro) means color in Japanese.
 
-iro started is a Color palette app. I first developed it as a recap project in my Web Development Bootcamp at neuefische.
+iro started a collor palette app that began as a recap project during my Web Development Bootcamp at neuefische in October 2024.
 
-This was the first time for me to develop a React frontend on my own. So, naturally, I made design choices which were not always optimal and which somehtimes caused bugs in the long run.
+This project marks my first experience developing a React app from scratch. I embraced the opportunity to apply all my at the time to develop my first component architecture and front-end logics.
 
-As I keep learning more about JavaScript and React I also revisit this project to apply my new knowledge to improve the app.
+As continue to deepen my understanding of JavaScript and React, I regulary revisit this project to incorporate new concentps and improve its functionality.
 
-Working on this project taught me valuable lessons about maintaining a project in the long run and continously improving it.
+Working on iro taught me valuable lessions about long-term project maintanence and continous improvement. What started as a learning exercise has developed into a platfrom for implementing new features and refining intial design decisions.
 
 # Tech Stack
 
