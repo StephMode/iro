@@ -30,7 +30,6 @@ export default function CopyToClipboard({ hexValue }) {
     };
   }, []);
 
-  // alternative syntax here: if (!successMessage) {…}, alternatively a lovely ternary op
   if (successMessage === false) {
     return (
       <button
@@ -43,28 +42,8 @@ export default function CopyToClipboard({ hexValue }) {
       </button>
     );
   }
-  // second if statement not necessary, because it's bascially the else statement
+
   if (successMessage === true) {
     return <button className="color-card--button">✅</button>;
   }
 }
-
-/*
-
-Alternative to tern op:
-
-try to use several if condition bound return statements
-to make 
-
-return (
-    <>
-      {successMessage === false ? (
-        <button onClick={handleCopyButtonClick}>📋 Copy</button>
-      ) : (
-        <button>✅ Copied!</button>
-      )}
-    </>
-  );
-
-
-*/
