@@ -30,20 +30,31 @@ export default function CopyToClipboard({ hexValue }) {
     };
   }, []);
 
-  if (successMessage === false) {
-    return (
-      <button
-        className="color-card--button"
-        onClick={() => {
-          handleCopyButtonClick();
-        }}
-      >
-        📋
-      </button>
-    );
-  }
-
-  if (successMessage === true) {
-    return <button className="color-card--button">✅</button>;
-  }
+  return (
+    <>
+      {!successMessage ? (
+        <button
+          className="color-card--button"
+          onClick={() => {
+            handleCopyButtonClick();
+          }}
+        >
+          📋
+        </button>
+      ) : (
+        <div
+          style={{
+            display: "inline-block",
+            border: "1px solid black",
+            borderRadius: "5px",
+            backgroundColor: "green",
+            width: "50px",
+            height: "30px",
+          }}
+        >
+          Saved
+        </div>
+      )}
+    </>
+  );
 }
