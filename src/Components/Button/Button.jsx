@@ -8,8 +8,10 @@ export default function Button({ onClick, style, type }) {
   );
 }
 
+const buttonTypes = ["add", "edit", "delete"];
+
 Button.propTypes = {
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   style: PropTypes.object,
-  type: PropTypes.oneOf(["add", "edit", "delete"]).isRequired,
+  type: PropTypes.oneOf(buttonTypes).isRequired,
 };
