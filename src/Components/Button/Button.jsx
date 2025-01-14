@@ -8,11 +8,12 @@ export default function Button({ onClick, style, buttonType }) {
       {buttonType === "delete" && "Delete"}
       {buttonType === "save" && "Save"}
       {buttonType === "cancel" && "Cancel"}
+      {buttonType === "copy" && "Copy"}
     </button>
   );
 }
 
-const buttonTypes = ["add", "edit", "delete", "save", "cancel"];
+const buttonTypes = ["add", "edit", "delete", "save", "cancel", "copy"];
 
 Button.propTypes = {
   onClick: PropTypes.func,

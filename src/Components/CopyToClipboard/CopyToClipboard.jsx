@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
+import Button from "../Button/Button";
 
 export default function CopyToClipboard({ hexValue }) {
   const [successMessage, setSuccessMessage] = useState(false);
 
-  const clipBoardText = hexValue; // I could add the hexValue as argument in the writeClipboard fn instead of storing it in a separate var
-
-  async function writeClipBoard() {
+  async function writeClipBoard(hexValue) {
     try {
-      await navigator.clipboard.writeText(clipBoardText);
+      await navigator.clipboard.writeText(hexValue);
     } catch (error) {
       console.error("error");
     }
@@ -15,16 +14,11 @@ export default function CopyToClipboard({ hexValue }) {
 
   function handleCopyButtonClick() {
     setSuccessMessage(true);
-    writeClipBoard();
+    writeClipBoard(hexValue);
   }
 
-  function hideSuccessMessage() {
-    setSuccessMessage(false);
-  }
-
-  // instead of hideSuccessMessage as encapsulation of set fn, I could use => arrow fn to call set fn on the useEffect directly
   useEffect(() => {
-    let interval = setInterval(hideSuccessMessage, 3000);
+    let interval = setInterval(() => setSuccessMessage(false), 3000);
     return () => {
       clearInterval(interval);
     };
@@ -33,14 +27,12 @@ export default function CopyToClipboard({ hexValue }) {
   return (
     <>
       {!successMessage ? (
-        <button
-          className="color-card--button"
+        <Button
+          buttonType="copy"
           onClick={() => {
             handleCopyButtonClick();
           }}
-        >
-          📋
-        </button>
+        />
       ) : (
         <div
           style={{
