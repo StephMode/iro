@@ -36,7 +36,7 @@ export default function ColorCard({ color, onDeleteColor, onEditColor }) {
             <h3 className="color-card-headline">{color.hex}</h3>
 
             <h4>{color.role}</h4>
-            <p>contrast: {color.contrastText}</p>
+            <p>Contrast Text {color.contrastText}</p>
             <ContrastChecker color={color} />
           </div>
           <div className="color-card--buttons">

@@ -35,7 +35,7 @@ export default function ContrastChecker({ color }) {
     <>
       {contrastValue ? (
         <h5 className="contrast-checker--info-tag">
-          Contrast Score: {contrastValue.small}
+          a11y score: {contrastValue.small}
         </h5>
       ) : (
         <h5 className="contrast-checker--info-tag">⏳ Checking Contrast</h5>
