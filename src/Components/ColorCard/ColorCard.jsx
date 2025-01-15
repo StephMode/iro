@@ -6,23 +6,11 @@ import ColorForm from "../ColorForm/ColorForm.jsx";
 import Button from "../Button/Button.jsx";
 
 export default function ColorCard({ color, onDeleteColor, onEditColor }) {
-  const [showEdit, setShowEdit] = useState(false);
-
-  function handleDeleteConfirm() {
-    onDeleteColor(color.id);
-  }
+  const [editMode, setEditMode] = useState(false);
 
   function handleEditColorConfirm(editedColorData) {
     onEditColor({ id: color.id, ...editedColorData });
-    cancelEdit();
-  }
-
-  function handleEditClick() {
-    setShowEdit(true);
-  }
-
-  function cancelEdit() {
-    setShowEdit(false);
+    setEditMode(false);
   }
 
   return (
@@ -33,14 +21,14 @@ export default function ColorCard({ color, onDeleteColor, onEditColor }) {
         color: color.contrastText,
       }}
     >
-      {showEdit === true ? (
+      {editMode ? (
         <div>
           <ColorForm
             isEdit={true}
             initialData={color}
             onEditColor={handleEditColorConfirm}
           />
-          <Button buttonType="cancel" onClick={cancelEdit} />
+          <Button buttonType="cancel" onClick={() => setEditMode(false)} />
         </div>
       ) : (
         <>
@@ -48,8 +36,11 @@ export default function ColorCard({ color, onDeleteColor, onEditColor }) {
           <CopyToClipboard hexValue={color.hex} />
 
           <>
-            <Button buttonType="delete" onClick={handleDeleteConfirm} />
-            <Button buttonType="edit" onClick={handleEditClick} />
+            <Button
+              buttonType="delete"
+              onClick={() => onDeleteColor(color.id)}
+            />
+            <Button buttonType="edit" onClick={() => setEditMode(true)} />
           </>
 
           <ContrastChecker color={color} />
