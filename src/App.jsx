@@ -1,6 +1,6 @@
 import "./App.css";
 import { initialThemes } from "./lib/themes";
-import Color from "./Components/Color/Color";
+import ColorCard from "./Components/ColorCard/ColorCard";
 import ColorForm from "./Components/ColorForm/ColorForm";
 import { uid } from "uid";
 import useLocalStorageState from "use-local-storage-state";
@@ -99,7 +99,7 @@ function App() {
         {selectedTheme.colors.map((color) => {
           return (
             <li key={color.id}>
-              <Color
+              <ColorCard
                 className="color-card--item"
                 color={color}
                 onDeleteColor={handleDeleteColor}

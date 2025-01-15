@@ -5,7 +5,7 @@ import { useState } from "react";
 import ColorForm from "../ColorForm/ColorForm.jsx";
 import Button from "../Button/Button.jsx";
 
-export default function Color({ color, onDeleteColor, onEditColor }) {
+export default function ColorCard({ color, onDeleteColor, onEditColor }) {
   const [showEdit, setShowEdit] = useState(false);
 
   function handleDeleteConfirm() {
