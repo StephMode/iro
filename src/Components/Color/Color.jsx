@@ -6,7 +6,6 @@ import ColorForm from "../ColorForm/ColorForm.jsx";
 import Button from "../Button/Button.jsx";
 
 export default function Color({ color, onDeleteColor, onEditColor }) {
-  const [showConfirm, setShowConfirm] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
 
   function handleDeleteConfirm() {
@@ -16,14 +15,6 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
   function handleEditColorConfirm(editedColorData) {
     onEditColor({ id: color.id, ...editedColorData });
     cancelEdit();
-  }
-
-  function handleDeleteClick() {
-    setShowConfirm(true);
-  }
-
-  function cancelDelete() {
-    setShowConfirm(false);
   }
 
   function handleEditClick() {
@@ -56,22 +47,10 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
           <h3 className="color-card-headline">{color.hex}</h3>
           <CopyToClipboard hexValue={color.hex} />
 
-          {!showConfirm && (
-            <>
-              <Button buttonType="delete" onClick={handleDeleteClick} />
-              <Button buttonType="edit" onClick={handleEditClick} />
-            </>
-          )}
-
-          {showConfirm && (
-            <div style={{ display: "inline-flex" }}>
-              <p className="color-card--alert-dialoge--message">
-                Really delete?
-              </p>
-              <Button buttonType="cancel" onClick={cancelDelete} />
-              <Button buttonType="delete" onClick={handleDeleteConfirm} />
-            </div>
-          )}
+          <>
+            <Button buttonType="delete" onClick={handleDeleteConfirm} />
+            <Button buttonType="edit" onClick={handleEditClick} />
+          </>
 
           <ContrastChecker color={color} />
           <h4>{color.role}</h4>
