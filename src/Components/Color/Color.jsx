@@ -3,6 +3,7 @@ import ContrastChecker from "../ContrastChecker/ContrastChecker.jsx";
 import CopyToClipboard from "../CopyToClipboard/CopyToClipboard.jsx";
 import { useState } from "react";
 import ColorForm from "../ColorForm/ColorForm.jsx";
+import Button from "../Button/Button.jsx";
 
 export default function Color({ color, onDeleteColor, onEditColor }) {
   const [showConfirm, setShowConfirm] = useState(false);
@@ -13,7 +14,7 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
   }
 
   function handleEditColorConfirm(editedColorData) {
-    onEditColor({id: color.id, ...editedColorData});
+    onEditColor({ id: color.id, ...editedColorData });
     cancelEdit();
   }
 
@@ -42,55 +43,41 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
       }}
     >
       {showEdit === true ? (
-          <div>
-            <ColorForm
-              isEdit={true}
-              initialData={color}
-              onEditColor={handleEditColorConfirm}
-            />
-            <button className="color-card--button" onClick={cancelEdit}>
-              ❌
-            </button>
-          </div>
-        ) : (
-          <>
+        <div>
+          <ColorForm
+            isEdit={true}
+            initialData={color}
+            onEditColor={handleEditColorConfirm}
+          />
+          <Button buttonType="cancel" onClick={cancelEdit} />
+        </div>
+      ) : (
+        <>
+          <h3 className="color-card-headline">{color.hex}</h3>
+          <CopyToClipboard hexValue={color.hex} />
 
-            <h3 className="color-card-headline">{color.hex}</h3>
-            <CopyToClipboard hexValue={color.hex} />
-            
-            
-              {!showConfirm && (
-              <>
-              <button className="color-card--button" onClick={handleDeleteClick}>
-                  🗑️ 
-              </button>
-              <button className="color-card--button" onClick={handleEditClick}>
-                  🖍️ 
-              </button>
-              </>
-            )}
+          {!showConfirm && (
+            <>
+              <Button buttonType="delete" onClick={handleDeleteClick} />
+              <Button buttonType="edit" onClick={handleEditClick} />
+            </>
+          )}
 
-            {showConfirm && (
-              <div className="buttons-container--confirm-message">
-              <p className="color-card--message">Really delete?</p>
-              <button className="color-card--button" onClick={cancelDelete}>
-                ❌
-              </button>
-              <button
-                className="color-card--button"
-                onClick={handleDeleteConfirm}
-              >
-                🗑️
-              </button>
+          {showConfirm && (
+            <div style={{ display: "inline-flex" }}>
+              <p className="color-card--alert-dialoge--message">
+                Really delete?
+              </p>
+              <Button buttonType="cancel" onClick={cancelDelete} />
+              <Button buttonType="delete" onClick={handleDeleteConfirm} />
             </div>
-            )}
-            
-            <ContrastChecker color={color} />
-            <h4>{color.role}</h4>
-            <p>contrast: {color.contrastText}</p>
-          </>
-          
-        )}
-      </div>
+          )}
+
+          <ContrastChecker color={color} />
+          <h4>{color.role}</h4>
+          <p>contrast: {color.contrastText}</p>
+        </>
+      )}
+    </div>
   );
 }

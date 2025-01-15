@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from "../Button/Button";
 
 export default function ThemeManager({
   themes,
@@ -40,19 +41,18 @@ export default function ThemeManager({
         {!isEditing && (
           <>
             {selectedTheme.id === "t1" && (
-              <button
+              <Button
                 style={{
                   backgroundColor: "#FAFAFA",
                   border: "1px solid lightgrey",
                   borderRadius: "5px",
                   color: "#46453D",
                 }}
-              >
-                Edit
-              </button>
+                buttonType="edit"
+              />
             )}
             {selectedTheme.id !== "t1" && (
-              <button onClick={() => setIsEditing(true)}>Edit</button>
+              <Button buttonType="edit" onClick={() => setIsEditing(true)} />
             )}
           </>
         )}
@@ -65,34 +65,34 @@ export default function ThemeManager({
               placeholder={selectedTheme?.name || "enter a name"}
               onChange={(e) => setEditName(e.target.value)}
             ></input>
-            <button type="submit">✏️</button>
-            <button onClick={() => setIsEditing(false)}>cancel</button>
+            <Button buttonType="save" type="submit" />
+            <Button buttonType="cancel" onClick={() => setIsEditing(false)} />
           </form>
         )}
 
         {!isEditing && (
           <>
             {selectedTheme.id !== "t1" && (
-              <button onClick={() => onDeleteTheme(seletedThemeId)}>
-                Delete
-              </button>
+              <Button
+                buttonType="delete"
+                onClick={() => onDeleteTheme(seletedThemeId)}
+              />
             )}
             {selectedTheme.id === "t1" && (
-              <button
+              <Button
+                buttonType="delete"
                 style={{
                   backgroundColor: "#FAFAFA",
                   border: "1px solid lightgrey",
                   borderRadius: "5px",
                   color: "#46453D",
                 }}
-              >
-                Delete
-              </button>
+              />
             )}
           </>
         )}
       </div>
-      <button onClick={onAddTheme}>Add</button>
+      <Button onClick={onAddTheme} buttonType={"add"} />
     </>
   );
 }

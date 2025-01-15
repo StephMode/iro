@@ -1,5 +1,4 @@
 .color-card {
-  /* display: inline-block; */
   border-radius: 15px;
   border: 1px solid black;
   margin: 5px;
@@ -16,25 +15,7 @@
   margin-right: 5px;
 }
 
-.buttons-container--confirm-message {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-}
-
-.color-card--button-container {
-  display: flex;
-  gap: 10px;
-}
-
-.color-card--button {
-  background-color: #f1f2bd;
-  border: 2px solid black;
-  border-radius: 5px;
-  width: 50px;
-}
-
-.color-card--message {
+.color-card--alert-dialoge--message {
   font-size: 0.9rem;
   color: yellow;
   background-color: lightcoral;

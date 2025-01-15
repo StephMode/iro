@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
+import Button from "../Button/Button";
 
 export default function CopyToClipboard({ hexValue }) {
   const [successMessage, setSuccessMessage] = useState(false);
 
-  const clipBoardText = hexValue; // I could add the hexValue as argument in the writeClipboard fn instead of storing it in a separate var
-
-  async function writeClipBoard() {
+  async function writeClipBoard(hexValue) {
     try {
-      await navigator.clipboard.writeText(clipBoardText);
+      await navigator.clipboard.writeText(hexValue);
     } catch (error) {
       console.error("error");
     }
@@ -15,56 +14,39 @@ export default function CopyToClipboard({ hexValue }) {
 
   function handleCopyButtonClick() {
     setSuccessMessage(true);
-    writeClipBoard();
+    writeClipBoard(hexValue);
   }
 
-  function hideSuccessMessage() {
-    setSuccessMessage(false);
-  }
-
-  // instead of hideSuccessMessage as encapsulation of set fn, I could use => arrow fn to call set fn on the useEffect directly
   useEffect(() => {
-    let interval = setInterval(hideSuccessMessage, 3000);
+    let interval = setInterval(() => setSuccessMessage(false), 3000);
     return () => {
       clearInterval(interval);
     };
   }, []);
 
-  // alternative syntax here: if (!successMessage) {…}, alternatively a lovely ternary op
-  if (successMessage === false) {
-    return (
-      <button
-        className="color-card--button"
-        onClick={() => {
-          handleCopyButtonClick();
-        }}
-      >
-        📋
-      </button>
-    );
-  }
-  // second if statement not necessary, because it's bascially the else statement
-  if (successMessage === true) {
-    return <button className="color-card--button">✅</button>;
-  }
-}
-
-/*
-
-Alternative to tern op:
-
-try to use several if condition bound return statements
-to make 
-
-return (
+  return (
     <>
-      {successMessage === false ? (
-        <button onClick={handleCopyButtonClick}>📋 Copy</button>
+      {!successMessage ? (
+        <Button
+          buttonType="copy"
+          onClick={() => {
+            handleCopyButtonClick();
+          }}
+        />
       ) : (
-        <button>✅ Copied!</button>
+        <div
+          style={{
+            display: "inline-block",
+            border: "1px solid black",
+            borderRadius: "5px",
+            backgroundColor: "green",
+            width: "50px",
+            height: "30px",
+          }}
+        >
+          Saved
+        </div>
       )}
     </>
   );
-
-
-*/
+}
