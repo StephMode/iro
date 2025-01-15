@@ -27,6 +27,10 @@ export default function ColorCard({ color, onDeleteColor, onEditColor }) {
             isEdit={true}
             initialData={color}
             onEditColor={handleEditColorConfirm}
+            // style={{
+            //   background: color.hex,
+            //   color: color.contrastText,
+            // }}
           />
           <Button buttonType="cancel" onClick={() => setEditMode(false)} />
         </div>

@@ -21,26 +21,30 @@ export default function ColorForm({
 
   return (
     <form className="color-form--form" onSubmit={handleSubmit}>
-      <label htmlFor="role" className="color-form--role-label">
-        Role
-        <input
-          id="role"
-          name="role"
-          type="text"
-          defaultValue={initialData.role}
-        />
-      </label>
+      <fieldset className="color-form--fieldset">
+        <label htmlFor="hex" className="color-form--role-label">
+          Hex
+          <ColorInput id="hex" defaultValue={initialData.hex} />
+        </label>
 
-      <label htmlFor="hex">
-        Hex
-        <ColorInput id="hex" defaultValue={initialData.hex} />
-      </label>
+        <label htmlFor="role" className="color-form--role-label">
+          Role
+          <input
+            id="role"
+            name="role"
+            type="text"
+            defaultValue={initialData.role}
+          />
+        </label>
 
-      <label htmlFor="contrastText">
-        Contrast Text
-        <ColorInput id="contrastText" defaultValue={initialData.contrastText} />
-      </label>
-
+        <label htmlFor="contrastText" className="color-form--role-label">
+          Contrast Text
+          <ColorInput
+            id="contrastText"
+            defaultValue={initialData.contrastText}
+          />
+        </label>
+      </fieldset>
       <Button
         buttonType={isEdit ? "edit" : "add"}
         type="submit"
