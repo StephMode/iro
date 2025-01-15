@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Button from "../Button/Button";
-import viteLogo from "/vite.svg";
 
 export default function ThemeManager({
   themes,
