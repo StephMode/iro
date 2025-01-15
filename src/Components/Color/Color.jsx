@@ -64,7 +64,7 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
           )}
 
           {showConfirm && (
-            <div className="buttons-container--confirm-message">
+            <div style={{ display: "inline-flex" }}>
               <p className="color-card--message">Really delete?</p>
               <Button buttonType="cancel" onClick={cancelDelete} />
               <Button buttonType="delete" onClick={handleDeleteConfirm} />

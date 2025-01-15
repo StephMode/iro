@@ -16,12 +16,6 @@
   margin-right: 5px;
 }
 
-.buttons-container--confirm-message {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-}
-
 .color-card--button-container {
   display: flex;
   gap: 10px;
