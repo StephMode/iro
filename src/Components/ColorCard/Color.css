@@ -1,9 +1,13 @@
 .color-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-radius: 15px;
   border: 1px solid black;
   margin: 5px;
   padding: 5px;
   max-width: 500px;
+  min-height: 175px;
 }
 
 .color-card-headline {
@@ -15,11 +19,7 @@
   margin-right: 5px;
 }
 
-.color-card--alert-dialoge--message {
-  font-size: 0.9rem;
-  color: yellow;
-  background-color: lightcoral;
-  border: 2px solid darkred;
-  border-radius: 5px;
-  padding: 1px;
+.color-card--buttons {
+  display: flex;
+  gap: 0.5rem;
 }
