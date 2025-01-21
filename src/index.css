@@ -80,6 +80,10 @@ h5,
 h6 {
     overflow-wrap: break-word;
 }
+
+h1 {
+    font-size: 3.5rem;
+}
 /*
   8. Create a root stacking context
 */

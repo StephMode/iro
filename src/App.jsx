@@ -26,8 +26,8 @@ function App() {
   function handleEditTheme(newName) {
     setThemes((prevThemes) =>
       prevThemes.map((theme) =>
-        theme.id === selectedThemeId ? { ...theme, name: newName } : theme
-      )
+        theme.id === selectedThemeId ? { ...theme, name: newName } : theme,
+      ),
     );
   }
 
@@ -39,8 +39,8 @@ function App() {
               ...theme,
               colors: [...theme.colors, { id: uid(), ...newColor }],
             }
-          : theme
-      )
+          : theme,
+      ),
     );
   }
 
@@ -52,8 +52,8 @@ function App() {
               ...theme,
               colors: theme.colors.filter((color) => color.id !== id),
             }
-          : theme
-      )
+          : theme,
+      ),
     );
   }
 
@@ -67,14 +67,20 @@ function App() {
                 return color.id === editedColor.id ? editedColor : color;
               }),
             }
-          : theme
-      )
+          : theme,
+      ),
     );
   }
 
   return (
     <main>
-      <h1>Theme Creator</h1>
+      <h1>
+        <ruby>
+          色 <rp>(</rp>
+          <rt>iro</rt>
+          <rp>)</rp>
+        </ruby>
+      </h1>
 
       <ThemeManager
         themes={themes}
