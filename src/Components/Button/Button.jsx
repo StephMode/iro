@@ -1,20 +1,23 @@
 import PropTypes from "prop-types";
-import { IoTrash } from "react-icons/io5";
-import { IoBrush } from "react-icons/io5";
-import { IoAddCircle } from "react-icons/io5";
-import { IoCopyOutline } from "react-icons/io5";
-import { MdOutlineCancel } from "react-icons/md";
-import { IoIosSave } from "react-icons/io";
+import "./Button.css";
+import { LuSquareX } from "react-icons/lu";
+import { LuPenLine } from "react-icons/lu";
+import { LuSquarePlus } from "react-icons/lu";
+import { LuCopy } from "react-icons/lu";
+import { LuDelete } from "react-icons/lu";
+import { LuSave } from "react-icons/lu";
+import { LuCopyCheck } from "react-icons/lu";
 
 export default function Button({ onClick, style, buttonType }) {
   const buttonTypeLabes = {
     labels: [
-      { labelType: "add", buttonLabel: <IoAddCircle /> },
-      { labelType: "edit", buttonLabel: <IoBrush /> },
-      { labelType: "delete", buttonLabel: <IoTrash /> },
-      { labelType: "save", buttonLabel: <IoIosSave /> },
-      { labelType: "cancel", buttonLabel: <MdOutlineCancel /> },
-      { labelType: "copy", buttonLabel: <IoCopyOutline /> },
+      { labelType: "add", buttonLabel: <LuSquarePlus /> },
+      { labelType: "edit", buttonLabel: <LuPenLine /> },
+      { labelType: "delete", buttonLabel: <LuDelete /> },
+      { labelType: "save", buttonLabel: <LuSave /> },
+      { labelType: "cancel", buttonLabel: <LuSquareX /> },
+      { labelType: "copy", buttonLabel: <LuCopy /> },
+      { labelType: "successClipboard", buttonLabel: <LuCopyCheck /> },
     ],
     returnLabel() {
       const buttonLabelFinder = this.labels.find(
@@ -25,7 +28,7 @@ export default function Button({ onClick, style, buttonType }) {
   };
 
   return (
-    <button onClick={onClick} style={style}>
+    <button onClick={onClick} style={style} className="button">
       {buttonTypeLabes.returnLabel()}
     </button>
   );
