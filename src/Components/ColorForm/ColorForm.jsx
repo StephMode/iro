@@ -7,7 +7,7 @@ export default function ColorForm({
   isEdit,
   onAddColor,
   onEditColor,
-  initialData = { role: "some color", hex: "#b55b16", contrastText: "#ffffff" },
+  initialData = { role: "highlight", hex: "#b55b16", contrastText: "#ffffff" },
 }) {
   const [cardBackgroundColor, setCardBackgroundColor] = useState(
     initialData.hex,

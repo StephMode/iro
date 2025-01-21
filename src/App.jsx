@@ -26,8 +26,8 @@ function App() {
   function handleEditTheme(newName) {
     setThemes((prevThemes) =>
       prevThemes.map((theme) =>
-        theme.id === selectedThemeId ? { ...theme, name: newName } : theme
-      )
+        theme.id === selectedThemeId ? { ...theme, name: newName } : theme,
+      ),
     );
   }
 
@@ -37,10 +37,10 @@ function App() {
         theme.id === selectedTheme.id
           ? {
               ...theme,
-              colors: [{ id: uid(), ...newColor }, ...theme.colors],
+              colors: [...theme.colors, { id: uid(), ...newColor }],
             }
-          : theme
-      )
+          : theme,
+      ),
     );
   }
 
@@ -52,8 +52,8 @@ function App() {
               ...theme,
               colors: theme.colors.filter((color) => color.id !== id),
             }
-          : theme
-      )
+          : theme,
+      ),
     );
   }
 
@@ -67,8 +67,8 @@ function App() {
                 return color.id === editedColor.id ? editedColor : color;
               }),
             }
-          : theme
-      )
+          : theme,
+      ),
     );
   }
 
@@ -86,8 +86,6 @@ function App() {
       />
 
       <h2>{selectedTheme.name}</h2>
-
-      <ColorForm onAddColor={handleAddColor} />
 
       {selectedTheme.colors.length === 0 && (
         <h3 className="no-colors-message">
@@ -109,6 +107,8 @@ function App() {
           );
         })}
       </ul>
+
+      <ColorForm onAddColor={handleAddColor} />
     </main>
   );
 }
