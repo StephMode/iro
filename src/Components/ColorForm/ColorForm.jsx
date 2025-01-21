@@ -7,10 +7,13 @@ export default function ColorForm({
   isEdit,
   onAddColor,
   onEditColor,
-  initialData = { role: "some color", hex: "#ffef22", contrastText: "#ffffff" },
+  initialData = { role: "some color", hex: "#b55b16", contrastText: "#ffffff" },
 }) {
   const [cardBackgroundColor, setCardBackgroundColor] = useState(
     initialData.hex
+  );
+  const [cardContrastTextColor, setCardContrastTextColor] = useState(
+    initialData.contrastText
   );
 
   function handleSubmit(event) {
@@ -24,16 +27,14 @@ export default function ColorForm({
     event.target.elements.role.focus();
   }
 
-  // function cardBcgSetter(hex) {
-  //   setCardBackgroundColor(hex);
-  // }
-
   return (
     <form
       className="color-form--form"
       onSubmit={handleSubmit}
-      style={{ backgroundColor: cardBackgroundColor }}
-      // style={{ backgroundColor: cardBackgroundColor.hex }}
+      style={{
+        backgroundColor: cardBackgroundColor,
+        color: cardContrastTextColor,
+      }}
     >
       <fieldset className="color-form--fieldset">
         <label htmlFor="hex" className="color-form--role-label">
@@ -61,6 +62,7 @@ export default function ColorForm({
           <ColorInput
             id="contrastText"
             defaultValue={initialData.contrastText}
+            cardContrastTextColor={setCardContrastTextColor}
           />
         </label>
       </fieldset>
