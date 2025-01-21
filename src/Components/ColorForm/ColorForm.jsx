@@ -10,10 +10,10 @@ export default function ColorForm({
   initialData = { role: "some color", hex: "#b55b16", contrastText: "#ffffff" },
 }) {
   const [cardBackgroundColor, setCardBackgroundColor] = useState(
-    initialData.hex
+    initialData.hex,
   );
   const [cardContrastTextColor, setCardContrastTextColor] = useState(
-    initialData.contrastText
+    initialData.contrastText,
   );
 
   function handleSubmit(event) {
@@ -37,7 +37,7 @@ export default function ColorForm({
       }}
     >
       <fieldset className="color-form--fieldset">
-        <label htmlFor="hex" className="color-form--role-label">
+        <label htmlFor="hex" className="color-form--input-field">
           Hex
           <ColorInput
             id="hex"
@@ -46,7 +46,16 @@ export default function ColorForm({
           />
         </label>
 
-        <label htmlFor="role" className="color-form--role-label">
+        <label htmlFor="contrastText" className="color-form--input-field">
+          Text
+          <ColorInput
+            id="contrastText"
+            defaultValue={initialData.contrastText}
+            cardContrastTextColor={setCardContrastTextColor}
+          />
+        </label>
+
+        <label htmlFor="role" className="color-form--input-field">
           Role
           <input
             id="role"
@@ -54,15 +63,6 @@ export default function ColorForm({
             type="text"
             defaultValue={initialData.role}
             className="color-form--input-field--color-text"
-          />
-        </label>
-
-        <label htmlFor="contrastText" className="color-form--role-label">
-          Contrast Text
-          <ColorInput
-            id="contrastText"
-            defaultValue={initialData.contrastText}
-            cardContrastTextColor={setCardContrastTextColor}
           />
         </label>
       </fieldset>

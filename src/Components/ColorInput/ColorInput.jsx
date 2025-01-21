@@ -16,7 +16,7 @@ export default function ColorInput({
   };
 
   return (
-    <div className="color-form--color-input-wrapper">
+    <>
       <input
         id={id}
         name={id}
@@ -31,6 +31,6 @@ export default function ColorInput({
         onChange={handleInputValue}
         className="color-form--input-field--color-picker"
       />
-    </div>
+    </>
   );
 }
