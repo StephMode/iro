@@ -4,6 +4,9 @@ https://www.joshwcomeau.com/css/custom-css-reset/
 
 /* color variables */
 :root {
+    font-family: "M PLUS 2", serif;
+    font-weight: 400;
+
     --root-background--jet: #333333;
     --main-background--eerieBlack: #1a1a1a;
     --main-fontColor-whiteSmoke: #f5f5f5;
@@ -34,6 +37,12 @@ https://www.joshwcomeau.com/css/custom-css-reset/
   3. Add accessible line-height
   4. Improve text rendering
 */
+
+@font-face {
+    font-family: "M PLUS 2";
+    src: url("/public/fonts/MPLUS2-VariableFont_wght.ttf") format("truetype");
+}
+
 body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
