@@ -67,7 +67,7 @@ export default function ColorForm({
         </label>
       </fieldset>
       <Button
-        buttonType={isEdit ? "edit" : "add"}
+        buttonType={isEdit ? "save" : "add"}
         type="submit"
         className="color-form--submit-button"
       />
