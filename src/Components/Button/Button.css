@@ -1,8 +1,13 @@
 .buttonStyled {
-    font-size: var(--button-font-size);
     transition: all 0.15s ease-in;
 
     &:hover {
         font-size: calc(var(--button-font-size) * 1.25);
     }
+}
+
+.buttonDisabled {
+    border-radius: 5px;
+    color: #46453d;
+    cursor: not-allowed;
 }

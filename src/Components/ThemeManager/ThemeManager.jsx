@@ -41,15 +41,7 @@ export default function ThemeManager({
         {!isEditing && (
           <>
             {selectedTheme.id === "t1" && (
-              <Button
-                style={{
-                  backgroundColor: "#FAFAFA",
-                  border: "1px solid lightgrey",
-                  borderRadius: "5px",
-                  color: "#46453D",
-                }}
-                buttonType="edit"
-              />
+              <Button buttonType="edit" isDisabled={true} />
             )}
             {selectedTheme.id !== "t1" && (
               <Button buttonType="edit" onClick={() => setIsEditing(true)} />
@@ -79,15 +71,7 @@ export default function ThemeManager({
               />
             )}
             {selectedTheme.id === "t1" && (
-              <Button
-                buttonType="delete"
-                style={{
-                  backgroundColor: "#FAFAFA",
-                  border: "1px solid lightgrey",
-                  borderRadius: "5px",
-                  color: "#46453D",
-                }}
-              />
+              <Button buttonType="delete" isDisabled={true} />
             )}
           </>
         )}

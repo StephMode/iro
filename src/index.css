@@ -138,6 +138,7 @@ button,
 }
 
 button {
+    font-size: var(--button-font-size);
     padding: 0;
     border: none;
     outline: none;

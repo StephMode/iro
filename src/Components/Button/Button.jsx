@@ -8,7 +8,7 @@ import { LuDelete } from "react-icons/lu";
 import { LuSave } from "react-icons/lu";
 import { LuCopyCheck } from "react-icons/lu";
 
-export default function Button({ onClick, style, buttonType }) {
+export default function Button({ onClick, buttonType, isDisabled }) {
   const buttonTypeLabes = {
     labels: [
       { labelType: "add", buttonLabel: <LuSquarePlus /> },
@@ -28,16 +28,27 @@ export default function Button({ onClick, style, buttonType }) {
   };
 
   return (
-    <button onClick={onClick} style={style} className="buttonStyled">
+    <button
+      onClick={onClick}
+      className={!isDisabled ? "buttonStyled" : "buttonDisabled"}
+    >
       {buttonTypeLabes.returnLabel()}
     </button>
   );
 }
 
-const buttonTypes = ["add", "edit", "delete", "save", "cancel", "copy"];
+const buttonTypes = [
+  "add",
+  "edit",
+  "delete",
+  "save",
+  "cancel",
+  "copy",
+  "successClipboard",
+];
 
 Button.propTypes = {
   onClick: PropTypes.func,
-  style: PropTypes.object,
   buttonType: PropTypes.oneOf(buttonTypes).isRequired,
+  isDisabled: PropTypes.bool,
 };
