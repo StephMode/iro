@@ -135,6 +135,15 @@ button,
     -webkit-appearance: button;
 }
 
+button {
+    padding: 0;
+    border: none;
+    outline: none;
+    color: inherit;
+    background: none;
+}
+/* remember: "shorthand here would be all: unset */
+
 /*
   8. Create a root stacking context
 */
