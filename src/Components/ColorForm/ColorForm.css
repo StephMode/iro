@@ -1,42 +1,58 @@
 .color-form--form {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  padding: 5px;
-  max-width: 350px;
-  
+    display: flex;
+    max-width: 500px;
+    max-height: 175px;
+    border-radius: 5px;
+    margin: 5px;
+    border-radius: 15px;
 }
 
-/* this aligns the label and input of role due to diffrences in JSX structure compared to ColorInput */
-.color-form--role-label {
-  display: flex;
-  flex-direction: column;
+.color-form--fieldset {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    min-width: 85%;
+    border: none;
 }
 
-.color-form--color-input-wrapper {
-  display: flex;
-  gap: 5px;
+.color-form--input-field {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .color-form--input-field--color-text {
-    flex-grow: 1;
+    border: none;
+    max-width: 150px;
+    border-radius: 5px;
+    border-bottom: 1px solid black;
+    background-color: rgba(255, 255, 255, 0.75);
 }
-
 
 .color-form--input-field--color-picker {
-  max-width: 34px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    max-width: 24px;
+    max-height: 24px;
+    padding: 0;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    margin-left: 5px;
 }
 
+.color-form--input-field--color-picker::-webkit-color-swatch {
+    border-radius: 5px;
+    border: 1px solid whitesmoke;
+}
 
-.color-form--submit-button {
-  /* border: 1.5px solid rgb(249, 147, 58); */
-  border-radius: 5px;
-  color: white;
-  font-weight: 800;
-  background-color: #346dda;
-  width: 100%;
+.color-form--input-field--color-picker::-moz-color-swatch {
+    border-radius: 5px;
+    border: 1px solid white;
 }
 
 .color-form--submit-button:hover {
-  background-color: #6d98e7;
+    background-color: #6d98e7;
 }
