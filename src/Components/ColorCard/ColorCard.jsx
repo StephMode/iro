@@ -14,7 +14,7 @@ export default function ColorCard({ color, onDeleteColor, onEditColor }) {
   }
 
   return (
-    <div
+    <section
       className="color-card"
       style={{
         background: color.hex,
@@ -22,7 +22,7 @@ export default function ColorCard({ color, onDeleteColor, onEditColor }) {
       }}
     >
       {editMode ? (
-        <div>
+        <>
           <ColorForm
             isEdit={true}
             initialData={color}
@@ -33,7 +33,7 @@ export default function ColorCard({ color, onDeleteColor, onEditColor }) {
             // }}
           />
           <Button buttonType="cancel" onClick={() => setEditMode(false)} />
-        </div>
+        </>
       ) : (
         <>
           <div>
@@ -54,6 +54,6 @@ export default function ColorCard({ color, onDeleteColor, onEditColor }) {
           </div>
         </>
       )}
-    </div>
+    </section>
   );
 }
