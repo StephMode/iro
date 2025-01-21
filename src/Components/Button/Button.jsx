@@ -28,7 +28,7 @@ export default function Button({ onClick, style, buttonType }) {
   };
 
   return (
-    <button onClick={onClick} style={style} className="button">
+    <button onClick={onClick} style={style} className="buttonStyled">
       {buttonTypeLabes.returnLabel()}
     </button>
   );
