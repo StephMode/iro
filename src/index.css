@@ -2,19 +2,32 @@
 https://www.joshwcomeau.com/css/custom-css-reset/
 */
 
+/* color variables */
+:root {
+    --root-background--jet: #333333;
+    --main-background--eerieBlack: #1a1a1a;
+    --main-fontColor-whiteSmoke: #f5f5f5;
+
+    --inner-padding-desktop-left: 35px;
+    --inner-padding-desktop-right: 15px;
+
+    --inner-padding-mobile-left: 10px;
+    --inner-padding-mobile-right: 10px;
+}
+
 /*
   1. Use a more-intuitive box-sizing model.
 */
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 /*
   2. Remove default margin
 */
 * {
-  margin: 0;
+    margin: 0;
 }
 /*
   Typographic tweaks!
@@ -22,8 +35,9 @@ https://www.joshwcomeau.com/css/custom-css-reset/
   4. Improve text rendering
 */
 body {
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    background-color: var(--root-background--jet);
 }
 /*
   5. Improve media defaults
@@ -33,8 +47,8 @@ picture,
 video,
 canvas,
 svg {
-  display: block;
-  max-width: 100%;
+    display: block;
+    max-width: 100%;
 }
 /*
   6. Remove built-in form typography styles
@@ -43,7 +57,7 @@ input,
 button,
 textarea,
 select {
-  font: inherit;
+    font: inherit;
 }
 /*
   7. Avoid text overflows
@@ -55,12 +69,12 @@ h3,
 h4,
 h5,
 h6 {
-  overflow-wrap: break-word;
+    overflow-wrap: break-word;
 }
 /*
   8. Create a root stacking context
 */
 #root,
 #__next {
-  isolation: isolate;
+    isolation: isolate;
 }
