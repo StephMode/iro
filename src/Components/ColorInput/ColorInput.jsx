@@ -1,10 +1,11 @@
 import { useState } from "react";
 
-export default function ColorInput({ id, defaultValue }) {
+export default function ColorInput({ id, defaultValue, cardBackgroundColor }) {
   const [inputValue, setInputValue] = useState(defaultValue);
 
   const handleInputValue = (event) => {
     setInputValue(event.target.value);
+    cardBackgroundColor(event.target.value);
   };
 
   return (

@@ -1,6 +1,7 @@
 import "./ColorForm.css";
 import ColorInput from "../ColorInput/ColorInput";
 import Button from "../Button/Button";
+import { useState } from "react";
 
 export default function ColorForm({
   isEdit,
@@ -8,6 +9,10 @@ export default function ColorForm({
   onEditColor,
   initialData = { role: "some color", hex: "#ffef22", contrastText: "#ffffff" },
 }) {
+  const [cardBackgroundColor, setCardBackgroundColor] = useState(
+    initialData.hex
+  );
+
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -19,12 +24,25 @@ export default function ColorForm({
     event.target.elements.role.focus();
   }
 
+  // function cardBcgSetter(hex) {
+  //   setCardBackgroundColor(hex);
+  // }
+
   return (
-    <form className="color-form--form" onSubmit={handleSubmit}>
+    <form
+      className="color-form--form"
+      onSubmit={handleSubmit}
+      style={{ backgroundColor: cardBackgroundColor }}
+      // style={{ backgroundColor: cardBackgroundColor.hex }}
+    >
       <fieldset className="color-form--fieldset">
         <label htmlFor="hex" className="color-form--role-label">
           Hex
-          <ColorInput id="hex" defaultValue={initialData.hex} />
+          <ColorInput
+            id="hex"
+            defaultValue={initialData.hex}
+            cardBackgroundColor={setCardBackgroundColor}
+          />
         </label>
 
         <label htmlFor="role" className="color-form--role-label">
