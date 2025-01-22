@@ -1,4 +1,4 @@
-import "./Color.css";
+import "./ColorCard.css";
 import ContrastChecker from "../ContrastChecker/ContrastChecker.jsx";
 import CopyToClipboard from "../CopyToClipboard/CopyToClipboard.jsx";
 import { useState } from "react";
