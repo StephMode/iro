@@ -8,6 +8,12 @@
     padding: 5px;
     max-width: 500px;
     min-height: 175px;
+
+    &:hover {
+        box-shadow:
+            var(--box-shadow-color-platinum) 2.5px 3.5px,
+            var(--box-shadow-color-silver) 4.5px 5px;
+    }
 }
 
 .color-card-headline {
