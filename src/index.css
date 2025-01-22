@@ -4,23 +4,25 @@ https://www.joshwcomeau.com/css/custom-css-reset/
 
 /* color variables */
 :root {
-    font-family: "M PLUS 2", serif;
-    font-weight: 400;
+  font-family: "M PLUS 2", serif;
+  font-weight: 400;
 
-    --root-background--jet: #333333;
-    --main-background--eerieBlack: #1a1a1a;
-    --main-fontColor-whiteSmoke: #f5f5f5;
+  --root-background--main: #333333; /* jet */
+  --main-background--main: #1a1a1a; /* eerie black */
+  --fontColor-main: #f5f5f5; /* white smoke */
 
-    --box-shadow-color-platinum: #e0e0e0;
-    --box-shadow-color-silver: #c2c2c2;
+  --box-shadow-color-main: #e0e0e0; /* platinum */
+  --box-shadow-color-secondary: #c2c2c2; /* silver */
 
-    --inner-padding-desktop-left: 35px;
-    --inner-padding-desktop-right: 15px;
+  /* inner padding of main for desktop */
+  --inner-padding-desktop-left: 35px;
+  --inner-padding-desktop-right: 15px;
 
-    --inner-padding-mobile-left: 10px;
-    --inner-padding-mobile-right: 10px;
+  /* inner padding of main for mobile */
+  --inner-padding-mobile-left: 10px;
+  --inner-padding-mobile-right: 10px;
 
-    --button-font-size: 35px;
+  --button-font-size-main: 35px; /* main font size of buttons */
 }
 
 /*
@@ -29,13 +31,13 @@ https://www.joshwcomeau.com/css/custom-css-reset/
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 /*
   2. Remove default margin
 */
 * {
-    margin: 0;
+  margin: 0;
 }
 /*
   Typographic tweaks!
@@ -44,14 +46,14 @@ https://www.joshwcomeau.com/css/custom-css-reset/
 */
 
 @font-face {
-    font-family: "M PLUS 2";
-    src: url("/public/fonts/MPLUS2-VariableFont_wght.ttf") format("truetype");
+  font-family: "M PLUS 2";
+  src: url("/public/fonts/MPLUS2-VariableFont_wght.ttf") format("truetype");
 }
 
 body {
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-    background-color: var(--root-background--jet);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--root-background--main);
 }
 /*
   5. Improve media defaults
@@ -61,8 +63,8 @@ picture,
 video,
 canvas,
 svg {
-    display: block;
-    max-width: 100%;
+  display: block;
+  max-width: 100%;
 }
 /*
   6. Remove built-in form typography styles
@@ -71,7 +73,7 @@ input,
 button,
 textarea,
 select {
-    font: inherit;
+  font: inherit;
 }
 /*
   7. Avoid text overflows
@@ -83,11 +85,11 @@ h3,
 h4,
 h5,
 h6 {
-    overflow-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 h1 {
-    font-size: 3.5rem;
+  font-size: 3.5rem;
 }
 
 /**
@@ -100,11 +102,11 @@ input,
 optgroup,
 select,
 textarea {
-    font-family: inherit; /* 1 */
-    font-size: 100%; /* 1 */
-    line-height: 1.15; /* 1 */
-    margin: 0; /* 2 */
-    cursor: pointer;
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+  cursor: pointer;
 }
 
 /**
@@ -114,8 +116,8 @@ textarea {
 
 button,
 input {
-    /* 1 */
-    overflow: visible;
+  /* 1 */
+  overflow: visible;
 }
 
 /**
@@ -125,8 +127,8 @@ input {
 
 button,
 select {
-    /* 1 */
-    text-transform: none;
+  /* 1 */
+  text-transform: none;
 }
 
 /**
@@ -137,16 +139,16 @@ button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
-    -webkit-appearance: button;
+  -webkit-appearance: button;
 }
 
 button {
-    font-size: var(--button-font-size);
-    padding: 0;
-    border: none;
-    outline: none;
-    color: inherit;
-    background: none;
+  font-size: var(--button-font-size-main);
+  padding: 0;
+  border: none;
+  outline: none;
+  color: inherit;
+  background: none;
 }
 /* remember: "shorthand here would be all: unset */
 
@@ -155,5 +157,5 @@ button {
 */
 #root,
 #__next {
-    isolation: isolate;
+  isolation: isolate;
 }
