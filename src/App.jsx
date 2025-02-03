@@ -6,13 +6,15 @@ import { uid } from "uid";
 import useLocalStorageState from "use-local-storage-state";
 import { useState } from "react";
 import ThemeManager from "./Components/ThemeManager/ThemeManager";
+import Button from "./Components/Button/Button";
 
-function App() {
+export default function App() {
   const [themes, setThemes] = useLocalStorageState("themes", {
     defaultValue: initialThemes,
   });
   const [selectedThemeId, setSelectedThemeId] = useState(initialThemes[0].id);
   const selectedTheme = themes.find((t) => t.id === selectedThemeId);
+  const [showAddColorForm, setShowAddColorForm] = useState(false);
 
   function handleAddTheme() {
     setThemes([...themes, { id: uid(), name: "new Theme", colors: [] }]);
@@ -26,8 +28,8 @@ function App() {
   function handleEditTheme(newName) {
     setThemes((prevThemes) =>
       prevThemes.map((theme) =>
-        theme.id === selectedThemeId ? { ...theme, name: newName } : theme,
-      ),
+        theme.id === selectedThemeId ? { ...theme, name: newName } : theme
+      )
     );
   }
 
@@ -39,9 +41,10 @@ function App() {
               ...theme,
               colors: [...theme.colors, { id: uid(), ...newColor }],
             }
-          : theme,
-      ),
+          : theme
+      )
     );
+    setShowAddColorForm(false);
   }
 
   function handleDeleteColor(id) {
@@ -52,8 +55,8 @@ function App() {
               ...theme,
               colors: theme.colors.filter((color) => color.id !== id),
             }
-          : theme,
-      ),
+          : theme
+      )
     );
   }
 
@@ -67,8 +70,8 @@ function App() {
                 return color.id === editedColor.id ? editedColor : color;
               }),
             }
-          : theme,
-      ),
+          : theme
+      )
     );
   }
 
@@ -114,9 +117,16 @@ function App() {
         })}
       </ul>
 
-      <ColorForm onAddColor={handleAddColor} />
+      {showAddColorForm ? (
+        <>
+          <ColorForm
+            onAddColor={handleAddColor}
+            colorAddFormCloseListener={setShowAddColorForm}
+          />
+        </>
+      ) : (
+        <Button buttonType="add" onClick={() => setShowAddColorForm(true)} />
+      )}
     </main>
   );
 }
-
-export default App;

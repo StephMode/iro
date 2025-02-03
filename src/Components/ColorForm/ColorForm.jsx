@@ -8,12 +8,13 @@ export default function ColorForm({
   onAddColor,
   onEditColor,
   initialData = { role: "highlight", hex: "#b55b16", contrastText: "#ffffff" },
+  colorAddFormCloseListener,
 }) {
   const [cardBackgroundColor, setCardBackgroundColor] = useState(
-    initialData.hex,
+    initialData.hex
   );
   const [cardContrastTextColor, setCardContrastTextColor] = useState(
-    initialData.contrastText,
+    initialData.contrastText
   );
 
   function handleSubmit(event) {
@@ -66,11 +67,16 @@ export default function ColorForm({
           />
         </label>
       </fieldset>
-      <Button
-        buttonType={isEdit ? "save" : "add"}
-        type="submit"
-        className="color-form--submit-button"
-      />
+      {!isEdit && (
+        <Button
+          buttonType="cancel"
+          onClick={(e) => {
+            e.preventDefault();
+            colorAddFormCloseListener(false);
+          }}
+        />
+      )}
+      <Button buttonType={isEdit ? "save" : "add"} />
     </form>
   );
 }
