@@ -34,7 +34,7 @@ export default function CopyToClipboard({ hexValue }) {
           }}
         />
       ) : (
-        <Button buttonType="successClipboard" />
+        <Button buttonType="successClipboard" feedbackSuccess={true} />
       )}
     </>
   );

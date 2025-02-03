@@ -8,7 +8,12 @@ import { LuDelete } from "react-icons/lu";
 import { LuSave } from "react-icons/lu";
 import { LuCopyCheck } from "react-icons/lu";
 
-export default function Button({ onClick, buttonType, isDisabled }) {
+export default function Button({
+  onClick,
+  buttonType,
+  isDisabled,
+  feedbackSuccess,
+}) {
   const buttonTypeLabes = {
     labels: [
       { labelType: "add", buttonLabel: <LuSquarePlus /> },
@@ -21,7 +26,7 @@ export default function Button({ onClick, buttonType, isDisabled }) {
     ],
     returnLabel() {
       const buttonLabelFinder = this.labels.find(
-        (label) => label.labelType === buttonType,
+        (label) => label.labelType === buttonType
       );
       return buttonLabelFinder ? buttonLabelFinder.buttonLabel : "";
     },
@@ -31,6 +36,7 @@ export default function Button({ onClick, buttonType, isDisabled }) {
     <button
       onClick={onClick}
       className={!isDisabled ? "buttonStyled" : "buttonDisabled"}
+      style={feedbackSuccess && { color: "var(--fontColor-icon-success)" }}
     >
       {buttonTypeLabes.returnLabel()}
     </button>
