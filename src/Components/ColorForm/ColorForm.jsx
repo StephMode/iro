@@ -28,6 +28,11 @@ export default function ColorForm({
     event.target.elements.role.focus();
   }
 
+  function handleFormClose(event) {
+    event.preventDefault();
+    colorAddFormCloseListener(false);
+  }
+
   return (
     <form
       className="color-form--form"
@@ -67,15 +72,7 @@ export default function ColorForm({
           />
         </label>
       </fieldset>
-      {!isEdit && (
-        <Button
-          buttonType="cancel"
-          onClick={(e) => {
-            e.preventDefault();
-            colorAddFormCloseListener(false);
-          }}
-        />
-      )}
+      {!isEdit && <Button buttonType="cancel" onClick={handleFormClose} />}
       <Button buttonType={isEdit ? "save" : "add"} />
     </form>
   );
