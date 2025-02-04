@@ -7,6 +7,8 @@ import useLocalStorageState from "use-local-storage-state";
 import { useState } from "react";
 import ThemeManager from "./Components/ThemeManager/ThemeManager";
 import Button from "./Components/Button/Button";
+import { GiMachineGun } from "react-icons/gi";
+import { ImInsertTemplate } from "react-icons/im";
 
 export default function App() {
   const [themes, setThemes] = useLocalStorageState("themes", {
@@ -115,18 +117,21 @@ export default function App() {
             </li>
           );
         })}
-      </ul>
-
-      {showAddColorForm ? (
-        <>
-          <ColorForm
-            onAddColor={handleAddColor}
-            colorAddFormCloseListener={setShowAddColorForm}
+        {showAddColorForm ? (
+          <>
+            <ColorForm
+              onAddColor={handleAddColor}
+              colorAddFormCloseListener={setShowAddColorForm}
+            />
+          </>
+        ) : (
+          <Button
+            buttonType="add"
+            onClick={() => setShowAddColorForm(true)}
+            isCentered={true}
           />
-        </>
-      ) : (
-        <Button buttonType="add" onClick={() => setShowAddColorForm(true)} />
-      )}
+        )}
+      </ul>
     </main>
   );
 }

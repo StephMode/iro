@@ -1,4 +1,4 @@
-.buttonStyled {
+.button-styled {
   transition: all 0.15s ease-in;
 
   &:hover {
@@ -6,8 +6,16 @@
   }
 }
 
-.buttonDisabled {
+.button-disabled {
   border-radius: 5px;
   color: #46453d;
   cursor: not-allowed;
+}
+
+.button-centered {
+  align-self: center;
+}
+
+.button-success-feedback {
+  color: var(--fontColor-icon-success);
 }

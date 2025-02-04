@@ -13,6 +13,7 @@ export default function Button({
   buttonType,
   isDisabled,
   feedbackSuccess,
+  isCentered,
 }) {
   const buttonTypeLabes = {
     labels: [
@@ -35,8 +36,12 @@ export default function Button({
   return (
     <button
       onClick={onClick}
-      className={!isDisabled ? "buttonStyled" : "buttonDisabled"}
-      style={feedbackSuccess && { color: "var(--fontColor-icon-success)" }}
+      className={
+        (isDisabled && "button-disabled") ||
+        (feedbackSuccess && "button-styled button-success-feedback") ||
+        (isCentered && "button-styled button-centered") ||
+        "button-styled"
+      }
     >
       {buttonTypeLabes.returnLabel()}
     </button>
