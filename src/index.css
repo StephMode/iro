@@ -10,7 +10,7 @@ https://www.joshwcomeau.com/css/custom-css-reset/
   --root-background--main: #333333; /* jet */
   --main-background--main: #1a1a1a; /* eerie black */
   --fontColor-main: #f5f5f5; /* white smoke */
-
+  --fontColor-heading: #e8d8c8; /* almond */
   --fontColor-icon-success: #68dc4d; /* SGBUS green */
 
   --box-shadow-color-main: #e0e0e0; /* platinum */
@@ -90,8 +90,20 @@ h6 {
   overflow-wrap: break-word;
 }
 
+footer {
+  margin: 10px 0;
+  padding: 15px;
+  font-size: 0.9rem;
+}
+
 h1 {
-  font-size: 3.5rem;
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 800;
 }
 
 /**

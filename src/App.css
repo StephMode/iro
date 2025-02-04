@@ -19,6 +19,20 @@ main {
   }
 }
 
+.header--wrapper {
+  display: flex;
+  align-items: baseline;
+  gap: 15px;
+  padding: 15px 0;
+  color: var(--fontColor-heading);
+}
+.header--caption {
+  font-size: 1em;
+  @media screen and (max-width: 490px) {
+    font-size: 0.55em;
+  }
+}
+
 .no-colors-message {
   border: 1px solid sandybrown;
   border-radius: 5px;

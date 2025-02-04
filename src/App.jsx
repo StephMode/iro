@@ -7,8 +7,7 @@ import useLocalStorageState from "use-local-storage-state";
 import { useState } from "react";
 import ThemeManager from "./Components/ThemeManager/ThemeManager";
 import Button from "./Components/Button/Button";
-import { GiMachineGun } from "react-icons/gi";
-import { ImInsertTemplate } from "react-icons/im";
+import { LuHeart } from "react-icons/lu";
 
 export default function App() {
   const [themes, setThemes] = useLocalStorageState("themes", {
@@ -79,13 +78,16 @@ export default function App() {
 
   return (
     <main>
-      <h1>
-        <ruby>
-          色 <rp>(</rp>
-          <rt>iro</rt>
-          <rp>)</rp>
-        </ruby>
-      </h1>
+      <header>
+        <div className="header--wrapper">
+          <h1>色</h1>
+          <h2>iro</h2>
+          <p className="header--caption">
+            color palettes for the projects you love
+          </p>
+          <LuHeart style={{ color: "red" }} />
+        </div>
+      </header>
 
       <ThemeManager
         themes={themes}
@@ -132,6 +134,7 @@ export default function App() {
           />
         )}
       </ul>
+      <footer>Built with React & Vite | Stephan Model | 2025</footer>
     </main>
   );
 }
