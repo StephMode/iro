@@ -1,15 +1,10 @@
-body {
-  padding: 10px;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
 main {
   background-color: var(--main-background--main);
   color: var(--fontColor-main);
   padding-left: var(--inner-padding-mobile-left);
   padding-right: var(--inner-padding-mobile-right);
   border-radius: 15px;
+  box-shadow: 0.1px 0.1px 15px var(--box-shadow-color-body);
 }
 
 @media screen and (min-width: 600px) {

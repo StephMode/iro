@@ -7,7 +7,7 @@ https://www.joshwcomeau.com/css/custom-css-reset/
   font-family: "M PLUS 2", serif;
   font-weight: 400;
 
-  --root-background--main: #333333; /* jet */
+  --root-background--main: #131414; /* jet */
   --main-background--main: #1a1a1a; /* eerie black */
 
   --fontColor-main: #f5f5f5; /* white smoke */
@@ -17,6 +17,7 @@ https://www.joshwcomeau.com/css/custom-css-reset/
   --fontColor-icon-success: #68dc4d; /* SGBUS green */
   --ui-element-background-info: rgba(54, 113, 255, 0.4); /* brandeis blue */
 
+  --box-shadow-color-body: rgba(224, 224, 224, 0.25);
   --box-shadow-color-main: #e0e0e0; /* platinum */
   --box-shadow-color-secondary: #c2c2c2; /* silver */
 
@@ -60,6 +61,9 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   background-color: var(--root-background--main);
+  padding: 10px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 /*
   5. Improve media defaults
