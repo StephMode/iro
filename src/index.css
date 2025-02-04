@@ -133,6 +133,13 @@ select {
   text-transform: none;
 }
 
+select {
+  appearance: none;
+  background-color: transparent;
+  color: var(--fontColor-main);
+  border: none;
+}
+
 /**
  * Correct the inability to style clickable types in iOS and Safari.
  */

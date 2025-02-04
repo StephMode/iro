@@ -1,0 +1,15 @@
+.theme-manager-buttons--row,
+.theme-manager-buttons--theme-picker--row,
+.theme-manager-buttons--add-theme--row {
+  display: flex;
+  height: 50px;
+}
+
+.theme-manager-buttons--row {
+  gap: 15px;
+}
+
+.theme-manager-buttons--theme-picker--row {
+  gap: 5px;
+  align-items: center;
+}

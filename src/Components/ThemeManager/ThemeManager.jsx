@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Button from "../Button/Button";
+import { LuChevronDown } from "react-icons/lu";
+import "../ThemeManager/ThemeManager.css";
 
 export default function ThemeManager({
   themes,
@@ -21,21 +23,24 @@ export default function ThemeManager({
   }
 
   return (
-    <>
-      <div style={{ display: "flex", gap: "15px" }}>
+    <section>
+      <div className="theme-manager-buttons--row">
         {!isEditing && (
-          <select
-            value={seletedThemeId}
-            onChange={(e) => onThemeSelect(e.target.value)}
-          >
-            {themes.map((theme) => {
-              return (
-                <option key={theme.id} value={theme.id}>
-                  {theme.name}
-                </option>
-              );
-            })}
-          </select>
+          <div className="theme-manager-buttons--theme-picker--row">
+            <LuChevronDown style={{ fontSize: "25px" }} />
+            <select
+              value={seletedThemeId}
+              onChange={(e) => onThemeSelect(e.target.value)}
+            >
+              {themes.map((theme) => {
+                return (
+                  <option key={theme.id} value={theme.id}>
+                    {theme.name}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
         )}
 
         {!isEditing && (
@@ -76,7 +81,9 @@ export default function ThemeManager({
           </>
         )}
       </div>
-      <Button onClick={onAddTheme} buttonType={"add"} />
-    </>
+      <div className="theme-manager-buttons--add-theme--row">
+        <Button onClick={onAddTheme} buttonType={"add"} />
+      </div>
+    </section>
   );
 }
