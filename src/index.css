@@ -9,9 +9,13 @@ https://www.joshwcomeau.com/css/custom-css-reset/
 
   --root-background--main: #333333; /* jet */
   --main-background--main: #1a1a1a; /* eerie black */
+
   --fontColor-main: #f5f5f5; /* white smoke */
   --fontColor-heading: #e8d8c8; /* almond */
+
+  --fontColor-ui-element: #1b1c10; /* shade of eerie black */
   --fontColor-icon-success: #68dc4d; /* SGBUS green */
+  --ui-element-background-info: rgba(54, 113, 255, 0.4); /* brandeis blue */
 
   --box-shadow-color-main: #e0e0e0; /* platinum */
   --box-shadow-color-secondary: #c2c2c2; /* silver */

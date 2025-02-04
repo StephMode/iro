@@ -34,11 +34,19 @@ main {
 }
 
 .no-colors-message {
-  border: 1px solid sandybrown;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 15px;
   border-radius: 5px;
-  max-width: 400px;
+  max-width: 300px;
   padding: 5px;
-  background-color: antiquewhite;
+  margin: 10px auto;
+  background-color: var(--ui-element-background-info);
+}
+
+.no-colors-message--icon {
+  font-size: 1.5em;
 }
 
 .color-card--list {

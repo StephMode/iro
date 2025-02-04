@@ -8,6 +8,7 @@ import { useState } from "react";
 import ThemeManager from "./Components/ThemeManager/ThemeManager";
 import Button from "./Components/Button/Button";
 import { LuHeart } from "react-icons/lu";
+import { LuPalette } from "react-icons/lu";
 
 export default function App() {
   const [themes, setThemes] = useLocalStorageState("themes", {
@@ -101,9 +102,11 @@ export default function App() {
       <h2>{selectedTheme.name}</h2>
 
       {selectedTheme.colors.length === 0 && (
-        <h3 className="no-colors-message">
-          🎨 No colors? How about adding one?
-        </h3>
+        <div className="no-colors-message">
+          <h3>This theme has no colors yet.</h3>
+          <h3>How about adding one?</h3>
+          <LuPalette className="no-colors-message--icon" />
+        </div>
       )}
 
       <ul className="color-card--list">
