@@ -34,8 +34,8 @@ main {
   align-items: center;
   gap: 15px;
   border-radius: 5px;
-  max-width: 300px;
-  padding: 5px;
+  max-width: 350px;
+  padding: 15px 0;
   margin: 10px auto;
   background-color: var(--ui-element-background-info);
 }
