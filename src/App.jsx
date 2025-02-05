@@ -6,13 +6,17 @@ import { uid } from "uid";
 import useLocalStorageState from "use-local-storage-state";
 import { useState } from "react";
 import ThemeManager from "./Components/ThemeManager/ThemeManager";
+import Button from "./Components/Button/Button";
+import { LuHeart } from "react-icons/lu";
+import { LuPalette } from "react-icons/lu";
 
-function App() {
+export default function App() {
   const [themes, setThemes] = useLocalStorageState("themes", {
     defaultValue: initialThemes,
   });
   const [selectedThemeId, setSelectedThemeId] = useState(initialThemes[0].id);
   const selectedTheme = themes.find((t) => t.id === selectedThemeId);
+  const [showAddColorForm, setShowAddColorForm] = useState(false);
 
   function handleAddTheme() {
     setThemes([...themes, { id: uid(), name: "new Theme", colors: [] }]);
@@ -26,8 +30,8 @@ function App() {
   function handleEditTheme(newName) {
     setThemes((prevThemes) =>
       prevThemes.map((theme) =>
-        theme.id === selectedThemeId ? { ...theme, name: newName } : theme,
-      ),
+        theme.id === selectedThemeId ? { ...theme, name: newName } : theme
+      )
     );
   }
 
@@ -39,9 +43,10 @@ function App() {
               ...theme,
               colors: [...theme.colors, { id: uid(), ...newColor }],
             }
-          : theme,
-      ),
+          : theme
+      )
     );
+    setShowAddColorForm(false);
   }
 
   function handleDeleteColor(id) {
@@ -52,8 +57,8 @@ function App() {
               ...theme,
               colors: theme.colors.filter((color) => color.id !== id),
             }
-          : theme,
-      ),
+          : theme
+      )
     );
   }
 
@@ -67,14 +72,23 @@ function App() {
                 return color.id === editedColor.id ? editedColor : color;
               }),
             }
-          : theme,
-      ),
+          : theme
+      )
     );
   }
 
   return (
     <main>
-      <h1>Theme Creator</h1>
+      <header>
+        <div className="header--wrapper">
+          <h1>色</h1>
+          <h2>iro</h2>
+          <p className="header--caption">
+            color palettes for the projects you love
+          </p>
+          <LuHeart style={{ color: "red" }} />
+        </div>
+      </header>
 
       <ThemeManager
         themes={themes}
@@ -88,9 +102,11 @@ function App() {
       <h2>{selectedTheme.name}</h2>
 
       {selectedTheme.colors.length === 0 && (
-        <h3 className="no-colors-message">
-          🎨 No colors? How about adding one?
-        </h3>
+        <div className="no-colors-message">
+          <h3>This theme has no colors yet.</h3>
+          <h3>How about adding one?</h3>
+          <LuPalette className="no-colors-message--icon" />
+        </div>
       )}
 
       <ul className="color-card--list">
@@ -106,11 +122,22 @@ function App() {
             </li>
           );
         })}
+        {showAddColorForm ? (
+          <>
+            <ColorForm
+              onAddColor={handleAddColor}
+              colorAddFormCloseListener={setShowAddColorForm}
+            />
+          </>
+        ) : (
+          <Button
+            buttonType="add"
+            onClick={() => setShowAddColorForm(true)}
+            isCentered={true}
+          />
+        )}
       </ul>
-
-      <ColorForm onAddColor={handleAddColor} />
+      <footer>Built with React & Vite | Stephan Model | 2025</footer>
     </main>
   );
 }
-
-export default App;

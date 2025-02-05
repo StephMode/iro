@@ -34,18 +34,7 @@ export default function CopyToClipboard({ hexValue }) {
           }}
         />
       ) : (
-        <div
-          style={{
-            display: "inline-block",
-            border: "1px solid black",
-            borderRadius: "5px",
-            backgroundColor: "green",
-            width: "50px",
-            height: "30px",
-          }}
-        >
-          Saved
-        </div>
+        <Button buttonType="successClipboard" feedbackSuccess={true} />
       )}
     </>
   );

@@ -1,4 +1,4 @@
-import "./Color.css";
+import "./ColorCard.css";
 import ContrastChecker from "../ContrastChecker/ContrastChecker.jsx";
 import CopyToClipboard from "../CopyToClipboard/CopyToClipboard.jsx";
 import { useState } from "react";
@@ -27,10 +27,6 @@ export default function ColorCard({ color, onDeleteColor, onEditColor }) {
             isEdit={true}
             initialData={color}
             onEditColor={handleEditColorConfirm}
-            // style={{
-            //   background: color.hex,
-            //   color: color.contrastText,
-            // }}
           />
           <Button buttonType="cancel" onClick={() => setEditMode(false)} />
         </>

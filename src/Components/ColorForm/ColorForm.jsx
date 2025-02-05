@@ -8,12 +8,13 @@ export default function ColorForm({
   onAddColor,
   onEditColor,
   initialData = { role: "highlight", hex: "#b55b16", contrastText: "#ffffff" },
+  colorAddFormCloseListener,
 }) {
   const [cardBackgroundColor, setCardBackgroundColor] = useState(
-    initialData.hex,
+    initialData.hex
   );
   const [cardContrastTextColor, setCardContrastTextColor] = useState(
-    initialData.contrastText,
+    initialData.contrastText
   );
 
   function handleSubmit(event) {
@@ -25,6 +26,11 @@ export default function ColorForm({
     }
     event.target.reset();
     event.target.elements.role.focus();
+  }
+
+  function handleFormClose(event) {
+    event.preventDefault();
+    colorAddFormCloseListener(false);
   }
 
   return (
@@ -66,11 +72,10 @@ export default function ColorForm({
           />
         </label>
       </fieldset>
-      <Button
-        buttonType={isEdit ? "edit" : "add"}
-        type="submit"
-        className="color-form--submit-button"
-      />
+      <div className="color-form--form-buttons">
+        {!isEdit && <Button buttonType="cancel" onClick={handleFormClose} />}
+        <Button buttonType={isEdit ? "save" : "add"} />
+      </div>
     </form>
   );
 }

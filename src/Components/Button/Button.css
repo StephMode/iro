@@ -1,0 +1,27 @@
+.button-styled {
+  transition: all 0.15s ease-in;
+
+  &:hover {
+    font-size: calc(var(--button-font-size-main) * 1.25);
+  }
+  @media screen and (max-width: 450px) {
+    transition: none;
+    &:hover {
+      font-size: var(--button-font-size-main);
+    }
+  }
+}
+
+.button-disabled {
+  border-radius: 5px;
+  color: #46453d;
+  cursor: not-allowed;
+}
+
+.button-centered {
+  align-self: center;
+}
+
+.button-success-feedback {
+  color: var(--fontColor-icon-success);
+}

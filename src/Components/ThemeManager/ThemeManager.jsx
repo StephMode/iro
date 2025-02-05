@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Button from "../Button/Button";
+import { LuChevronDown } from "react-icons/lu";
+import "../ThemeManager/ThemeManager.css";
 
 export default function ThemeManager({
   themes,
@@ -21,35 +23,30 @@ export default function ThemeManager({
   }
 
   return (
-    <>
-      <div style={{ display: "flex", gap: "15px" }}>
+    <section>
+      <div className="theme-manager-buttons--row">
         {!isEditing && (
-          <select
-            value={seletedThemeId}
-            onChange={(e) => onThemeSelect(e.target.value)}
-          >
-            {themes.map((theme) => {
-              return (
-                <option key={theme.id} value={theme.id}>
-                  {theme.name}
-                </option>
-              );
-            })}
-          </select>
+          <div className="theme-manager-buttons--theme-picker--row">
+            <LuChevronDown style={{ fontSize: "25px" }} />
+            <select
+              value={seletedThemeId}
+              onChange={(e) => onThemeSelect(e.target.value)}
+            >
+              {themes.map((theme) => {
+                return (
+                  <option key={theme.id} value={theme.id}>
+                    {theme.name}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
         )}
 
         {!isEditing && (
           <>
             {selectedTheme.id === "t1" && (
-              <Button
-                style={{
-                  backgroundColor: "#FAFAFA",
-                  border: "1px solid lightgrey",
-                  borderRadius: "5px",
-                  color: "#46453D",
-                }}
-                buttonType="edit"
-              />
+              <Button buttonType="edit" isDisabled={true} />
             )}
             {selectedTheme.id !== "t1" && (
               <Button buttonType="edit" onClick={() => setIsEditing(true)} />
@@ -58,8 +55,12 @@ export default function ThemeManager({
         )}
 
         {isEditing && (
-          <form onSubmit={handleSubmit}>
+          <form
+            onSubmit={handleSubmit}
+            className="theme-manager-form--edit-theme"
+          >
             <input
+              className="theme-manager-form--edit-theme--input"
               type="text"
               value={editName}
               placeholder={selectedTheme?.name || "enter a name"}
@@ -79,20 +80,14 @@ export default function ThemeManager({
               />
             )}
             {selectedTheme.id === "t1" && (
-              <Button
-                buttonType="delete"
-                style={{
-                  backgroundColor: "#FAFAFA",
-                  border: "1px solid lightgrey",
-                  borderRadius: "5px",
-                  color: "#46453D",
-                }}
-              />
+              <Button buttonType="delete" isDisabled={true} />
             )}
           </>
         )}
       </div>
-      <Button onClick={onAddTheme} buttonType={"add"} />
-    </>
+      <div className="theme-manager-buttons--add-theme--row">
+        <Button onClick={onAddTheme} buttonType={"add"} />
+      </div>
+    </section>
   );
 }

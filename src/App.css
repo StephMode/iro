@@ -1,14 +1,47 @@
-body {
-  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  padding: 10px;
+main {
+  background-color: var(--main-background--main);
+  color: var(--fontColor-main);
+  padding-left: var(--inner-padding-mobile-left);
+  padding-right: var(--inner-padding-mobile-right);
+  border-radius: 15px;
+  box-shadow: 0.1px 0.1px 15px var(--box-shadow-color-body);
+}
+
+@media screen and (min-width: 600px) {
+  main {
+    padding-left: var(--inner-padding-desktop-left);
+    padding-right: var(--inner-padding-desktop-right);
+  }
+}
+
+.header--wrapper {
+  display: flex;
+  align-items: baseline;
+  gap: 15px;
+  padding: 15px 0;
+  color: var(--fontColor-heading);
+}
+.header--caption {
+  font-size: 1em;
+  @media screen and (max-width: 490px) {
+    font-size: 0.55em;
+  }
 }
 
 .no-colors-message {
-  border: 1px solid sandybrown;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  gap: 15px;
   border-radius: 5px;
-  max-width: 400px;
-  padding: 5px;
-  background-color: antiquewhite;
+  max-width: 350px;
+  padding: 15px 0;
+  margin: 10px auto;
+  background-color: var(--ui-element-background-info);
+}
+
+.no-colors-message--icon {
+  font-size: 1.5em;
 }
 
 .color-card--list {
