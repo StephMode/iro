@@ -116,6 +116,17 @@ h1 {
 h2 {
   font-size: 2rem;
   font-weight: 800;
+  @media screen and (max-width: 450px) {
+    font-size: 1.75rem;
+  }
+}
+
+h3 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  @media screen and (max-width: 450px) {
+    font-size: 1.15rem;
+  }
 }
 
 /**
