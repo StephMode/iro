@@ -55,8 +55,12 @@ export default function ThemeManager({
         )}
 
         {isEditing && (
-          <form onSubmit={handleSubmit}>
+          <form
+            onSubmit={handleSubmit}
+            className="theme-manager-form--edit-theme"
+          >
             <input
+              className="theme-manager-form--edit-theme--input"
               type="text"
               value={editName}
               placeholder={selectedTheme?.name || "enter a name"}

@@ -26,9 +26,9 @@
 .color-form--input-field--color-text {
   border: none;
   max-width: 150px;
-  border-radius: 5px;
+  border-radius: var(--border-radius-ui-elements-input);
   border-bottom: 1px solid black;
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: var(--ui-element-background-input);
   @media screen and (max-width: 450px) {
     width: 100px;
   }

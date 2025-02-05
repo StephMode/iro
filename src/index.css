@@ -15,7 +15,9 @@ https://www.joshwcomeau.com/css/custom-css-reset/
 
   --fontColor-ui-element: #1b1c10; /* shade of eerie black */
   --fontColor-icon-success: #68dc4d; /* SGBUS green */
+
   --ui-element-background-info: rgba(54, 113, 255, 0.4); /* brandeis blue */
+  --ui-element-background-input: rgba(255, 255, 255, 0.75);
 
   --box-shadow-color-body: rgba(224, 224, 224, 0.25);
   --box-shadow-color-main: #e0e0e0; /* platinum */
@@ -28,6 +30,8 @@ https://www.joshwcomeau.com/css/custom-css-reset/
   /* inner padding of main for mobile */
   --inner-padding-mobile-left: 10px;
   --inner-padding-mobile-right: 10px;
+
+  --border-radius-ui-elements-input: 5px;
 
   --button-font-size-main: 35px; /* main font size of buttons */
 }

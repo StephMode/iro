@@ -1,6 +1,7 @@
 .theme-manager-buttons--row,
 .theme-manager-buttons--theme-picker--row,
-.theme-manager-buttons--add-theme--row {
+.theme-manager-buttons--add-theme--row,
+.theme-manager-form--edit-theme {
   display: flex;
   height: 50px;
 }
@@ -9,7 +10,16 @@
   gap: 15px;
 }
 
-.theme-manager-buttons--theme-picker--row {
+.theme-manager-buttons--theme-picker--row,
+.theme-manager-form--edit-theme {
   gap: 5px;
   align-items: center;
+}
+
+.theme-manager-form--edit-theme--input {
+  width: 200px;
+  border: none;
+  border-bottom: 1px solid black;
+  border-radius: var(--border-radius-ui-elements-input);
+  background-color: var(--ui-element-background-input);
 }
