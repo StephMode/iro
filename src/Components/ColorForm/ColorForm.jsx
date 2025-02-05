@@ -72,8 +72,10 @@ export default function ColorForm({
           />
         </label>
       </fieldset>
-      {!isEdit && <Button buttonType="cancel" onClick={handleFormClose} />}
-      <Button buttonType={isEdit ? "save" : "add"} />
+      <div className="color-form--form-buttons">
+        {!isEdit && <Button buttonType="cancel" onClick={handleFormClose} />}
+        <Button buttonType={isEdit ? "save" : "add"} />
+      </div>
     </form>
   );
 }

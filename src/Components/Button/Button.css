@@ -4,6 +4,12 @@
   &:hover {
     font-size: calc(var(--button-font-size-main) * 1.25);
   }
+  @media screen and (max-width: 450px) {
+    transition: none;
+    &:hover {
+      font-size: var(--button-font-size-main);
+    }
+  }
 }
 
 .button-disabled {

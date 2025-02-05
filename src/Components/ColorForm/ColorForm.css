@@ -1,5 +1,7 @@
 .color-form--form {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   max-width: 500px;
   max-height: 175px;
   border-radius: 5px;
@@ -12,7 +14,6 @@
   flex-direction: column;
   justify-content: center;
   gap: 10px;
-  min-width: 85%;
   border: none;
 }
 
@@ -28,6 +29,9 @@
   border-radius: 5px;
   border-bottom: 1px solid black;
   background-color: rgba(255, 255, 255, 0.75);
+  @media screen and (max-width: 450px) {
+    width: 100px;
+  }
 }
 
 .color-form--input-field--color-picker {
@@ -51,4 +55,8 @@
 .color-form--input-field--color-picker::-moz-color-swatch {
   border-radius: 5px;
   border: 1px solid white;
+}
+
+.color-form--form-buttons {
+  padding-right: 5px;
 }
