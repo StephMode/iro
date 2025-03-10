@@ -12,9 +12,17 @@ Working on iro taught me valuable lessons about long-term project maintenance an
 
 What started as a learning exercise has developed into a platform for implementing new features and refining initial design decisions.
 
+# Project Focus & Goals
+
+The focus for this project was:
+- maintenance and continous improvement of an existing project.
+- creating a unique UI using pure `CSS` without any frameworks or UI-libraries to home my `CSS` skills.
+- revisiting, understanding and improving upon earlier design decisions.
+
 
 # Tech Stack
 
 色 (iro) is built using these technologies:
 
-![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white) 
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+
