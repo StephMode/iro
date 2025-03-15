@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "../Button/Button";
 import { LuChevronDown } from "react-icons/lu";
-import "../ThemeManager/ThemeManager.css";
+import "./ThemeManager.css";
 
 export default function ThemeManager({
   themes,
